@@ -1,50 +1,34 @@
-import { Paper } from '@mui/material';
-import Grid from '@mui/material/Grid';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Button, Container, Row, Col} from 'react-bootstrap'
+import '../src/index'
+import Layer from './Layer';
 
 function App() {
 
-  const columnStyle = {
-    height: "500%",
-    backgroundColor: "#808080" 
-  }
-
-  const columnStyleParams = {
-    height: "400%",
-    backgroundColor: "#808080" 
-  }
-
   return (
-      <Grid container columnSpacing={1} rowSpacing={2}>
-        {/* Top bar */}
-        <Grid item xs={8}>
-          <Paper>number of layers slider</Paper>
-        </Grid>
-        <Grid item xs={4}>
-          <Paper>epoch status</Paper>
-        </Grid>
-        
-        {/* Mid */}
-        <Grid item xs={1}>
-          <Paper style={columnStyle}>Input column</Paper>
-        </Grid>
+    <div>
+      <div className="container">
+        <h2>Grid</h2>
+        <div className="row">
+          <div className="col-8 p-2 bg-primary text-ligh">layers slider</div>
+          <div className="col-4 p-2 bg-primary text-ligh">epochs status</div>
+        </div>
+      </div>
+      
+      <div className="container my-2">
+          <div className="row">
+            <div className="col-1 p-3 bg-secondary text-light">input</div>
+            {/* mid layers */}
+            <Layer num={3} />
 
-        {/* Dynamic layers */}
-        <Grid item xs={7}>
-          <Paper style={columnStyleParams}>Dynamic layers</Paper>
-        </Grid>
+            <div className="col-1 p-3 bg-info text-light">flatten</div>
+            <div className="col-1 p-3 bg-info text-light">fully</div>
+            <div className="col-2 p-3 bg-warning text-light">output</div>
 
-        {/* End */}
-        <Grid item xs={1}>
-          <Paper style={columnStyle}>Flatten</Paper>
-        </Grid>
-        <Grid item xs={1}>
-          <Paper style={columnStyle}>Fully connected</Paper>
-        </Grid>
-        <Grid item xs={2}>
-          <Paper style={columnStyle}>Acc/Loss</Paper>
-        </Grid>
+          </div>
+      </div>
 
-      </Grid>
+    </div>
 
   );
 }
