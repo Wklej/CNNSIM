@@ -1,13 +1,13 @@
 import Layer from './Layer';
 
-const Workflow = () => {
+const Workflow = ({numLayers}) => {
     return ( 
         <div className="container my-2">
           <div className="row">
             <div className="col-1 p-3 bg-secondary text-light">input</div>
             
             {/* mid layers */}
-            <Layer num={3} />
+            <Layer num={numLayers} />
 
             <div className="col-1 p-3 bg-info text-light">flatten</div>
             <div className="col-1 p-3 bg-info text-light">fully</div>
