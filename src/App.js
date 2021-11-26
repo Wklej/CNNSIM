@@ -18,6 +18,26 @@ function App() {
         <div>
             <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
             <Workflow numLayers={numLayers} />
+
+            <hr />
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-5 bg-secondary">
+                        <div className="col-1">asd</div>
+                        <div className="col-1">asd</div>
+                        <div className="col-1">asd</div>
+                        <div className="col-1">asd</div>
+                        <div className="col-1">asd</div>
+                        <div className="col-1">asd</div>
+                    </div>
+                    <div className="col-5 bg-secondary">col5</div>
+                    <div className="col-2 bg-secondary">col2</div>
+                </div>
+            </div>
+            
+
+
         </div>
 
     );
