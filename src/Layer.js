@@ -1,34 +1,24 @@
 import { useState } from "react";
 import LayerModal from "./LayerModal";
+import { Modal } from "react-bootstrap";
 
 const Layer = ({num}) => {
 
-    // const MyModal = ({show}) => {
-    //     return(
-    //         <Modal show={show} onHide={handleClose}>
-    //             <Modal.Header closeButton>
-    //             <Modal.Title>Modal heading</Modal.Title>
-    //             </Modal.Header>
-    //             <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-    //             <Modal.Footer>
-    //             <button className="btn-secondary" onClick={handleClose}>
-    //                 Close
-    //             </button>
-    //             <button className="btn-primary" onClick={handleClose}>
-    //                 Save Changes
-    //             </button>
-    //             </Modal.Footer>
-    //         </Modal>
-    //     )        
-    // }
+    const [showConv, setConvShow] = useState(false);
+    const [showPool, setPoolShow] = useState(false);
 
-    const [show, setShow] = useState(false);
+    const handleConvShow = () => setConvShow(true);
+    const handleConvClose = () => setConvShow(false);
+    const handlePoolShow = () => setPoolShow(true);
+    const handlePoolClose = () => setPoolShow(false);
 
-    const handleShow = () => setShow(true);
-    const handleClose = () => {
-        setShow(false);
-        console.log('closing modal...')
-    }
+    const [convBody, setConvBody] = useState(
+        <Modal.Body>conv body</Modal.Body>
+    );
+
+    const [poolBody, setPoolBody] = useState(
+        <Modal.Body>pool body</Modal.Body>
+    );
 
     const divs = () => {
         let array = [];
@@ -38,9 +28,10 @@ const Layer = ({num}) => {
                     <div className="card border-dark text-center" >
                         <div className="card-body">
                             <ul className="list-group">
-                                <button className="btn-primary" onClick={handleShow}>1</button>
-                                <LayerModal show={show} handleClose={handleClose} />
-                                <button className="btn-primary">1</button>
+                                <button className="btn-primary" onClick={handleConvShow}>conv</button>
+                                <LayerModal show={showConv} handleClose={handleConvClose} body={convBody} />
+                                <button className="btn-primary" onClick={handlePoolShow}>pool</button>
+                                <LayerModal show={showPool} handleClose={handlePoolClose} body={poolBody} />
                             </ul>
                         </div>
                         <div className="card-footer">params</div>

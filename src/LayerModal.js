@@ -1,13 +1,13 @@
 import { Modal } from "react-bootstrap";
 
-const LayerModal = ({show, handleClose}) => {
+const LayerModal = ({show, handleClose, body}) => {
 
     return ( 
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
             </Modal.Header>
-            <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+            { body }
             <Modal.Footer>
             <button className="btn-secondary" onClick={handleClose}>
                 Close
