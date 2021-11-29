@@ -1,10 +1,10 @@
-import { Modal } from "react-bootstrap";
+import Tabs from 'react-bootstrap/Tabs'
+import { Modal, Tab } from "react-bootstrap";
 
 const LayerModal = ({show, handleClose, body}) => {
 
     const bodyType = () => {
         if (body === "conv") {
-            console.log('conv')
             return(
                 <Modal.Body>conv body</Modal.Body>
             )
@@ -17,18 +17,21 @@ const LayerModal = ({show, handleClose, body}) => {
         }
     }
 
+    const asd = () => {return(<Modal.Body>details content</Modal.Body>)}
+
     return ( 
         <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-            </Modal.Header>
-            { bodyType() }
+            <Tabs>
+                <Tab eventKey="explaination" title="Explaination">
+                    { bodyType() }
+                </Tab>
+                <Tab eventKey="details" title="Details">
+                    { asd() }
+                </Tab>  
+            </Tabs>
             <Modal.Footer>
-                <button className="btn-secondary" onClick={handleClose}>
-                    Close
-                </button>
                 <button className="btn-primary" onClick={handleClose}>
-                    Save Changes
+                    Close
                 </button>
             </Modal.Footer>
         </Modal>
