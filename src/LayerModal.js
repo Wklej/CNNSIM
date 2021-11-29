@@ -1,33 +1,27 @@
 import Tabs from 'react-bootstrap/Tabs'
 import { Modal, Tab } from "react-bootstrap";
+import Explaination from './Explaination';
+import Details from './Details';
 
 const LayerModal = ({show, handleClose, body}) => {
 
-    const bodyType = () => {
-        if (body === "conv") {
-            return(
-                <Modal.Body>conv body</Modal.Body>
-            )
-        }
-        else if(body === "pool") {
-            console.log('pool')
-            return(
-                <Modal.Body>pool body</Modal.Body>
-            )
-        }
+    const explainationBodyType = () => {
+        return(<Explaination layerType={body} />)
     }
 
-    const asd = () => {return(<Modal.Body>details content</Modal.Body>)}
+    const DetailsBodyType = () => {
+        return(<Details layerType={body} />)
+    }
 
     return ( 
         <Modal show={show} onHide={handleClose}>
             <Tabs>
                 <Tab eventKey="explaination" title="Explaination">
-                    { bodyType() }
+                    { explainationBodyType() }
                 </Tab>
                 <Tab eventKey="details" title="Details">
-                    { asd() }
-                </Tab>  
+                    { DetailsBodyType() }
+                </Tab>   
             </Tabs>
             <Modal.Footer>
                 <button className="btn-primary" onClick={handleClose}>
