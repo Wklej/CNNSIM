@@ -12,18 +12,12 @@ function App() {
         setNumLayers(e.valueOf())
     }
 
-
-    const size = () => {
-        window.resizeTo(500, 500)
-    }
-
     return (
         <div>
             <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
             <Workflow numLayers={numLayers} />
 
             <hr />
-
 
         </div>
 
