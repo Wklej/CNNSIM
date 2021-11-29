@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import { useState } from "react";
-import { Card } from 'react-bootstrap';
 
 import TopBar from './TopBar';
 import Workflow from './Workflow';
