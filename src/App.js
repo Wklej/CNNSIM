@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import { useState } from "react";
-import { Card } from 'react-bootstrap';
 
 import TopBar from './TopBar';
 import Workflow from './Workflow';
@@ -13,12 +12,18 @@ function App() {
         setNumLayers(e.valueOf())
     }
 
+
+    const size = () => {
+        window.resizeTo(500, 500)
+    }
+
     return (
         <div>
             <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
             <Workflow numLayers={numLayers} />
 
             <hr />
+
 
         </div>
 
