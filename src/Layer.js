@@ -5,11 +5,14 @@ const Layer = ({num}) => {
         for (let index = 0; index < num; index++) {
             array.push(
                 <div className="col">
-                    <div className="container ps-1 pe-1">
-                        <div className="col">
-                            <div className="row p-5 bg-success text-light">main</div>
-                            <div className="row p-1 my-1 bg-success text-light">params</div>
+                    <div className="card border-dark text-center" >
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <button className="btn-primary">1</button>
+                                <button className="btn-primary">1</button>
+                            </ul>
                         </div>
+                        <div className="card-footer">params</div>
                     </div>
                 </div>
             )
