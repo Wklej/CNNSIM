@@ -2,25 +2,29 @@ import Tabs from 'react-bootstrap/Tabs'
 import { Modal, Tab } from "react-bootstrap";
 import Explaination from './Explaination';
 import Details from './Details';
+import { useState } from 'react';
 
 const LayerModal = ({show, handleClose, body}) => {
 
-    const explainationBodyType = () => {
-        return(<Explaination layerType={body} />)
-    }
+    const [type, setType] = useState('details')
 
-    const DetailsBodyType = () => {
-        return(<Details layerType={body} />)
+    const bodyType = () => {
+        if (type === "explaination") {
+            return(<Explaination layerType={body} />)    
+        }
+        else if(type === "details") {
+            return(<Details layerType={body} />)
+        }
     }
 
     return ( 
         <Modal show={show} onHide={handleClose}>
-            <Tabs>
+            <Tabs activeKey={type} onSelect={(e) => setType(e)}>
                 <Tab eventKey="explaination" title="Explaination">
-                    { explainationBodyType() }
+                    { bodyType() }
                 </Tab>
                 <Tab eventKey="details" title="Details">
-                    { DetailsBodyType() }
+                    { bodyType() }
                 </Tab>   
             </Tabs>
             <Modal.Footer>
