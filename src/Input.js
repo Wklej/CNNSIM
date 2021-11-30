@@ -9,16 +9,16 @@ const Input = () => {
     }
     return ( 
         <div className="col">
-            <input class="btn-check" type="radio" name="flexRadioDefault" id="1" onClick={(e) => handleChange(e)} />
-            <label class="btn btn-outline-dark mb-2" for="1">set1</label>
+            <input className="btn-check" type="radio" name="flexRadioDefault" id="1" onClick={(e) => handleChange(e)} />
+            <label className="btn btn-outline-dark mb-2" htmlFor="1">set1</label>
 
 
-            <input class="btn-check" type="radio" name="flexRadioDefault" id="2" onClick={(e) => handleChange(e)} />
-            <label class="btn btn-outline-dark mb-2" for="2">set2</label>
+            <input className="btn-check" type="radio" name="flexRadioDefault" id="2" onClick={(e) => handleChange(e)} />
+            <label className="btn btn-outline-dark mb-2" htmlFor="2">set2</label>
 
 
-            <input class="btn-check" type="radio" name="flexRadioDefault" id="3" onClick={(e) => handleChange(e)} />
-            <label class="btn btn-outline-dark mb-2" for="3">set3</label>
+            <input className="btn-check" type="radio" name="flexRadioDefault" id="3" onClick={(e) => handleChange(e)} />
+            <label className="btn btn-outline-dark mb-2" htmlFor="3">set3</label>
 
             {value}
         </div>
