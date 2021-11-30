@@ -16,11 +16,7 @@ function App() {
         <div>
             <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
             <Workflow numLayers={numLayers} />
-
-            <hr />
-
         </div>
-
     );
 }
 

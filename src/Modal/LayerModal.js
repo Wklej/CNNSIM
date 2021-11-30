@@ -1,7 +1,7 @@
 import Tabs from 'react-bootstrap/Tabs'
 import { Modal, Tab } from "react-bootstrap";
-import Explaination from './Explaination';
-import Details from './Details';
+import Explaination from './Components/Explaination'
+import Details from './Components/Details';
 import { useState } from 'react';
 
 const LayerModal = ({show, handleClose, body}) => {
@@ -28,7 +28,7 @@ const LayerModal = ({show, handleClose, body}) => {
                 </Tab>   
             </Tabs>
             <Modal.Footer>
-                <button className="btn-primary" onClick={handleClose}>
+                <button className="btn btn-primary" onClick={handleClose}>
                     Close
                 </button>
             </Modal.Footer>

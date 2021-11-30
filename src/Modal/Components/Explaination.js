@@ -11,6 +11,11 @@ const Explaination = ({layerType}) => {
             <Modal.Body>Pool explaination body content</Modal.Body>
         );
     }
+    else if (layerType === "flat") {
+        return (
+            <Modal.Body>Flatten explaination body content</Modal.Body>
+        );
+    }
 }
 
 export default Explaination;
