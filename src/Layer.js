@@ -31,12 +31,12 @@ const Layer = ({num}) => {
                     <div className="card border-dark text-center" >
                         <div className="card-body">
                             <ul className="list-group">
-                                <button className="btn-primary" onClick={handleConvShow} id={'conv' + index}>conv</button>
+                                <button className="btn btn-primary" onClick={handleConvShow} id={'conv' + index}>conv</button>
                                 <div className="form-check form-switch">
                                     <input type="checkbox" className="form-check-input" id={'conv' + index} onChange={(e) => handleDisableConv(e)} />
                                 </div>
                                 <LayerModal show={showConv} handleClose={handleConvClose} body={"conv"} />
-                                <button className="btn-primary" onClick={handlePoolShow} id={'pool' + index}>pool</button>
+                                <button className="btn btn-primary" onClick={handlePoolShow} id={'pool' + index}>pool</button>
                                 <div className="form-check form-switch">
                                     <input type="checkbox" className="form-check-input" id={'pool' + index} onChange={(e) => handleDisablePool(e)} />
                                 </div>
@@ -44,7 +44,7 @@ const Layer = ({num}) => {
                             </ul>
                         </div>
                         <div className="card-footer">
-                            <button className="btn-primary" onClick={handleFeaturesShow} id={'feat' + index}>Features</button>
+                            <button className="btn btn-primary" onClick={handleFeaturesShow} id={'feat' + index}>Features</button>
                             <Features show={showFeatures} handleClose={handleFeaturesClose} />
                         </div>
                     </div>

@@ -35,7 +35,7 @@ const Features = ({show, handleClose}) => {
                 </Tab>   
             </Tabs>
             <Modal.Footer>
-                <button className="btn-primary" onClick={handleClose}>
+                <button className="btn btn-primary" onClick={handleClose}>
                     Close
                 </button>
             </Modal.Footer>
