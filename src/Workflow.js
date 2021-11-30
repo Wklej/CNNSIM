@@ -1,4 +1,5 @@
 import Layer from './Layer';
+import Output from './Output';
 
 const Workflow = ({numLayers}) => {
     return ( 
@@ -11,7 +12,10 @@ const Workflow = ({numLayers}) => {
 
             <div className="col-1 p-3 bg-info text-light">flatten</div>
             <div className="col-1 p-3 bg-danger text-light">fully</div>
-            <div className="col-2 p-3 bg-warning text-light">output</div>
+            <div className="col-2 p-3 bg-warning text-light">
+              
+              <Output/>
+            </div>
 
           </div>
       </div>
