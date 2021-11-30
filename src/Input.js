@@ -9,18 +9,17 @@ const Input = () => {
     }
     return ( 
         <div className="col">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="1" onClick={(e) => handleChange(e)} />
-                <label class="form-check-label" for="1">
-                    set1
-                </label>
-                </div>
-                <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="2" onClick={(e) => handleChange(e)} />
-                <label class="form-check-label" for="2">
-                    set2
-                </label>
-            </div>
+            <input class="btn-check" type="radio" name="flexRadioDefault" id="1" onClick={(e) => handleChange(e)} />
+            <label class="btn btn-outline-dark mb-2" for="1">set1</label>
+
+
+            <input class="btn-check" type="radio" name="flexRadioDefault" id="2" onClick={(e) => handleChange(e)} />
+            <label class="btn btn-outline-dark mb-2" for="2">set2</label>
+
+
+            <input class="btn-check" type="radio" name="flexRadioDefault" id="3" onClick={(e) => handleChange(e)} />
+            <label class="btn btn-outline-dark mb-2" for="3">set3</label>
+
             {value}
         </div>
     );
