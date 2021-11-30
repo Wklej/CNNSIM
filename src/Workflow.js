@@ -1,7 +1,8 @@
-import Layer from './Layer';
-import Output from './Output';
-import Input from './Input';
-import LayerModal from "./LayerModal";
+import MidLayer from './Layers/MidLayer';
+import Output from './Layers/Output';
+import Input from './Layers/Input';
+import Fully from './Layers/Fully';
+import LayerModal from "./Modal/LayerModal";
 import { useState } from "react";
 
 const Workflow = ({numLayers}) => {
@@ -19,14 +20,15 @@ const Workflow = ({numLayers}) => {
             </div>
             
             {/* mid layers */}
-            <Layer num={numLayers} />
+            <MidLayer num={numLayers} />
 
             <div className="col-1 me-4">
               <button className="btn btn-outline-secondary flattenButton" onClick={handleFlatShow}>{"FLATTEN"}</button>
               <LayerModal show={showFlat} handleClose={handleFlatClose} body={"flat"} />
             </div>
-            <div className="col-1 me-4">
-              <button className="btn btn-outline-success flattenButton">{"FULLY"}</button>
+            <div className="col-2 me-4">
+              <Fully />
+              {/* <button className="btn btn-outline-success flattenButton">{"FULLY"}</button> */}
             </div>
             <div className="col-2 p-3 bg-warning">
               <Output/>

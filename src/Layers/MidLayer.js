@@ -1,8 +1,8 @@
 import { useState } from "react";
-import LayerModal from "./LayerModal";
-import Features from "./Features";
+import LayerModal from "../Modal/LayerModal";
+import Features from "../Modal/Components/Features";
 
-const Layer = ({num}) => {
+const MidLayer = ({num}) => {
 
     const [showConv, setConvShow] = useState(false);
     const [showPool, setPoolShow] = useState(false);
@@ -59,4 +59,4 @@ const Layer = ({num}) => {
      );
 }
  
-export default Layer;
+export default MidLayer;
