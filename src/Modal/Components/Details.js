@@ -1,14 +1,16 @@
 import { Modal } from "react-bootstrap";
+import ConvParams from './ConvParams'
+import PoolParams from "./PoolParams";
 
 const Details = ({layerType}) => {
     if (layerType === "conv") {
         return (
-            <Modal.Body>Conv details body content</Modal.Body>
+            <ConvParams />
         );    
     }
     else if (layerType === "pool") {
         return (
-            <Modal.Body>Pool details body content</Modal.Body>
+            <PoolParams />
         );
     }
     else if (layerType === "flat") {
