@@ -4,7 +4,7 @@ import Explaination from './Components/Explaination'
 import Details from './Components/Details';
 import { useState } from 'react';
 
-const LayerModal = ({show, handleClose, body}) => {
+const LayerModal = ({show, handleClose, body, id}) => {
 
     const [type, setType] = useState('details')
 
@@ -13,7 +13,7 @@ const LayerModal = ({show, handleClose, body}) => {
             return(<Explaination layerType={body} />)    
         }
         else if(type === "details") {
-            return(<Details layerType={body} />)
+            return(<Details layerType={body} id={id} />)
         }
     }
 

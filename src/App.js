@@ -19,24 +19,40 @@ function App() {
         filters: '1', kernel: '1', activation: '1', stride: '1'
     })
 
+    const [allVals, setAllVals] = useState({
+        layers: [
+            {conv: {filters: '1', kernel: '1', activation: '1', stride: '1'}, pool: 2, drop: 3},
+            {conv: {filters: '2', kernel: '2', activation: '2', stride: '2'}, pool: 2, drop: 3},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: 0, drop: 0},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: 0, drop: 0},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: 0, drop: 0},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: 0, drop: 0},
+        ]
+    })
+
     const handleConvChange = (e) => {
         setConvValues( vals => {
             return { ...vals, [e.target.name]: e.target.value}
         })
     }
 
+    const handleLayerChange = (e, id) => {
+        console.log(id)
+        console.log(
+            allVals.layers[1]
+        )
 
-    var persons = [
-        {name: ["Filip", "Filip"], age: "22"},
-        {name: ["Natalia", "Natalia"], age: "24"},
-        {name: ["Fufu", "Fufu"], age: "42"},
-    ]
+        // setAllVals( vals => {
+        //     return { ...vals.layers[id], [e.target.name]: e.target.value}
+        // })
+    }
 
-    var persons2 = [
-        {name: ["Filip", "Filip"], age: "22"},
-        {name: ["Natalia", "Nataliaa"], age: "24"},
-        {name: ["Fufu", "Fufu"], age: "42"},
-    ]
+    const handleSetLayers = (id, value) => {
+        const temp = allVals
+        temp.layers[id].conv.filters = value
+        setAllVals(temp)
+        console.log('After: ', allVals)
+    }
 
     var test = {
         layers: [
@@ -60,18 +76,6 @@ function App() {
         ] 
     }
 
-    const loop = () => {
-        const arr = []
-        for (let index = 0; index < 3; index++) {
-            if (JSON.stringify(persons[index]) === JSON.stringify(persons2[index])) {
-                console.log(persons[index], persons2[index])
-                arr.push(1)
-            }
-            else arr.push(0)
-        }
-        console.log(test)
-        return arr;
-    }
 
     const testt = () => {
         const array = []
@@ -85,17 +89,19 @@ function App() {
 
     return (
         <div>
-            <testContext.Provider value={handleConvChange}>
+            <testContext.Provider value={handleLayerChange}>
                 <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
                 <Workflow numLayers={numLayers} />
-                {console.log(convValues)}
             </testContext.Provider>
             <hr />
 
             {
                 
                 // loop()
-                testt()
+                // testt()
+                // console.log(allVals),
+                // <button onClick={() => handleSetLayers(0, '12')}>asd</button>
+                // handleSet()
                 
             }
 

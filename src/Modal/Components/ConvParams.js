@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Modal } from "react-bootstrap";
 import { testContext } from "../../testContext";
 
-const ConvParams = () => {
+const ConvParams = ({id}) => {
 
     const handleChange = useContext(testContext)
 
@@ -35,6 +35,7 @@ const ConvParams = () => {
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
+                {"id " + id}
             </div>     
         </Modal.Body>
      );

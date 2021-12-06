@@ -3,11 +3,11 @@ import { Modal } from "react-bootstrap";
 import ConvParams from './ConvParams'
 import PoolParams from "./PoolParams";
 
-const Details = ({layerType}) => {
+const Details = ({layerType, id}) => {
 
     if (layerType === "conv") {
         return (
-            <ConvParams />
+            <ConvParams id={id} />
         );    
     }
     else if (layerType === "pool") {

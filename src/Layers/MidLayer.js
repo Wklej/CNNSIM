@@ -23,6 +23,12 @@ const MidLayer = ({num}) => {
         const btnHandler = document.getElementById(e.target.id)
         btnHandler.disabled = !btnHandler.disabled
     }
+
+    const [showConv2, setConv2Show] = useState(false);
+    const handleConv2Show = () => setConv2Show(true);
+    const handleConv2Close = () => setConv2Show(false);
+
+
     const divs = () => {
         let array = [];
         for (let index = 0; index < num; index++) {
@@ -35,7 +41,7 @@ const MidLayer = ({num}) => {
                                 <div className="form-check form-switch">
                                     <input type="checkbox" className="form-check-input" id={'conv' + index} onChange={(e) => handleDisableConv(e)} />
                                 </div>
-                                <LayerModal show={showConv} handleClose={handleConvClose} body={"conv"} />
+                                <LayerModal show={showConv} handleClose={handleConvClose} body={"conv"} id={index} />
                                 <button className="btn btn-primary" onClick={handlePoolShow} id={'pool' + index}>pool</button>
                                 <div className="form-check form-switch">
                                     <input type="checkbox" className="form-check-input" id={'pool' + index} onChange={(e) => handleDisablePool(e)} />
@@ -51,6 +57,34 @@ const MidLayer = ({num}) => {
                 </div>
             )
         }
+
+
+        array.push(
+            <div className="col">
+                    <div className="card border-dark text-center" >
+                        <div className="card-body">
+                            <ul className="list-group">
+                                <button className="btn btn-primary" onClick={handleConv2Show} id={'conv' + 9}>conv</button>
+                                <div className="form-check form-switch">
+                                    <input type="checkbox" className="form-check-input" id={'conv' + 9} onChange={(e) => handleDisableConv(e)} />
+                                </div>
+                                <LayerModal show={showConv2} handleClose={handleConv2Close} body={"conv"} id={9} />
+                                <button className="btn btn-primary" onClick={handlePoolShow} id={'pool' + 9}>pool</button>
+                                <div className="form-check form-switch">
+                                    <input type="checkbox" className="form-check-input" id={'pool' + 9} onChange={(e) => handleDisablePool(e)} />
+                                </div>
+                                <LayerModal show={showPool} handleClose={handlePoolClose} body={'pool'} />
+                            </ul>
+                        </div>
+                        <div className="card-footer">
+                            <button className="btn btn-primary" onClick={handleFeaturesShow} id={'feat' + 9}>Features</button>
+                            <Features show={showFeatures} handleClose={handleFeaturesClose} />
+                        </div>
+                    </div>
+                </div>
+        )
+
+
         return array
     }
 
