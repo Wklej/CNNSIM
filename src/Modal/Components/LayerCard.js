@@ -16,7 +16,6 @@ const LayerCard = ({id}) => {
     const handleFeaturesClose = () => setShowFeatures(false);
 
     const handleDisableConv = (e) => {
-        console.log(e.target)
         const btnHandler = document.getElementById(e.target.id)
         btnHandler.disabled = !btnHandler.disabled
     }
@@ -30,14 +29,14 @@ const LayerCard = ({id}) => {
             <div className="card border-dark text-center" >
                 <div className="card-body">
                     <ul className="list-group">
-                        <button className="btn btn-primary" onClick={handleConvShow} id={id}>conv {id}</button>
+                        <button className="btn btn-primary" onClick={handleConvShow} id={'conv' + id}>conv {id}</button>
                         <div className="form-check form-switch">
-                            <input type="checkbox" className="form-check-input" id={id} onChange={(e) => handleDisableConv(e)} />
+                            <input type="checkbox" className="form-check-input" id={'conv' + id} onChange={(e) => handleDisableConv(e)} />
                         </div>
                         <LayerModal show={showConv} handleClose={handleConvClose} body={"conv"} id={id} />
-                        <button className="btn btn-primary" onClick={handlePoolShow} id={id}>pool</button>
+                        <button className="btn btn-primary" onClick={handlePoolShow} id={'pool' + id}>pool</button>
                         <div className="form-check form-switch">
-                            <input type="checkbox" className="form-check-input" id={id} onChange={(e) => handleDisablePool(e)} />
+                            <input type="checkbox" className="form-check-input" id={'pool' + id} onChange={(e) => handleDisablePool(e)} />
                         </div>
                         <LayerModal show={showPool} handleClose={handlePoolClose} body={'pool'} />
                     </ul>
