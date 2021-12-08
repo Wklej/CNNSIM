@@ -1,25 +1,23 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { testContext } from "../../testContext";
 
 const ConvParams = ({id}) => {
 
     const handleChange = useContext(testContext)
-    const change = () => {
-        console.log(id)
-    }
+    // const [asd, setAsd] = useState(0)
 
     return ( 
         <Modal.Body>
             <div className="input-group">
                 <span className="input-group-text">Filters:</span>
-                <select className="form-select" name="filters" aria-label="Default select example" onChange={change(id)}>
+                <select className="form-select" name="filters" aria-label="Default select example" onChange={(e) => handleChange(e, id)}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
                 <span className="input-group-text">Kernel size:</span>
-                <select className="form-select" name="kernel" aria-label="Default select example" onChange={handleChange(id)}>
+                <select className="form-select" name="kernel" aria-label="Default select example" onChange={(e) => handleChange(e, id)}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -27,18 +25,18 @@ const ConvParams = ({id}) => {
             </div>
             <div className="input-group">
                 <span className="input-group-text">Activation:</span>
-                <select className="form-select" name="activation" aria-label="Default select example" onChange={handleChange(id)}>
+                <select className="form-select" name="activation" aria-label="Default select example" onChange={(e) => handleChange(e, id)}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
                 <span className="input-group-text">Stride:</span>
-                <select className="form-select" name="stride" aria-label="Default select example" onChange={handleChange(id)}>
+                <select className="form-select" name="stride" aria-label="Default select example" onChange={(e) => handleChange(e, id)}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
-                {/* {console.log(id)} */}
+                {/* {console.log(asd)} */}
             </div>     
         </Modal.Body>
      );
