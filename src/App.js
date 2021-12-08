@@ -36,11 +36,8 @@ function App() {
         })
     }
 
-    const handleLayerChange = (e, id) => {
+    const handleLayerChange = (id) => {
         console.log(id)
-        console.log(
-            allVals.layers[1]
-        )
 
         // setAllVals( vals => {
         //     return { ...vals.layers[id], [e.target.name]: e.target.value}
