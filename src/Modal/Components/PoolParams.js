@@ -1,23 +1,34 @@
+import { useContext, useState } from "react";
 import { Modal } from "react-bootstrap";
+import { paramContext } from "../../paramContext";
+import { testContext } from "../../testContext";
 
-const PoolParams = () => {
+const PoolParams = ({id, layerType}) => {
+
+    const handleChange = useContext(testContext)
+    const getValues = useContext(paramContext)
+
+    const [values, setValues] = useState(getValues(id, layerType))
+
+    const update = (e, id) => {
+        handleChange(e, id, layerType)
+        setValues(e.target.value)
+    }
+
     return ( 
         <Modal.Body>
-            Pool params
             <div className="input-group">
                 <span className="input-group-text">Pool size:</span>
-                <select className="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select className="form-select" name="size" value={values.size} aria-label="Default select example" onChange={(e) => update(e, id)}>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                 </select>
                 <span className="input-group-text">Stride:</span>
-                <select className="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select className="form-select" name="stride" value={values.stride} aria-label="Default select example" onChange={(e) => update(e, id)}>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
                 </select>
             </div>
         </Modal.Body>

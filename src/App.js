@@ -1,10 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import TopBar from './TopBar';
 import Workflow from './Workflow';
 
 import { testContext } from './testContext';
+import { paramContext } from './paramContext'; 
 
 function App() {
 
@@ -15,90 +16,43 @@ function App() {
     }
 
     //global values to pass to context and use in grandchild components
-    const [convValues, setConvValues] = useState({
-        filters: '1', kernel: '1', activation: '1', stride: '1'
+    const [allVals, setAllVals] = useState({
+        layers: [
+            {conv: {filters: '1', kernel: '1', activation: '1', stride: '1'}, pool: {size: '1', stride: '1'}, drop: 3},
+            {conv: {filters: '2', kernel: '2', activation: '2', stride: '2'}, pool: {size: '2', stride: '2'}, drop: 3},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
+        ]
     })
 
-    const handleConvChange = (e) => {
-        setConvValues( vals => {
-            return { ...vals, [e.target.name]: e.target.value}
-        })
-    }
-
-
-    var persons = [
-        {name: ["Filip", "Filip"], age: "22"},
-        {name: ["Natalia", "Natalia"], age: "24"},
-        {name: ["Fufu", "Fufu"], age: "42"},
-    ]
-
-    var persons2 = [
-        {name: ["Filip", "Filip"], age: "22"},
-        {name: ["Natalia", "Nataliaa"], age: "24"},
-        {name: ["Fufu", "Fufu"], age: "42"},
-    ]
-
-    var test = {
-        layers: [
-            {conv: [{filters: 32}, {stride: '2x2'}], pool: 2, drop: 3},
-            {conv: [{filters: 64}, {stride: '4x4'}], pool: 2, drop: 3},
-        ],
-        fully: [
-            {x: 1, y: 3, z: 5},
-            {x: 1, y: 3, z: 5},
-        ] 
-    }
-
-    var test2 = {
-        layers: [
-            {conv: [{filters: 32}, {stride: '2x2'}], pool: 2, drop: 3},
-            {conv: [{filters: 14}, {stride: '4x4'}], pool: 2, drop: 3},
-        ],
-        fully: [
-            {x: 1, y: 3, z: 5},
-            {x: 1, y: 3, z: 5},
-        ] 
-    }
-
-    const loop = () => {
-        const arr = []
-        for (let index = 0; index < 3; index++) {
-            if (JSON.stringify(persons[index]) === JSON.stringify(persons2[index])) {
-                console.log(persons[index], persons2[index])
-                arr.push(1)
-            }
-            else arr.push(0)
-        }
-        console.log(test)
-        return arr;
-    }
-
-    const testt = () => {
-        const array = []
-        if (JSON.stringify(test) === JSON.stringify(test2)) {
-            array.push(1)
-        } else array.push(0 )
+    const handleLayerChange = (e, id, layerName) => {
+        const temp = allVals
         
-            return array;
+        if (layerName === 'conv')
+            temp.layers[id].conv = {...temp.layers[id].conv, [e.target.name]: e.target.value}
+        else if (layerName === 'pool')
+            temp.layers[id].pool = {...temp.layers[id].pool, [e.target.name]: e.target.value}
+        
+            setAllVals(temp)
     }
 
+    const getValues = (id, layerName) => {
+        if (layerName === 'conv') 
+            return allVals.layers[id].conv
+        else if (layerName === 'pool')
+            return allVals.layers[id].pool
+    }
 
     return (
         <div>
-            <testContext.Provider value={handleConvChange}>
-                <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
-                <Workflow numLayers={numLayers} />
-                {console.log(convValues)}
+            <testContext.Provider value={handleLayerChange}>
+                <paramContext.Provider value={getValues}>
+                    <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
+                    <Workflow numLayers={numLayers} />
+                </paramContext.Provider>
             </testContext.Provider>
-            <hr />
-
-            {
-                
-                // loop()
-                testt()
-                
-            }
-
         </div>
 
     );
