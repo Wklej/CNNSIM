@@ -1,10 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import TopBar from './TopBar';
 import Workflow from './Workflow';
 
 import { testContext } from './testContext';
+import { paramContext } from './paramContext'; 
 
 function App() {
 
@@ -30,14 +31,20 @@ function App() {
         const temp = allVals
         temp.layers[id].conv = {...temp.layers[id].conv, [e.target.name]: e.target.value}
         setAllVals(temp)
-        console.log('After: ', allVals.layers[id].conv)
+        // console.log('After: ', allVals.layers[id].conv)
+    }
+
+    const getValues = (id) => {
+        return allVals.layers[id].conv
     }
 
     return (
         <div>
             <testContext.Provider value={handleLayerChange}>
-                <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
-                <Workflow numLayers={numLayers} />
+                <paramContext.Provider value={getValues}>
+                    <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
+                    <Workflow numLayers={numLayers} />
+                </paramContext.Provider>
             </testContext.Provider>
         </div>
 
