@@ -3,15 +3,15 @@ import { Modal } from "react-bootstrap";
 import { paramContext } from "../../paramContext";
 import { testContext } from "../../testContext";
 
-const ConvParams = ({id}) => {
+const ConvParams = ({id, layerType}) => {
 
     const handleChange = useContext(testContext)
     const getValues = useContext(paramContext)
 
-    const [values, setValues] = useState(getValues(id))
+    const [values, setValues] = useState(getValues(id, layerType))
 
     const update = (e, id) => {
-        handleChange(e, id)
+        handleChange(e, id, layerType)
         setValues(e.target.value)
     }
 

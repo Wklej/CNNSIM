@@ -38,7 +38,7 @@ const LayerCard = ({id}) => {
                         <div className="form-check form-switch">
                             <input type="checkbox" className="form-check-input" id={'pool' + id} onChange={(e) => handleDisablePool(e)} />
                         </div>
-                        <LayerModal show={showPool} handleClose={handlePoolClose} body={'pool'} />
+                        <LayerModal show={showPool} handleClose={handlePoolClose} body={'pool'} id={id} />
                     </ul>
                 </div>
                 <div className="card-footer">

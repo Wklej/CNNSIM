@@ -18,24 +18,31 @@ function App() {
     //global values to pass to context and use in grandchild components
     const [allVals, setAllVals] = useState({
         layers: [
-            {conv: {filters: '1', kernel: '1', activation: '1', stride: '1'}, pool: 2, drop: 3},
-            {conv: {filters: '2', kernel: '2', activation: '2', stride: '2'}, pool: 2, drop: 3},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: 0, drop: 0},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: 0, drop: 0},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: 0, drop: 0},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: 0, drop: 0},
+            {conv: {filters: '1', kernel: '1', activation: '1', stride: '1'}, pool: {size: '1', stride: '1'}, drop: 3},
+            {conv: {filters: '2', kernel: '2', activation: '2', stride: '2'}, pool: {size: '2', stride: '2'}, drop: 3},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
+            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
         ]
     })
 
-    const handleLayerChange = (e, id) => {
+    const handleLayerChange = (e, id, layerName) => {
         const temp = allVals
-        temp.layers[id].conv = {...temp.layers[id].conv, [e.target.name]: e.target.value}
-        setAllVals(temp)
-        // console.log('After: ', allVals.layers[id].conv)
+        
+        if (layerName === 'conv')
+            temp.layers[id].conv = {...temp.layers[id].conv, [e.target.name]: e.target.value}
+        else if (layerName === 'pool')
+            temp.layers[id].pool = {...temp.layers[id].pool, [e.target.name]: e.target.value}
+        
+            setAllVals(temp)
     }
 
-    const getValues = (id) => {
-        return allVals.layers[id].conv
+    const getValues = (id, layerName) => {
+        if (layerName === 'conv') 
+            return allVals.layers[id].conv
+        else if (layerName === 'pool')
+            return allVals.layers[id].pool
     }
 
     return (
