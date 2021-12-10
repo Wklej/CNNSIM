@@ -18,12 +18,36 @@ function App() {
     //global values to pass to context and use in grandchild components
     const [allVals, setAllVals] = useState({
         layers: [
-            {conv: {filters: '1', kernel: '1', activation: '1', stride: '1'}, pool: {size: '1', stride: '1'}, fully: {filters: '1', activation: '1'}, drop: 3},
-            {conv: {filters: '2', kernel: '2', activation: '2', stride: '2'}, pool: {size: '2', stride: '2'}, fully: {filters: '1', activation: '1'}, drop: 3},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, fully: {filters: '1', activation: '1'}, drop: 0},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, fully: {filters: '1', activation: '1'}, drop: 0},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, fully: {filters: '1', activation: '1'}, drop: 0},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, fully: {filters: '1', activation: '1'}, drop: 0},
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
         ]
     })
 

@@ -31,7 +31,7 @@ const Workflow = ({numLayers}) => {
               {/* <button className="btn btn-outline-success flattenButton">{"FULLY"}</button> */}
             </div>
             <div className="col-2 p-3 bg-warning">
-              <Output/>
+              <Output acc={67} />
             </div>
 
           </div>
