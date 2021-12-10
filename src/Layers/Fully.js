@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FullyNode from "../Modal/Components/FullyNode";
 
 const Fully = () => {
 
@@ -11,7 +12,7 @@ const Fully = () => {
         let array = [];
         for (let index = 0; index < num; index++) {
             array.push(
-                <button className="btn btn-primary mb-2" id={index}>{"Node " + index}</button>
+                <FullyNode id={index} />
             )
         }
         return array

@@ -1,5 +1,6 @@
 import { Modal } from "react-bootstrap";
 import ConvParams from './ConvParams'
+import FullyParams from "./FullyParams";
 import PoolParams from "./PoolParams";
 
 const Details = ({layerType, id}) => {
@@ -18,6 +19,11 @@ const Details = ({layerType, id}) => {
         return (
             <Modal.Body>Flatten details body content</Modal.Body>
         );
+    }
+    else if (layerType === "fully") {
+        return(
+            <FullyParams id={id} layerType={layerType} />
+        )
     }
 }
  
