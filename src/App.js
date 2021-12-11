@@ -6,8 +6,6 @@ import Workflow from './Workflow';
 
 import { testContext } from './testContext';
 import { paramContext } from './paramContext'; 
-import Collapse from 'react-bootstrap/Collapse'
-import Button from 'react-bootstrap/Button'
 
 function App() {
 
@@ -79,8 +77,6 @@ function App() {
         else if (layerName === 'output')
             return allVals.output
     }
-
-    const [open, setOpen] = useState(false);
 
     return (
         <div>
