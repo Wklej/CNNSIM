@@ -2,6 +2,8 @@ import { PieChart } from 'react-minimal-pie-chart';
 import { useState, useContext } from 'react';
 import { paramContext } from "../paramContext";
 import { testContext } from "../testContext";
+import ExplainModal from '../Modal/ExplainModal';
+import SelectBundle from '../Modal/Components/SelectBundle';
 
 const Output = ({acc}) => {
         
@@ -44,22 +46,10 @@ const Output = ({acc}) => {
     }
 
     return ( 
-        <div>
-             <div className="input-group input-group-sm">
-                <span className="input-group-text">Loss:</span>
-                <select className="form-select" name="loss" value={values.loss} onChange={(e) => update(e, id)}>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-                <span className="input-group-text mt-1">Optimizer:</span>
-                <select className="form-select mt-1" name="optimizer" value={values.optimizer} onChange={(e) => update(e, id)}>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-            </div>
-
+        <div>   
+            <SelectBundle values={values} modalType='explain' label='loss' update={update} id={id} />
+            <SelectBundle values={values} modalType='explain' label='activation' update={update} id={id} />
+          
             <hr />
 
             {AccuracyChart()}

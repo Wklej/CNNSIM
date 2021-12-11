@@ -29,7 +29,7 @@ const Workflow = ({numLayers}) => {
             <div className="col-2 me-4">
               <Fully />
             </div>
-            <div className="col-2 p-3 bg-warning">
+            <div className="col p-3 bg-warning">
               <Output acc={67} />
             </div>
 
