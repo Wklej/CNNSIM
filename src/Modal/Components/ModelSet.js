@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Collapse from 'react-bootstrap/Collapse'
 
-const ModelSet = ({id, handleChange, value}) => {
+const ModelSet = ({id, handleChange}) => {
 
     const [open, setOpen] = useState(false);
 
