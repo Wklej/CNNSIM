@@ -6,6 +6,8 @@ import Workflow from './Workflow';
 
 import { testContext } from './testContext';
 import { paramContext } from './paramContext'; 
+import Collapse from 'react-bootstrap/Collapse'
+import Button from 'react-bootstrap/Button'
 
 function App() {
 
@@ -78,6 +80,8 @@ function App() {
             return allVals.output
     }
 
+    const [open, setOpen] = useState(false);
+
     return (
         <div>
             <testContext.Provider value={handleLayerChange}>
@@ -87,6 +91,7 @@ function App() {
                 </paramContext.Provider>
             </testContext.Provider>
         </div>
+
 
     );
 }
