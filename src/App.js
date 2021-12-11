@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import TopBar from './TopBar';
 import Workflow from './Workflow';
@@ -48,7 +48,8 @@ function App() {
                 fully: {filters: '1', activation: '1'},
                 drop: 3
             },
-        ]
+        ],
+        output: {loss: '1', optimizer: '1'}
     })
 
     const handleLayerChange = (e, id, layerName) => {
@@ -60,8 +61,10 @@ function App() {
             temp.layers[id].pool = {...temp.layers[id].pool, [e.target.name]: e.target.value}
         else if (layerName === 'fully')
             temp.layers[id].fully = {...temp.layers[id].fully, [e.target.name]: e.target.value}
+        else if (layerName === 'output')
+            temp.output = {...temp.output, [e.target.name]: e.target.value}
         
-            setAllVals(temp)
+        setAllVals(temp)
     }
 
     const getValues = (id, layerName) => {
@@ -71,6 +74,8 @@ function App() {
             return allVals.layers[id].pool
         else if (layerName === 'fully')
             return allVals.layers[id].fully
+        else if (layerName === 'output')
+            return allVals.output
     }
 
     return (
