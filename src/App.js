@@ -55,13 +55,9 @@ function App() {
     const handleLayerChange = (e, id, layerName) => {
         const temp = allVals
         
-        if (layerName === 'conv')
-            temp.layers[id].conv = {...temp.layers[id].conv, [e.target.name]: e.target.value}
-        else if (layerName === 'pool')
-            temp.layers[id].pool = {...temp.layers[id].pool, [e.target.name]: e.target.value}
-        else if (layerName === 'fully')
-            temp.layers[id].fully = {...temp.layers[id].fully, [e.target.name]: e.target.value}
-        else if (layerName === 'output')
+        if (layerName !== 'output')
+            temp.layers[id][layerName] = {...temp.layers[id][layerName], [e.target.name]: e.target.value}
+        else
             temp.output = {...temp.output, [e.target.name]: e.target.value}
         
         setAllVals(temp)
@@ -70,7 +66,7 @@ function App() {
     const getValues = (id, layerName) => {
         if (layerName !== 'output') 
             return allVals.layers[id][layerName]
-            
+
         else return allVals.output
     }
 
