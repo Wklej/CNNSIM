@@ -11,7 +11,7 @@ const Input = () => {
 
 
     return ( 
-        <div className="col">
+        <div>
             <ModelSet id={1} handleChange={handleChange} />
             <ModelSet id={2} handleChange={handleChange} />
             <ModelSet id={3} handleChange={handleChange} />

@@ -15,7 +15,7 @@ const Workflow = ({numLayers}) => {
     return ( 
         <div className="container my-2">
           <div className="row flex-nowrap">
-            <div className="col-1">
+            <div className="col-2 d-flex justify-content-center">
               <Input />
             </div>
             
