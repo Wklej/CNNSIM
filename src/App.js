@@ -68,14 +68,10 @@ function App() {
     }
 
     const getValues = (id, layerName) => {
-        if (layerName === 'conv') 
-            return allVals.layers[id].conv
-        else if (layerName === 'pool')
-            return allVals.layers[id].pool
-        else if (layerName === 'fully')
-            return allVals.layers[id].fully
-        else if (layerName === 'output')
-            return allVals.output
+        if (layerName !== 'output') 
+            return allVals.layers[id][layerName]
+            
+        else return allVals.output
     }
 
     return (
