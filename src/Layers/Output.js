@@ -46,8 +46,8 @@ const Output = ({acc}) => {
 
     return ( 
         <div>   
-            <SelectBundle values={values} label='loss' update={update} id={id} />
-            <SelectBundle values={values} label='activation' update={update} id={id} />
+            <SelectBundle values={values} label='loss' update={update} id={id} optionValues={['1', '2', '3']} />
+            <SelectBundle values={values} label='activation' update={update} id={id} optionValues={['1', '2', '3']} />
           
             <hr />
 

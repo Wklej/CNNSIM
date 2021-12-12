@@ -51,7 +51,22 @@ const Explaination = ({layerType}) => {
     }
     else if (layerType === "stride") {
         return (
-            <Modal.Body>Pool stride param explaination body content</Modal.Body>
+            <Modal.Body>TODO: Pool/Conv stride param explaination body content</Modal.Body>
+        );
+    }
+    else if (layerType === "filters") {
+        return (
+            <Modal.Body>Conv filters param explaination body content</Modal.Body>
+        );
+    }
+    else if (layerType === "kernel") {
+        return (
+            <Modal.Body>Conv kernel param explaination body content</Modal.Body>
+        );
+    }
+    else if (layerType === "activation") {
+        return (
+            <Modal.Body>Conv activation param explaination body content</Modal.Body>
         );
     }
 }
