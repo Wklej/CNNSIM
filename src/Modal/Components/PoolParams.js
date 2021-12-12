@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { paramContext } from "../../paramContext";
 import { testContext } from "../../testContext";
+import SelectBundle from "./SelectBundle";
 
 const PoolParams = ({id, layerType}) => {
 
@@ -17,20 +18,8 @@ const PoolParams = ({id, layerType}) => {
 
     return ( 
         <Modal.Body>
-            <div className="input-group">
-                <span className="input-group-text">Pool size:</span>
-                <select className="form-select" name="size" value={values.size} aria-label="Default select example" onChange={(e) => update(e, id)}>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-                <span className="input-group-text">Stride:</span>
-                <select className="form-select" name="stride" value={values.stride} aria-label="Default select example" onChange={(e) => update(e, id)}>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-            </div>
+            <SelectBundle values={values} label='size' update={update} id={id} optionValues={['1', '2', '3']} />
+            <SelectBundle values={values} label='stride' update={update} id={id} optionValues={['1', '2', '3']} />
         </Modal.Body>
      );
 }

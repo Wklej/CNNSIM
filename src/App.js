@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import TopBar from './TopBar';
 import Workflow from './Workflow';
@@ -18,31 +18,56 @@ function App() {
     //global values to pass to context and use in grandchild components
     const [allVals, setAllVals] = useState({
         layers: [
-            {conv: {filters: '1', kernel: '1', activation: '1', stride: '1'}, pool: {size: '1', stride: '1'}, drop: 3},
-            {conv: {filters: '2', kernel: '2', activation: '2', stride: '2'}, pool: {size: '2', stride: '2'}, drop: 3},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
-            {conv: {filters: '0', kernel: '0', activation: '0', stride: '0'}, pool: {size: '1', stride: '1'}, drop: 0},
-        ]
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+            {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
+                pool: {size: '1', stride: '1'},
+                fully: {filters: '1', activation: '1'},
+                drop: 3
+            },
+        ],
+        output: {loss: '1', optimizer: '1'}
     })
 
     const handleLayerChange = (e, id, layerName) => {
         const temp = allVals
         
-        if (layerName === 'conv')
-            temp.layers[id].conv = {...temp.layers[id].conv, [e.target.name]: e.target.value}
-        else if (layerName === 'pool')
-            temp.layers[id].pool = {...temp.layers[id].pool, [e.target.name]: e.target.value}
+        if (layerName !== 'output')
+            temp.layers[id][layerName] = {...temp.layers[id][layerName], [e.target.name]: e.target.value}
+        else
+            temp.output = {...temp.output, [e.target.name]: e.target.value}
         
-            setAllVals(temp)
+        setAllVals(temp)
     }
 
     const getValues = (id, layerName) => {
-        if (layerName === 'conv') 
-            return allVals.layers[id].conv
-        else if (layerName === 'pool')
-            return allVals.layers[id].pool
+        if (layerName !== 'output') 
+            return allVals.layers[id][layerName]
+
+        else return allVals.output
     }
 
     return (
@@ -54,6 +79,7 @@ function App() {
                 </paramContext.Provider>
             </testContext.Provider>
         </div>
+
 
     );
 }
