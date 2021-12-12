@@ -2,7 +2,6 @@ import { PieChart } from 'react-minimal-pie-chart';
 import { useState, useContext } from 'react';
 import { paramContext } from "../paramContext";
 import { testContext } from "../testContext";
-import ExplainModal from '../Modal/ExplainModal';
 import SelectBundle from '../Modal/Components/SelectBundle';
 
 const Output = ({acc}) => {
@@ -47,8 +46,8 @@ const Output = ({acc}) => {
 
     return ( 
         <div>   
-            <SelectBundle values={values} modalType='explain' label='loss' update={update} id={id} />
-            <SelectBundle values={values} modalType='explain' label='activation' update={update} id={id} />
+            <SelectBundle values={values} label='loss' update={update} id={id} />
+            <SelectBundle values={values} label='activation' update={update} id={id} />
           
             <hr />
 

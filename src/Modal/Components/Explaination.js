@@ -1,15 +1,6 @@
 import { Modal } from "react-bootstrap";
-import { useState } from "react";
-import {Button} from 'react-bootstrap';
-import ExplainModal from "../ExplainModal";
 
 const Explaination = ({layerType}) => {
-
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
 
     if (layerType === "conv") {
         return (
@@ -51,6 +42,16 @@ const Explaination = ({layerType}) => {
     else if (layerType === "activation") {
         return (
             <Modal.Body>Activation param explaination body content</Modal.Body>
+        );
+    }
+    else if (layerType === "size") {
+        return (
+            <Modal.Body>Pool size param explaination body content</Modal.Body>
+        );
+    }
+    else if (layerType === "stride") {
+        return (
+            <Modal.Body>Pool stride param explaination body content</Modal.Body>
         );
     }
 }
