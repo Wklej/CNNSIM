@@ -3,6 +3,8 @@ import ImageModal from "../ImageModal";
 
 const ModelSet = ({id, handleChange}) => {
 
+    const [open] = useState(false);
+
     const [show, setShow] = useState(false);
 
     const handleShow = () => setShow(true);
