@@ -5,7 +5,7 @@ import Explaination from './Components/Explaination'
 const ExplainModal = ({show, handleClose, type}) => {
 
     return (
-        <div>
+        <>
             <Modal show={show} onHide={handleClose}>
                 <Tabs>
                     <Tab eventKey="explaination" title="Explaination">
@@ -18,7 +18,7 @@ const ExplainModal = ({show, handleClose, type}) => {
                     </button>
                 </Modal.Footer>
             </Modal>
-        </div>
+        </>
      );
 }
  
