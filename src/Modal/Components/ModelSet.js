@@ -1,26 +1,35 @@
 import { useState } from "react";
-import Collapse from 'react-bootstrap/Collapse'
+import ImageModal from "../ImageModal";
 
-const ModelSet = ({id, handleChange}) => {
+import dog1 from '../../Images/dog1.jpg'
+import dog2 from '../../Images/dogo2.jpg'
+import dog3 from '../../Images/dogo4.jpg'
+import letter1 from '../../Images/1.png'
+import letter2 from '../../Images/2.png'
+import letter3 from '../../Images/3.png'
 
-    const [open, setOpen] = useState(false);
+const ModelSet = ({modelID, handleModelChange, handleImageChange}) => {
 
-    const ChangeAndOpen = (e) => {
-        handleChange(e);
-        setOpen(!open);
-    }
+    const [show, setShow] = useState(false);
+
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+
+    const [imgs] = useState(
+            {
+                1 : [dog1, dog2, dog3],
+                2 : [letter1, letter2, letter3],
+                3 : []
+            }
+        )
 
     return ( 
-        <div>
-            <input className="btn-check" type="radio" name="flexRadio" id={id} aria-controls="collapseImages"
-                   aria-expanded={open} onClick={(e) => ChangeAndOpen(e)} />
-            <label className="btn btn-outline-dark mb-2" htmlFor={id}>Set {id}</label>
-
-            <Collapse in={open}>
-                <div id="collapseImages">
-                    images
-                </div>
-            </Collapse>
+        <div className="btn-group" role="group">
+            <input className="btn-check" type="radio" name="flexRadio" id={modelID} onClick={(e) => handleModelChange(e)} />
+            <label className="btn btn-outline-dark mb-2" htmlFor={modelID}>Set {modelID}</label>
+            <button className="btn btn-outline-dark mb-2" onClick={handleShow}>img</button>
+            <ImageModal show={show} handleClose={handleClose}
+                        handleImageChange={handleImageChange} images={imgs[modelID]} />
         </div>
      );
 }

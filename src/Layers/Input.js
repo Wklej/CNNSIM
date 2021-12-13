@@ -3,18 +3,23 @@ import ModelSet from "../Modal/Components/ModelSet";
 
 const Input = () => {
 
-    const [value, setValue] = useState();
+    const [modelValue, setModelValue] = useState(1);
+    const [imageValue, setImageValue] = useState(1);
 
-    const handleChange = (e) => {
-        setValue(document.getElementById(e.target.id).id)
+    const handleModelChange = (e) => {
+        setModelValue(document.getElementById(e.target.id).id)
     }
 
+    const handleImageChange = (e) => {
+        setImageValue(document.getElementById(e.target.id).id)
+    }
 
     return ( 
-        <div className="col">
-            <ModelSet id={1} handleChange={handleChange} />
-            <ModelSet id={2} handleChange={handleChange} />
-            <ModelSet id={3} handleChange={handleChange} />
+        <div>
+            <ModelSet modelID={1} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
+            <ModelSet modelID={2} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
+            <ModelSet modelID={3} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
+            {modelValue + " " + imageValue}
         </div>
     );
 }
