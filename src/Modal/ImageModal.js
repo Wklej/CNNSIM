@@ -1,15 +1,18 @@
 import { Modal } from "react-bootstrap";
 import ImageSelection from "./Components/ImageSelection";
-import { useState } from "react";
 
 const ImageModal = ({show, handleClose, handleImageChange}) => {
-
     return ( 
         <>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header>Image selection</Modal.Header>
-                <ImageSelection handleChange={handleImageChange} id={5} />
-                <ImageSelection handleChange={handleImageChange} id={6} />
+                <Modal.Body>
+                    <div className="d-flex justify-content-evenly">
+                        <ImageSelection handleChange={handleImageChange} handleClose={handleClose} imageID={4} />
+                        <ImageSelection handleChange={handleImageChange} handleClose={handleClose} imageID={5} />
+                        <ImageSelection handleChange={handleImageChange} handleClose={handleClose} imageID={6} />
+                    </div>
+                </Modal.Body>
                 <Modal.Footer>
                     <button className="btn btn-primary" onClick={handleClose}>
                         Close

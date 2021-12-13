@@ -1,12 +1,18 @@
-import { Modal } from "react-bootstrap";
+const ImageSelection = ({imageID, handleChange, handleClose}) => {
 
-const ImageSelection = ({id, handleChange}) => {    
+    const ChangeAndClose = (e) => {
+        handleChange(e)
+        handleClose()
+    }
 
-    return ( 
-        <Modal.Body>
-            <input className="btn-check" type="radio" name="flexImageRadio" id={id} onClick={(e) => handleChange(e)} />
-            <label className="btn btn-outline-dark mb-2" htmlFor={id}>Image {id}</label>
-        </Modal.Body>
+    return (
+        <>
+            <input className="btn-check" type="radio" name="flexImageRadio" id={imageID} onClick={(e) => ChangeAndClose(e)} />
+            <label className="btn btn-outline-dark mb-2" htmlFor={imageID}>
+                <img src='https://mdbootstrap.com/img/Photos/Others/images/76.jpg' class="img-fluid" alt="img" />
+                Image {imageID}
+            </label>
+        </> 
      );
 }
  

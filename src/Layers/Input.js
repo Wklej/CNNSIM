@@ -3,8 +3,8 @@ import ModelSet from "../Modal/Components/ModelSet";
 
 const Input = () => {
 
-    const [modelValue, setModelValue] = useState();
-    const [imageValue, setImageValue] = useState();
+    const [modelValue, setModelValue] = useState(1);
+    const [imageValue, setImageValue] = useState(1);
 
     const handleModelChange = (e) => {
         setModelValue(document.getElementById(e.target.id).id)
@@ -16,9 +16,9 @@ const Input = () => {
 
     return ( 
         <div>
-            <ModelSet id={1} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
-            <ModelSet id={2} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
-            <ModelSet id={3} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
+            <ModelSet modelID={1} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
+            <ModelSet modelID={2} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
+            <ModelSet modelID={3} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
             {modelValue + " " + imageValue}
         </div>
     );
