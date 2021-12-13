@@ -1,4 +1,4 @@
-const ImageSelection = ({imageID, handleChange, handleClose}) => {
+const ImageSelection = ({imageID, handleChange, handleClose, imgPath}) => {
 
     const ChangeAndClose = (e) => {
         handleChange(e)
@@ -9,7 +9,7 @@ const ImageSelection = ({imageID, handleChange, handleClose}) => {
         <>
             <input className="btn-check" type="radio" name="flexImageRadio" id={imageID} onClick={(e) => ChangeAndClose(e)} />
             <label className="btn btn-outline-dark mb-2" htmlFor={imageID}>
-                <img src='https://mdbootstrap.com/img/Photos/Others/images/76.jpg' class="img-fluid" alt="img" />
+                <img src={imgPath} class="img-fluid" alt="img" />
                 Image {imageID}
             </label>
         </> 
