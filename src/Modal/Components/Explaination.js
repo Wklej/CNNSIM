@@ -1,15 +1,20 @@
-import { Modal } from "react-bootstrap";
+import { Modal, Carousel } from "react-bootstrap";
+import conv1 from '../../Images/conv/conv1.png'
+import convGif from '../../Images/conv/cnn2.gif'
 
 const Explaination = ({layerType}) => {
 
     if (layerType === "conv") {
         return (
-            <Modal.Body>Conv explaination body content
-                <p>asd</p>
-                <p>asd</p>
-                <p>asd</p>
-                <p>asd</p>
-
+            <Modal.Body>
+                <Carousel variant="dark">
+                    <Carousel.Item>
+                        <img className="d-block w-100" src={conv1} alt="Second slide" />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img className="d-block w-100" src={convGif} alt="Third slide" />
+                    </Carousel.Item>
+                </Carousel>
             </Modal.Body>
         );    
     }
