@@ -25,18 +25,19 @@ const Dropout = ({id}) => {
     }
 
     const handleDisableDrop = (e) => {
-        const btnHandler = document.getElementById(e.target.id)
-        btnHandler.disabled = !btnHandler.disabled
+        const btnHandler = document.getElementsByName(e.target.id)
+        btnHandler[0].disabled = !btnHandler[0].disabled
+        btnHandler[1].disabled = !btnHandler[1].disabled
         setOpen(false)
     }
     
     return ( 
         <div>
         <div className="btn-group" role="group">
-            <button className="btn btn-primary" onClick={handleModalShow}>Dropout</button>
+            <button className="btn btn-primary" name={'drop' + id} onClick={handleModalShow}>Dropout</button>
             <ExplainModal show={showModal} handleClose={handleModalClose} type={'dropout'} />
             <button className="btn btn-primary" aria-controls="collapseImages"
-                    aria-expanded={open} id={'drop' + id} onClick={() => setOpen(!open)}>
+                    aria-expanded={open} name={'drop' + id} id={'drop' + id} onClick={() => setOpen(!open)}>
                 x
             </button>
         </div>
