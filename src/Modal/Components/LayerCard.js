@@ -24,6 +24,10 @@ const LayerCard = ({id}) => {
         const btnHandler = document.getElementById(e.target.id)
         btnHandler.disabled = !btnHandler.disabled
     }
+    const handleDisableDrop = (e) => {
+        const btnHandler = document.getElementById(e.target.id)
+        btnHandler.disabled = !btnHandler.disabled
+    }
 
     return ( 
         <div className="col">
@@ -41,6 +45,9 @@ const LayerCard = ({id}) => {
                         </div>
                         <LayerModal show={showPool} handleClose={handlePoolClose} body={'pool'} id={id} />
                         <Dropout id={id} />
+                        <div className="form-check form-switch">
+                            <input type="checkbox" className="form-check-input" id={'drop' + id} onChange={(e) => handleDisableDrop(e)} />
+                        </div>
                     </ul>
                 </div>
                 <div className="card-footer">
