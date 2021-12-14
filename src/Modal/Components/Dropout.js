@@ -23,6 +23,12 @@ const Dropout = ({id}) => {
         handleChange(e, id, 'drop')
         setValues(e.valueOf() * 10)
     }
+
+    const handleDisableDrop = (e) => {
+        const btnHandler = document.getElementById(e.target.id)
+        btnHandler.disabled = !btnHandler.disabled
+        setOpen(false)
+    }
     
     return ( 
         <div>
@@ -38,9 +44,13 @@ const Dropout = ({id}) => {
                 <div id="collapseImages">
                     <Slider min={1} max={4} dots={true} marks={{1:10, 2:20, 3:30, 4:40}}
                             value={values / 10} onChange={(e) => update(e, id)} />
+                    {/* Empty paragraph to avoid numbers to overlap switch */}
+                    <p></p>
                 </div>
             </Collapse>
-            {values}
+            <div className="form-check form-switch">
+                <input type="checkbox" className="form-check-input" id={'drop' + id} onChange={(e) => handleDisableDrop(e)} />
+            </div>
         </div>
      );
 }
