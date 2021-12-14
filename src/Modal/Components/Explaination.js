@@ -1,20 +1,14 @@
 import { Modal, Carousel } from "react-bootstrap";
-import conv1 from '../../Images/conv/conv1.png'
-import convGif from '../../Images/conv/cnn2.gif'
+import conv from '../../Images/conv'
+// import convGif from '../../Images/conv/cnn2.gif'
+import Karuzela from "./Karuzela";
 
 const Explaination = ({layerType}) => {
 
     if (layerType === "conv") {
         return (
             <Modal.Body>
-                <Carousel variant="dark">
-                    <Carousel.Item>
-                        <img className="d-block w-100" src={conv1} alt="Second slide" />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <img className="d-block w-100" src={convGif} alt="Third slide" />
-                    </Carousel.Item>
-                </Carousel>
+                <Karuzela content={conv} />
             </Modal.Body>
         );    
     }
@@ -67,11 +61,6 @@ const Explaination = ({layerType}) => {
     else if (layerType === "kernel") {
         return (
             <Modal.Body>Conv kernel param explaination body content</Modal.Body>
-        );
-    }
-    else if (layerType === "activation") {
-        return (
-            <Modal.Body>Conv activation param explaination body content</Modal.Body>
         );
     }
     else if (layerType === "dropout") {
