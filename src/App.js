@@ -6,6 +6,7 @@ import Workflow from './Workflow';
 
 import { testContext } from './testContext';
 import { paramContext } from './paramContext'; 
+import Dropout from './Modal/Components/Dropout';
 
 function App() {
 
@@ -79,7 +80,6 @@ function App() {
                 </paramContext.Provider>
             </testContext.Provider>
         </div>
-
 
     );
 }

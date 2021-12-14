@@ -1,6 +1,7 @@
 import LayerModal from "../LayerModal";
 import Features from "../Components/Features";
 import { useState } from "react";
+import Dropout from "./Dropout";
 
 const LayerCard = ({id}) => {
 
@@ -39,6 +40,7 @@ const LayerCard = ({id}) => {
                             <input type="checkbox" className="form-check-input" id={'pool' + id} onChange={(e) => handleDisablePool(e)} />
                         </div>
                         <LayerModal show={showPool} handleClose={handlePoolClose} body={'pool'} id={id} />
+                        <Dropout id={id} />
                     </ul>
                 </div>
                 <div className="card-footer">

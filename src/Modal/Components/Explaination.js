@@ -69,6 +69,11 @@ const Explaination = ({layerType}) => {
             <Modal.Body>Conv activation param explaination body content</Modal.Body>
         );
     }
+    else if (layerType === "dropout") {
+        return (
+            <Modal.Body>Dropout explaination body content</Modal.Body>
+        );
+    }
 }
 
 export default Explaination;
