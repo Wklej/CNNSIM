@@ -21,7 +21,7 @@ function App() {
             {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
                 pool: {size: '1', stride: '1'},
                 fully: {filters: '1', activation: '1'},
-                drop: 3
+                drop: 10
             },
             {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
                 pool: {size: '1', stride: '1'},
@@ -55,10 +55,12 @@ function App() {
     const handleLayerChange = (e, id, layerName) => {
         const temp = allVals
         
-        if (layerName !== 'output')
+        if (layerName !== 'output' && layerName !== 'drop')
             temp.layers[id][layerName] = {...temp.layers[id][layerName], [e.target.name]: e.target.value}
-        else
+        else if (layerName === 'output')
             temp.output = {...temp.output, [e.target.name]: e.target.value}
+        else if (layerName === 'drop')
+            temp.layers[id].drop = e.valueOf() * 10
         
         setAllVals(temp)
     }
@@ -79,7 +81,6 @@ function App() {
                 </paramContext.Provider>
             </testContext.Provider>
         </div>
-
 
     );
 }
