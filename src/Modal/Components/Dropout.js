@@ -26,6 +26,11 @@ const Dropout = ({id}) => {
 
     const handleDisableDrop = (e) => {
         const btnHandler = document.getElementsByName(e.target.id)
+        
+        if (btnHandler[1].disabled) {
+            setValues(10)    
+        } else setValues(0)
+        
         btnHandler[0].disabled = !btnHandler[0].disabled
         btnHandler[1].disabled = !btnHandler[1].disabled
         setOpen(false)
@@ -52,6 +57,7 @@ const Dropout = ({id}) => {
             <div className="form-check form-switch">
                 <input type="checkbox" className="form-check-input" id={'drop' + id} onChange={(e) => handleDisableDrop(e)} />
             </div>
+            {values}
         </div>
      );
 }

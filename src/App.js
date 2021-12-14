@@ -21,32 +21,32 @@ function App() {
             {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
                 pool: {size: '1', stride: '1'},
                 fully: {filters: '1', activation: '1'},
-                drop: 0
+                drop: 10
             },
             {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
                 pool: {size: '1', stride: '1'},
                 fully: {filters: '1', activation: '1'},
-                drop: 0
+                drop: 10
             },
             {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
                 pool: {size: '1', stride: '1'},
                 fully: {filters: '1', activation: '1'},
-                drop: 0
+                drop: 10
             },
             {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
                 pool: {size: '1', stride: '1'},
                 fully: {filters: '1', activation: '1'},
-                drop: 0
+                drop: 10
             },
             {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
                 pool: {size: '1', stride: '1'},
                 fully: {filters: '1', activation: '1'},
-                drop: 0
+                drop: 10
             },
             {   conv: {filters: '1', kernel: '1', activation: '1', stride: '1'},
                 pool: {size: '1', stride: '1'},
                 fully: {filters: '1', activation: '1'},
-                drop: 0
+                drop: 10
             },
         ],
         output: {loss: '1', optimizer: '1'}
