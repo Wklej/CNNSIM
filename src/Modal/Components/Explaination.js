@@ -1,14 +1,26 @@
 import { Modal, Carousel } from "react-bootstrap";
-import conv from '../../Images/conv'
+// import { conv } from '../../Images/conv/'
 // import convGif from '../../Images/conv/cnn2.gif'
 import Karuzela from "./Karuzela";
 
 const Explaination = ({layerType}) => {
+    
+    //Loading images from directory dynamically
+    const cache = {};
+
+    function importAll(r) {
+        r.keys().forEach((key) => (cache[key] = r(key)));
+    }
+
+    importAll(require.context("../../Images/conv", false, /\.(png|gif)$/));
+
+    const images = Object.entries(cache).map(module => module[1].default);
 
     if (layerType === "conv") {
         return (
             <Modal.Body>
-                <Karuzela content={conv} />
+                <Karuzela content={images} />
+                {console.log(images)}
             </Modal.Body>
         );    
     }
