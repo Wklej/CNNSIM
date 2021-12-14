@@ -9,11 +9,6 @@ import { testContext } from "../../testContext";
 const Dropout = ({id}) => {
 
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(0);
-    
-    const handleValueChange = (e) => {        
-        setValue(e.valueOf())
-    }
 
     const [showModal, setModalShow] = useState(false);
     const handleModalShow = () => setModalShow(true);
@@ -25,7 +20,6 @@ const Dropout = ({id}) => {
     const [values, setValues] = useState(getValues(id, 'drop'))
     
     const update = (e, id) => {
-        handleValueChange(e)
         handleChange(e, id, 'drop')
         setValues(e.valueOf() * 10)
     }
@@ -42,8 +36,8 @@ const Dropout = ({id}) => {
         </div>
             <Collapse in={open}>
                 <div id="collapseImages">
-                    <Slider min={1} max={4} dots={true} marks={{1:10, 2:20, 3:30, 4:50}}
-                            value={value} onChange={(e) => update(e, id)} />
+                    <Slider min={1} max={4} dots={true} marks={{1:10, 2:20, 3:30, 4:40}}
+                            value={values / 10} onChange={(e) => update(e, id)} />
                 </div>
             </Collapse>
             {values}
