@@ -18,8 +18,8 @@ const FullyParams = ({id, layerType}) => {
 
     return ( 
         <Modal.Body>
-            <SelectBundle values={values} label='filters' update={update} id={id} optionValues={['1', '2', '3']} />
-            <SelectBundle values={values} label='activation' update={update} id={id} optionValues={['1', '2', '3']} />
+            <SelectBundle values={values} label='filters' update={update} id={id} optionValues={['64', '128', '256', '512']} />
+            <SelectBundle values={values} label='activation' update={update} id={id} optionValues={['relu', 'sigmoid', 'tanh']} />
         </Modal.Body>
      );
 }
