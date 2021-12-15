@@ -57,7 +57,6 @@ const Dropout = ({id}) => {
             <div className="form-check form-switch">
                 <input type="checkbox" className="form-check-input" id={'drop' + id} onChange={(e) => handleDisableDrop(e)} />
             </div>
-            {values}
         </div>
      );
 }
