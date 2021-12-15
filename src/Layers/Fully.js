@@ -5,8 +5,19 @@ const Fully = () => {
 
     const [num, setNum] = useState(1)
 
-    const handlePlus = () => setNum(num+1)
-    const handleMinus = () => setNum(num-1)
+    const handlePlus = () => {
+        const x = num + 1
+        if (x <= 3) {
+            setNum(x)
+        }
+    }
+
+    const handleMinus = () => {
+        const x = num - 1
+        if (x > 0) {
+            setNum(x)
+        }
+    }
 
     const nodes = () => {
         let array = [];
