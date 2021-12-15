@@ -1,35 +1,36 @@
 import { Modal } from "react-bootstrap";
+import Karuzela from "./Karuzela";
 
 const Explaination = ({layerType}) => {
 
-    if (layerType === "conv") {
-        return (
-            <Modal.Body>Conv explaination body content
-                <p>asd</p>
-                <p>asd</p>
-                <p>asd</p>
-                <p>asd</p>
+    // Function to map whole dir content to @images object
+    const getImages = (dirVariable) => {
+        const cache = {};
 
-            </Modal.Body>
-        );    
+        const r = dirVariable
+        r.keys().forEach((key) => (cache[key] = r(key)))
+    
+        const images = Object.entries(cache).map(module => module[1].default);
+        
+        return images
     }
-    else if (layerType === "pool") {
-        return (
-            <Modal.Body>
-                Pool explaination body content
-                <p>asd</p>
-                <p>asd</p>
-                <p>asd</p>
-                <p>asd</p>
-            </Modal.Body>
-        );
+
+    // Function to choose path based on @layerType
+    const getDir = () => {
+        switch (layerType) {
+            case "conv":
+                return require.context("../../Images/conv", false, /\.(png|gif)$/)
+            case "pool":
+                return require.context("../../Images/pool", false, /\.(png|gif)$/)
+            case "flat":
+                return require.context("../../Images/flat", false, /\.(png|gif|jpg)$/)
+            default:
+                break;
+        }
     }
-    else if (layerType === "flat") {
-        return (
-            <Modal.Body>Flatten explaination body content</Modal.Body>
-        );
-    }
-    else if (layerType === "fully") {
+
+    //TODO: Delete those if's and put this in switch above
+    if (layerType === "fully") {
         return (
             <Modal.Body>Fully explaination body content</Modal.Body>
         );
@@ -64,14 +65,18 @@ const Explaination = ({layerType}) => {
             <Modal.Body>Conv kernel param explaination body content</Modal.Body>
         );
     }
-    else if (layerType === "activation") {
-        return (
-            <Modal.Body>Conv activation param explaination body content</Modal.Body>
-        );
-    }
     else if (layerType === "dropout") {
         return (
             <Modal.Body>Dropout explaination body content</Modal.Body>
+        );
+    }
+
+    //Valid way of this component return
+    else {
+        return (
+            <Modal.Body>
+                <Karuzela content={getImages(getDir())} />
+            </Modal.Body>
         );
     }
 }
