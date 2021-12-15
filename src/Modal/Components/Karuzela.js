@@ -4,7 +4,7 @@ const Karuzela = ({content}) => {
 
     const items = () => {
         let arr = []
-        for (let i = 0; i < content.length; i++) {
+        for (let i = content.length - 1; i >= 0; i--) {
             arr.push(
                 <Carousel.Item>
                     <img className="d-block w-100" src={content[i]} alt="First slide" />
