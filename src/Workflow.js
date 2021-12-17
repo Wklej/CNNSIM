@@ -12,11 +12,23 @@ const Workflow = ({numLayers}) => {
   const handleFlatShow = () => setFlatShow(true);
   const handleFlatClose = () => setFlatShow(false);
 
+  //Params from Input to display features based on selection
+  const [imageValue, setImageValue] = useState(1);
+  const [modelValue, setModelValue] = useState(1);
+
+  const handleModelChange = (e) => {
+        setModelValue(document.getElementById(e.target.id).id)
+  }
+
+  const handleImageChange = (e) => {
+      setImageValue(document.getElementById(e.target.id).id)
+  }
+
     return ( 
         <div className="container my-2">
           <div className="row flex-nowrap">
             <div className="col-2 d-flex justify-content-center">
-              <Input />
+              <Input handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
             </div>
             
             {/* mid layers */}
