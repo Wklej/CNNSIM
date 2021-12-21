@@ -24,6 +24,14 @@ const Explaination = ({layerType}) => {
                 return require.context("../../Images/pool", false, /\.(png|gif)$/)
             case "flat":
                 return require.context("../../Images/flat", false, /\.(png|gif|jpg)$/)
+            case "filters":
+                return require.context("../../Images/filters", false, /\.(png|gif|jpg)$/)
+            case "kernel":
+                return require.context("../../Images/kernel", false, /\.(png|gif|jpg)$/)
+            case "stride":
+                return require.context("../../Images/stride", false, /\.(png|gif|jpg)$/)
+            case "flat":
+                return require.context("../../Images/flat", false, /\.(png|gif|jpg)$/)
             default:
                 break;
         }
@@ -48,21 +56,6 @@ const Explaination = ({layerType}) => {
     else if (layerType === "size") {
         return (
             <Modal.Body>Pool size param explaination body content</Modal.Body>
-        );
-    }
-    else if (layerType === "stride") {
-        return (
-            <Modal.Body>TODO: Pool/Conv stride param explaination body content</Modal.Body>
-        );
-    }
-    else if (layerType === "filters") {
-        return (
-            <Modal.Body>Conv filters param explaination body content</Modal.Body>
-        );
-    }
-    else if (layerType === "kernel") {
-        return (
-            <Modal.Body>Conv kernel param explaination body content</Modal.Body>
         );
     }
     else if (layerType === "dropout") {
