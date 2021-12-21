@@ -32,18 +32,15 @@ const Explaination = ({layerType}) => {
                 return require.context("../../Images/stride", false, /\.(png|gif|jpg)$/)
             case "flat":
                 return require.context("../../Images/flat", false, /\.(png|gif|jpg)$/)
+            case "fully":
+                return require.context("../../Images/fully", false, /\.(png|gif|jpg)$/)
             default:
                 break;
         }
     }
 
     //TODO: Delete those if's and put this in switch above
-    if (layerType === "fully") {
-        return (
-            <Modal.Body>Fully explaination body content</Modal.Body>
-        );
-    }
-    else if (layerType === "loss") {
+    if (layerType === "loss") {
         return (
             <Modal.Body>Loss param explaination body content</Modal.Body>
         );
