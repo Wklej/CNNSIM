@@ -34,30 +34,22 @@ const Explaination = ({layerType}) => {
                 return require.context("../../Images/flat", false, /\.(png|gif|jpg)$/)
             case "fully":
                 return require.context("../../Images/fully", false, /\.(png|gif|jpg)$/)
+            case "activation":
+                return require.context("../../Images/activation", false, /\.(png|gif|jpg)$/)
+            case "dropout":
+                return require.context("../../Images/dropout", false, /\.(png|gif|jpg)$/)
+            case "loss":
+                return require.context("../../Images/loss", false, /\.(png|gif|jpg)$/)
             default:
                 break;
         }
     }
 
     //TODO: Delete those if's and put this in switch above
-    if (layerType === "loss") {
-        return (
-            <Modal.Body>Loss param explaination body content</Modal.Body>
-        );
-    }
-    else if (layerType === "activation") {
-        return (
-            <Modal.Body>Activation param explaination body content</Modal.Body>
-        );
-    }
-    else if (layerType === "size") {
+
+    if (layerType === "size") {
         return (
             <Modal.Body>Pool size param explaination body content</Modal.Body>
-        );
-    }
-    else if (layerType === "dropout") {
-        return (
-            <Modal.Body>Dropout explaination body content</Modal.Body>
         );
     }
 
