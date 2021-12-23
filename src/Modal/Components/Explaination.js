@@ -19,9 +19,9 @@ const Explaination = ({layerType}) => {
     const getDir = () => {
         switch (layerType) {
             case "conv":
-                return require.context("../../Images/conv", false, /\.(png|gif)$/)
+                return require.context("../../Images/conv", false, /\.(png|gif|jpg)$/)
             case "pool":
-                return require.context("../../Images/pool", false, /\.(png|gif)$/)
+                return require.context("../../Images/pool", false, /\.(png|gif|jpg)$/)
             case "flat":
                 return require.context("../../Images/flat", false, /\.(png|gif|jpg)$/)
             case "filters":
