@@ -48,7 +48,7 @@ const Output = ({acc}) => {
         <div>   
             <SelectBundle values={values} label='loss' update={update} id={id}
                         optionValues={['binary_crossentropy', 'categorical_crossentropy', 'mean_squared_error']} />
-            <SelectBundle values={values} label='activation' update={update} id={id}
+            <SelectBundle values={values} label='optimizer' update={update} id={id}
                         optionValues={['Adam', 'SGD', 'RMSprop']} />
           
             <hr />

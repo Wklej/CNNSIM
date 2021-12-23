@@ -40,6 +40,8 @@ const Explaination = ({layerType}) => {
                 return require.context("../../Images/dropout", false, /\.(png|gif|jpg)$/)
             case "loss":
                 return require.context("../../Images/loss", false, /\.(png|gif|jpg)$/)
+            case "optimizer":
+                return require.context("../../Images/optimizer", false, /\.(png|gif|jpg)$/)
             default:
                 break;
         }
