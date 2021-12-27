@@ -4,16 +4,16 @@ import { useState } from 'react';
 
 const Features = ({show, handleClose}) => {
 
-    const [type, setType] = useState('feat1')
+    const [type, setType] = useState('activations')
 
     const bodyType = () => {
-        if (type === "feat1") {
-            return(<Modal.Body>Feature 1</Modal.Body>)    
+        if (type === "activations") {
+            return(<Modal.Body>activations</Modal.Body>)    
         }
-        else if(type === "feat2") {
+        else if(type === "filters") {
             return(<Modal.Body>Feature 2</Modal.Body>)
         }
-        else if(type === "feat3") {
+        else if(type === "comparison") {
             return(<Modal.Body>Feature 3</Modal.Body>)
         }
     }
@@ -21,13 +21,13 @@ const Features = ({show, handleClose}) => {
    return ( 
         <Modal show={show} onHide={handleClose}>
             <Tabs activeKey={type} onSelect={(e) => setType(e)}>
-                <Tab eventKey="feat1" title="Feature 1">
+                <Tab eventKey="activations" title="Activations">
                     { bodyType() }
                 </Tab>
-                <Tab eventKey="feat2" title="Feature 2">
+                <Tab eventKey="filters" title="Filters">
                     { bodyType() }
                 </Tab>   
-                <Tab eventKey="feat3" title="Feature 3">
+                <Tab eventKey="comparison" title="Comparison">
                     { bodyType() }
                 </Tab>   
             </Tabs>

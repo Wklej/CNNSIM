@@ -12,7 +12,7 @@ const MidLayer = ({num}) => {
         return array
     }
 
-    return ( 
+    return (
         divs()
      );
 }
