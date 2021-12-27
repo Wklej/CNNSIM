@@ -43,7 +43,7 @@ const Workflow = ({numLayers}) => {
               <div className="row">
                   <MidLayer num={numLayers} />
                   <button className="btn btn-primary mt-2" onClick={handleFeaturesShow} >Features</button>
-                  <Features show={showFeatures} handleClose={handleFeaturesClose} />
+                  <Features show={showFeatures} handleClose={handleFeaturesClose} numLayers={numLayers} />
               </div>
             </div>
             <div className="col-1 me-4">

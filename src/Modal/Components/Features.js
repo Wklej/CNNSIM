@@ -2,7 +2,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import { Modal, Tab } from "react-bootstrap";
 import { useState } from 'react';
 
-const Features = ({show, handleClose}) => {
+const Features = ({show, handleClose, numLayers}) => {
 
     const [type, setType] = useState('activations')
 
