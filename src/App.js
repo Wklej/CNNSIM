@@ -6,8 +6,27 @@ import Workflow from './Workflow';
 
 import { testContext } from './testContext';
 import { paramContext } from './paramContext'; 
+import { epochsContext } from './epochsContext';
 
 function App() {
+
+    //Epochs status & handlers
+    const epochs = [1, 5, 15, 20, 30]
+    const [epoch, setEpoch] = useState(0)
+
+    const handlePlus = () => {
+        const x = epoch + 1
+        if (x < epochs.length) {
+            setEpoch(x)
+        }
+    }
+
+    const handleMinus = () => {
+        const x = epoch - 1
+        if (x >= 0) {
+            setEpoch(x)
+        }
+    }
 
     // Utils for tracking slider value
     const [numLayers, setNumLayers] = useState(2)
@@ -76,12 +95,16 @@ function App() {
         <div>
             <testContext.Provider value={handleLayerChange}>
                 <paramContext.Provider value={getValues}>
-                    <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange} />      
-                    <Workflow numLayers={numLayers} />
+                    <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange}
+                            handlePlus={handlePlus} handleMinus={handleMinus} status={epochs[epoch]} />
+                    
+                    <epochsContext.Provider value={epochs[epoch]}>
+                        <Workflow numLayers={numLayers} />
+                    </epochsContext.Provider>
+
                 </paramContext.Provider>
             </testContext.Provider>
         </div>
-
     );
 }
 

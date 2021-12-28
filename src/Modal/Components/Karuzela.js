@@ -1,6 +1,6 @@
 import { Carousel } from "react-bootstrap";
 
-const Karuzela = ({content}) => {
+const Karuzela = ({content, idx}) => {
 
     const items = () => {
         let arr = []
@@ -14,9 +14,17 @@ const Karuzela = ({content}) => {
         return arr
     }
 
+    const item = () => {
+        return(
+            <Carousel.Item>
+                <img className="d-block w-100" src={content[idx]} alt="First slide" />
+            </Carousel.Item>
+        )
+    }
+
     return (  
         <Carousel variant="dark">
-            {items()}
+            { idx === undefined ? items() : item() }
         </Carousel>
     );
 }

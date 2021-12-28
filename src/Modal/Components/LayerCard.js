@@ -46,7 +46,7 @@ const LayerCard = ({id}) => {
                 </div>
                 <div className="card-footer">
                     <button className="btn btn-primary" onClick={handleFeaturesShow} id={id}>Features</button>
-                    <Features show={showFeatures} handleClose={handleFeaturesClose} />
+                    <Features show={showFeatures} handleClose={handleFeaturesClose} idx={id} />
                 </div>
             </div>
         </div>
