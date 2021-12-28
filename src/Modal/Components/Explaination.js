@@ -19,19 +19,19 @@ const Explaination = ({layerType}) => {
     const getDir = () => {
         switch (layerType) {
             case "conv":
-                return require.context("../../Images/conv", false, /\.(png|gif)$/)
+                return require.context("../../Images/conv", false, /\.(png|gif|jpg)$/)
             case "pool":
-                return require.context("../../Images/pool", false, /\.(png|gif)$/)
+                return require.context("../../Images/pool", false, /\.(png|gif|jpg)$/)
             case "flat":
                 return require.context("../../Images/flat", false, /\.(png|gif|jpg)$/)
             case "filters":
                 return require.context("../../Images/filters", false, /\.(png|gif|jpg)$/)
-            case "kernel":
-                return require.context("../../Images/kernel", false, /\.(png|gif|jpg)$/)
+            case "kernel_size":
+                return require.context("../../Images/kernel_or_pool_size", false, /\.(png|gif|jpg)$/)
+            case "pool_size":
+                return require.context("../../Images/kernel_or_pool_size", false, /\.(png|gif|jpg)$/)
             case "stride":
                 return require.context("../../Images/stride", false, /\.(png|gif|jpg)$/)
-            case "flat":
-                return require.context("../../Images/flat", false, /\.(png|gif|jpg)$/)
             case "fully":
                 return require.context("../../Images/fully", false, /\.(png|gif|jpg)$/)
             case "activation":
@@ -47,22 +47,11 @@ const Explaination = ({layerType}) => {
         }
     }
 
-    //TODO: Delete those if's and put this in switch above
-
-    if (layerType === "size") {
-        return (
-            <Modal.Body>Pool size param explaination body content</Modal.Body>
-        );
-    }
-
-    //Valid way of this component return
-    else {
         return (
             <Modal.Body>
                 <Karuzela content={getImages(getDir())} />
             </Modal.Body>
         );
-    }
 }
 
 export default Explaination;
