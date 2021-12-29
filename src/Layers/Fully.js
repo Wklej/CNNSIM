@@ -3,7 +3,7 @@ import FullyNode from "../Modal/Components/FullyNode";
 
 const Fully = () => {
 
-    const [num, setNum] = useState(1)
+    const [num, setNum] = useState(2)
 
     const handlePlus = () => {
         const x = num + 1
@@ -14,7 +14,7 @@ const Fully = () => {
 
     const handleMinus = () => {
         const x = num - 1
-        if (x > 0) {
+        if (x > 1) {
             setNum(x)
         }
     }
