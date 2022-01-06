@@ -48,7 +48,7 @@ const Dropout = ({id}) => {
         </div>
             <Collapse in={open}>
                 <div id="collapseImages">
-                    <Slider min={1} max={4} dots={true} marks={{1:10, 2:20, 3:30, 4:40}}
+                    <Slider min={1} max={2} dots={true} marks={{1:20, 2:40}}
                             value={values / 10} onChange={(e) => update(e, id)} />
                     {/* Empty paragraph to avoid numbers to overlap switch */}
                     <p></p>
