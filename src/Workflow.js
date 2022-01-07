@@ -6,30 +6,18 @@ import Features from './Modal/Components/Features'
 import LayerModal from "./Modal/LayerModal";
 import { useState } from "react";
 
-const Workflow = ({numLayers}) => {
+const Workflow = ({numLayers, handleImageChange, handleModelChange}) => {
 
   const [showFlat, setFlatShow] = useState(false);
 
   const handleFlatShow = () => setFlatShow(true);
   const handleFlatClose = () => setFlatShow(false);
 
-  //Params from Input to display features based on selection
-  const [imageValue, setImageValue] = useState(1);
-  const [modelValue, setModelValue] = useState(1);
-
-  const handleModelChange = (e) => {
-        setModelValue(document.getElementById(e.target.id).id)
-  }
-
-  const handleImageChange = (e) => {
-      setImageValue(document.getElementById(e.target.id).id)
-  }
-
   //Features
-  const [showFeatures, setShowFeatures] = useState(false);
+  // const [showFeatures, setShowFeatures] = useState(false);
 
-  const handleFeaturesShow = () => setShowFeatures(true);
-  const handleFeaturesClose = () => setShowFeatures(false);
+  // const handleFeaturesShow = () => setShowFeatures(true);
+  // const handleFeaturesClose = () => setShowFeatures(false);
 
     return ( 
         <div className="container my-2">
