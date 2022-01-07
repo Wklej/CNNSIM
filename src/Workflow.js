@@ -42,7 +42,7 @@ const Workflow = ({numLayers, handleImageChange, handleModelChange}) => {
               <Fully />
             </div>
             <div className="col p-3 bg-warning">
-              <Output acc={67} />
+              <Output acc={67} loss={2} />
             </div>
 
           </div>
