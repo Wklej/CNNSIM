@@ -44,10 +44,18 @@ const Output = ({acc}) => {
         )
     }
 
+    const optionValuesLoss = () => {
+        const inputValue = getValues(null, 'input').model
+
+        return inputValue === '1' ? 
+        ['binary_crossentropy', 'mean_squared_error'] :
+        ['categorical_crossentropy', 'mean_squared_error']
+    }
+
     return ( 
         <div>   
             <SelectBundle values={values} label='loss' update={update} id={id}
-                        optionValues={['binary_crossentropy', 'categorical_crossentropy', 'mean_squared_error']} />
+                        optionValues={optionValuesLoss()} />
             <SelectBundle values={values} label='optimizer' update={update} id={id}
                         optionValues={['Adam', 'SGD', 'RMSprop']} />
           
