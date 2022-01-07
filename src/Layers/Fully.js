@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { layersContext } from "../layersContext";
 import FullyNode from "../Modal/Components/FullyNode";
 
 const Fully = () => {
@@ -23,7 +24,9 @@ const Fully = () => {
         let array = [];
         for (let index = 0; index < num; index++) {
             array.push(
-                <FullyNode id={index} />
+                <layersContext.Provider value={num}>
+                    <FullyNode id={index} />
+                </layersContext.Provider>
             )
         }
         return array
