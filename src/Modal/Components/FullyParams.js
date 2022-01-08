@@ -23,13 +23,19 @@ const FullyParams = ({id, layerType}) => {
 
         return inputValue === '1' ? ['2'] : ['25']
     }
+    
+    const optionValuesActiv = () => {
+        const inputValue = getValues(null, 'input').model
 
+        return inputValue === '1' ? ['sigmoid'] : ['softmax']
+    }
+    
     const getBody = () => {
         if (layerNum === (id + 1)) {
             return(
                 <div>
                     <SelectBundle values={values} label='filters' update={update} id={id} optionValues={optionValuesFilters()} />
-                    <SelectBundle values={values} label='activation' update={update} id={id} optionValues={['sigmoid']} />
+                    <SelectBundle values={values} label='activation' update={update} id={id} optionValues={optionValuesActiv()} />
                 </div>
             )
         }
