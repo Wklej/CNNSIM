@@ -27,13 +27,13 @@ const Workflow = ({numLayers, handleImageChange, handleModelChange}) => {
             </div>
             
             {/* mid layers */}
-            {/* <div className="col-4"> */}
-              {/* <div className="row"> */}
+            <div className="col-4">
+              <div className="row">
                   <MidLayer num={numLayers} />
                   {/* <button className="btn btn-primary mt-2" onClick={handleFeaturesShow} >Features</button>
                   <Features show={showFeatures} handleClose={handleFeaturesClose} numLayers={numLayers} /> */}
-              {/* </div> */}
-            {/* </div> */}
+              </div>
+            </div>
             <div className="col-1 me-4">
               <button className="btn btn-outline-secondary flattenButton" onClick={handleFlatShow}>{"FLATTEN"}</button>
               <LayerModal show={showFlat} handleClose={handleFlatClose} body={"flat"} />
