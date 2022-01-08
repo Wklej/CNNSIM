@@ -18,8 +18,7 @@ const ModelSet = ({modelID, handleModelChange, handleImageChange}) => {
     const [imgs] = useState(
             {
                 1 : [dog1, dog2, dog3],
-                2 : [letter1, letter2, letter3],
-                3 : []
+                2 : [letter1, letter2, letter3]
             }
         )
 

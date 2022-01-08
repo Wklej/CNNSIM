@@ -5,7 +5,6 @@ const Input = ({handleModelChange, handleImageChange}) => {
         <div>
             <ModelSet modelID={1} handleModelChange={handleModelChange} handleImageChange={handleImageChange} check={true} />
             <ModelSet modelID={2} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
-            <ModelSet modelID={3} handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
         </div>
     );
 }
