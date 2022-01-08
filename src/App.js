@@ -85,7 +85,7 @@ function App() {
             },
         ],
         output: {loss: '1', optimizer: '1'},
-        input: {model: '1', image: '1'}
+        input: {model: '1', image: '4'}
     })
 
     const handleLayerChange = (e, id, layerName) => {
