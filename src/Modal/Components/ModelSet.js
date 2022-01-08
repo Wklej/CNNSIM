@@ -25,7 +25,7 @@ const ModelSet = ({modelID, handleModelChange, handleImageChange}) => {
 
     return ( 
         <div className="btn-group" role="group">
-            <input className="btn-check" type="radio" name="flexRadio" id={modelID} onClick={(e) => handleModelChange(e)} />
+            <input className="btn-check" type="radio" name="flexRadio" defaultChecked={modelID === 1} id={modelID} onClick={(e) => handleModelChange(e)} />
             <label className="btn btn-outline-dark mb-2" htmlFor={modelID}>Set {modelID}</label>
             <button className="btn btn-outline-dark mb-2" onClick={handleShow}>img</button>
             <ImageModal show={show} handleClose={handleClose}
