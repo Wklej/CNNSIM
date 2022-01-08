@@ -106,7 +106,7 @@ function App() {
             return allVals.output
         else if (layerName === 'input')
             return allVals.input
-
+        
         else return allVals.layers[id][layerName]
     }
 
