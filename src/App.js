@@ -34,6 +34,24 @@ function App() {
         setNumLayers(e.valueOf())
     }
 
+    const handleModelChange = (e) => {
+        const temp = allVals
+
+        temp.input.model = document.getElementById(e.target.id).id
+
+        setAllVals(temp)
+    }
+
+    const handleImageChange = (e) => {
+        const temp = allVals
+
+        temp.input.image = document.getElementById(e.target.id).id
+
+        setAllVals(temp)
+    }
+
+    const [lossFunc, setLossFunc] = useState('binary_crossentropy')
+
     //global values to pass to context and use in grandchild components
     const [allVals, setAllVals] = useState({
         layers: [
@@ -68,7 +86,8 @@ function App() {
                 drop: 10
             },
         ],
-        output: {loss: '1', optimizer: '1'}
+        output: {loss: lossFunc, optimizer: '1'},
+        input: {model: '1', image: '4'}
     })
 
     const handleLayerChange = (e, id, layerName) => {
@@ -85,10 +104,12 @@ function App() {
     }
 
     const getValues = (id, layerName) => {
-        if (layerName !== 'output') 
-            return allVals.layers[id][layerName]
-
-        else return allVals.output
+        if (layerName === 'output') 
+            return allVals.output
+        else if (layerName === 'input')
+            return allVals.input
+        
+        else return allVals.layers[id][layerName]
     }
 
     return (
@@ -99,7 +120,8 @@ function App() {
                             handlePlus={handlePlus} handleMinus={handleMinus} status={epochs[epoch]} />
                     
                     <epochsContext.Provider value={epochs[epoch]}>
-                        <Workflow numLayers={numLayers} />
+                        <Workflow numLayers={numLayers} handleImageChange={handleImageChange}
+                                    handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc} />
                     </epochsContext.Provider>
 
                 </paramContext.Provider>
