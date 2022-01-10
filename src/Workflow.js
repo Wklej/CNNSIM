@@ -6,7 +6,7 @@ import Features from './Modal/Components/Features'
 import LayerModal from "./Modal/LayerModal";
 import { useState } from "react";
 
-const Workflow = ({numLayers, handleImageChange, handleModelChange}) => {
+const Workflow = ({numLayers, handleImageChange, handleModelChange, lossFunc, setLossFunc}) => {
 
   const [showFlat, setFlatShow] = useState(false);
 
@@ -23,7 +23,7 @@ const Workflow = ({numLayers, handleImageChange, handleModelChange}) => {
         <div className="container my-2">
           <div className="row flex-nowrap">
             <div className="col-2 d-flex justify-content-center">
-              <Input handleModelChange={handleModelChange} handleImageChange={handleImageChange} />
+              <Input handleModelChange={handleModelChange} handleImageChange={handleImageChange} setLossFunc={setLossFunc} />
             </div>
             
             {/* mid layers */}
@@ -42,7 +42,7 @@ const Workflow = ({numLayers, handleImageChange, handleModelChange}) => {
               <Fully />
             </div>
             <div className="col p-3 bg-warning">
-              <Output acc={67} loss={2} />
+              <Output acc={67} loss={2} lossFunc={lossFunc} />
             </div>
 
           </div>

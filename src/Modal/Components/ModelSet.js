@@ -8,7 +8,7 @@ import letter1 from '../../Images/modelImages/1.png'
 import letter2 from '../../Images/modelImages/2.png'
 import letter3 from '../../Images/modelImages/3.png'
 
-const ModelSet = ({modelID, handleModelChange, handleImageChange}) => {
+const ModelSet = ({modelID, handleModelChange, handleImageChange, setLossFunc}) => {
 
     const [show, setShow] = useState(false);
 
@@ -22,9 +22,16 @@ const ModelSet = ({modelID, handleModelChange, handleImageChange}) => {
             }
         )
 
+    const update = (e) => {
+        handleModelChange(e)
+        modelID === 1 ? setLossFunc('binary_crossentropy') :
+                        setLossFunc('categorical_crossentropy')
+    }
+
     return ( 
         <div className="btn-group" role="group">
-            <input className="btn-check" type="radio" name="flexRadio" defaultChecked={modelID === 1} id={modelID} onClick={(e) => handleModelChange(e)} />
+            <input className="btn-check" type="radio" name="flexRadio" defaultChecked={modelID === 1}
+                    id={modelID} onClick={(e) => update(e)} />
             <label className="btn btn-outline-dark mb-2" htmlFor={modelID}>Set {modelID}</label>
             <button className="btn btn-outline-dark mb-2" onClick={handleShow}>img</button>
             <ImageModal show={show} handleClose={handleClose}

@@ -4,7 +4,7 @@ import { paramContext } from "../paramContext";
 import { testContext } from "../testContext";
 import SelectBundle from '../Modal/Components/SelectBundle';
 
-const Output = ({acc, loss}) => {
+const Output = ({acc, loss, lossFunc}) => {
         
     const layerType = 'output'
     const id = null
@@ -69,21 +69,13 @@ const Output = ({acc, loss}) => {
         )
     }
 
-    const optionValuesLoss = () => {
-        const inputValue = getValues(null, 'input').model
-
-        return inputValue === '1' ? 
-        ['binary_crossentropy', 'mean_squared_error'] :
-        ['categorical_crossentropy', 'mean_squared_error']
-    }
-
     return ( 
         <div>   
             <SelectBundle values={values} label='loss' update={update} id={id}
-                        optionValues={optionValuesLoss()} />
+                        optionValues={[lossFunc, 'mean_squared_error']} />
             <SelectBundle values={values} label='optimizer' update={update} id={id}
                         optionValues={['Adam', 'SGD', 'RMSprop']} />
-          
+                                  
             <hr />
 
             {AccuracyChart()}
