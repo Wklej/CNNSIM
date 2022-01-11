@@ -72,17 +72,6 @@ function App() {
             },
             {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
                 pool: {pool_size: '1', stride: '1'},
-                fully: {filters: '1', activation: '1'},
-                drop: 10
-            },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
-                fully: {filters: '1', activation: '1'},
-                drop: 10
-            },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
-                fully: {filters: '1', activation: '1'},
                 drop: 10
             },
         ],
