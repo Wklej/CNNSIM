@@ -52,11 +52,11 @@ function App() {
         layers: [
             {   conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
                 pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: 10
+                drop: 20
             },
             {   conv: {filters: '32', kernel_size: '(2, 2)', activation: 'relu'},
                 pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: 10
+                drop: 20
             },
             {   conv: {filters: null, kernel_size: null, activation: null},
                 pool: {pool_size: null, stride: null},
