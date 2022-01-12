@@ -57,17 +57,14 @@ function App() {
         layers: [
             {   conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
                 pool: {pool_size: '(2, 2)', stride: '2'},
-                fully: {filters: '1', activation: '1'},
                 drop: 10
             },
             {   conv: {filters: '32', kernel_size: '(2, 2)', activation: 'relu'},
                 pool: {pool_size: '(2, 2)', stride: '2'},
-                fully: {filters: '1', activation: '1'},
                 drop: 10
             },
             {   conv: {filters: null, kernel_size: null, activation: null},
                 pool: {pool_size: null, stride: null},
-                fully: {filters: '1', activation: '1'},
                 drop: null
             },
             {   conv: {filters: null, kernel_size: null, activation: null},
@@ -76,18 +73,25 @@ function App() {
             },
         ],
         output: {loss: lossFunc, optimizer: 'Adam'},
-        input: {model: '1', image: '4'}
+        input: {model: '1', image: '4'},
+        fully: [
+            {filters: '128', activation: 'relu'},
+            {filters: null, activation: null},
+            {filters: '2', activation: 'sigmoid'}
+        ]
     })
 
     const handleLayerChange = (e, id, layerName) => {
         const temp = allVals
         
-        if (layerName !== 'output' && layerName !== 'drop')
+        if (layerName !== 'output' && layerName !== 'drop' && layerName !== 'fully')
             temp.layers[id][layerName] = {...temp.layers[id][layerName], [e.target.name]: e.target.value}
         else if (layerName === 'output')
             temp.output = {...temp.output, [e.target.name]: e.target.value}
         else if (layerName === 'drop')
             temp.layers[id].drop = e.valueOf() * 10
+        else if (layerName === 'fully')
+            temp.fully[id] = {...temp.fully[id], [e.target.name]: e.target.value}
         
         setAllVals(temp)
     }
@@ -97,6 +101,8 @@ function App() {
             return allVals.output
         else if (layerName === 'input')
             return allVals.input
+        else if(layerName === 'fully')
+            return allVals.fully[id]
         
         else return allVals.layers[id][layerName]
     }
@@ -115,7 +121,7 @@ function App() {
 
                 </paramContext.Provider>
             </testContext.Provider>
-            <button onClick={() => console.log(allVals.layers)}>vals</button>
+            <button onClick={() => console.log(allVals)}>vals</button>
         </div>
     );
 }
