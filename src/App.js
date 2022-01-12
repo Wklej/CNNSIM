@@ -107,6 +107,18 @@ function App() {
         else return allVals.layers[id][layerName]
     }
 
+    const setDefautFully = (nodesCount) => {
+        if (nodesCount === 2) {
+            const temp = allVals
+            temp.fully[1] = {filters: null, activation: null}
+            setAllVals(temp)
+        } else {
+            const temp = allVals
+            temp.fully[1] = {filters: 64, activation: 'relu'}
+            setAllVals(temp)
+        }
+    }
+
     return (
         <div>
             <testContext.Provider value={handleLayerChange}>
@@ -116,12 +128,14 @@ function App() {
                     
                     <epochsContext.Provider value={epochs[epoch]}>
                         <Workflow numLayers={numLayers} handleImageChange={handleImageChange}
-                                    handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc} />
+                                  handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
+                                  setDefautFully={setDefautFully}
+                                  />
                     </epochsContext.Provider>
 
                 </paramContext.Provider>
             </testContext.Provider>
-            <button onClick={() => console.log(allVals)}>vals</button>
+            <button onClick={() => console.log(allVals.fully[1])}>vals</button>
         </div>
     );
 }
