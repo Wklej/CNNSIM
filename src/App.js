@@ -55,27 +55,27 @@ function App() {
     //global values to pass to context and use in grandchild components
     const [allVals, setAllVals] = useState({
         layers: [
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
+            {   conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
+                pool: {pool_size: '(2, 2)', stride: '2'},
                 fully: {filters: '1', activation: '1'},
                 drop: 10
             },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
+            {   conv: {filters: '32', kernel_size: '(2, 2)', activation: 'relu'},
+                pool: {pool_size: '(2, 2)', stride: '2'},
                 fully: {filters: '1', activation: '1'},
                 drop: 10
             },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
+            {   conv: {filters: null, kernel_size: null, activation: null},
+                pool: {pool_size: null, stride: null},
                 fully: {filters: '1', activation: '1'},
-                drop: 10
+                drop: null
             },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
-                drop: 10
+            {   conv: {filters: null, kernel_size: null, activation: null},
+                pool: {pool_size: null, stride: null},
+                drop: null
             },
         ],
-        output: {loss: lossFunc, optimizer: '1'},
+        output: {loss: lossFunc, optimizer: 'Adam'},
         input: {model: '1', image: '4'}
     })
 
@@ -115,6 +115,7 @@ function App() {
 
                 </paramContext.Provider>
             </testContext.Provider>
+            <button onClick={() => console.log(allVals.layers)}>vals</button>
         </div>
     );
 }
