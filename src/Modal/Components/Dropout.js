@@ -28,7 +28,7 @@ const Dropout = ({id}) => {
         const btnHandler = document.getElementsByName(e.target.id)
         
         if (btnHandler[1].disabled) {
-            setValues(10)    
+            setValues(20)    
         } else setValues(0)
         
         btnHandler[0].disabled = !btnHandler[0].disabled

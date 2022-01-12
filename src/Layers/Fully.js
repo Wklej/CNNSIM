@@ -2,7 +2,7 @@ import { useState } from "react";
 import { layersContext } from "../layersContext";
 import FullyNode from "../Modal/Components/FullyNode";
 
-const Fully = () => {
+const Fully = ({setDefautFully}) => {
 
     const [num, setNum] = useState(2)
 
@@ -10,6 +10,7 @@ const Fully = () => {
         const x = num + 1
         if (x <= 3) {
             setNum(x)
+            setDefautFully(x)
         }
     }
 
@@ -17,6 +18,7 @@ const Fully = () => {
         const x = num - 1
         if (x > 1) {
             setNum(x)
+            setDefautFully(x)
         }
     }
 

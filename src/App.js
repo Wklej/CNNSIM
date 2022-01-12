@@ -28,25 +28,20 @@ function App() {
         }
     }
 
-    // Utils for tracking slider value
-    const [numLayers, setNumLayers] = useState(2)
-    const handleSliderChange = (e) => {        
-        setNumLayers(e.valueOf())
-    }
-
+    
     const handleModelChange = (e) => {
         const temp = allVals
-
+        
         temp.input.model = document.getElementById(e.target.id).id
-
+        
         setAllVals(temp)
     }
-
+    
     const handleImageChange = (e) => {
         const temp = allVals
-
+        
         temp.input.image = document.getElementById(e.target.id).id
-
+        
         setAllVals(temp)
     }
 
@@ -55,50 +50,72 @@ function App() {
     //global values to pass to context and use in grandchild components
     const [allVals, setAllVals] = useState({
         layers: [
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
-                fully: {filters: '1', activation: '1'},
-                drop: 10
+            {   conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
+                pool: {pool_size: '(2, 2)', stride: '2'},
+                drop: 20
             },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
-                fully: {filters: '1', activation: '1'},
-                drop: 10
+            {   conv: {filters: '32', kernel_size: '(2, 2)', activation: 'relu'},
+                pool: {pool_size: '(2, 2)', stride: '2'},
+                drop: 20
             },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
-                fully: {filters: '1', activation: '1'},
-                drop: 10
+            {   conv: {filters: null, kernel_size: null, activation: null},
+                pool: {pool_size: null, stride: null},
+                drop: null
             },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
-                fully: {filters: '1', activation: '1'},
-                drop: 10
-            },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
-                fully: {filters: '1', activation: '1'},
-                drop: 10
-            },
-            {   conv: {filters: '1', kernel_size: '1', activation: '1', stride: '1'},
-                pool: {pool_size: '1', stride: '1'},
-                fully: {filters: '1', activation: '1'},
-                drop: 10
+            {   conv: {filters: null, kernel_size: null, activation: null},
+                pool: {pool_size: null, stride: null},
+                drop: null
             },
         ],
-        output: {loss: lossFunc, optimizer: '1'},
-        input: {model: '1', image: '4'}
+        output: {loss: lossFunc, optimizer: 'Adam'},
+        input: {model: '1', image: '4'},
+        fully: [
+            {filters: '128', activation: 'relu'},
+            {filters: null, activation: null},
+            {filters: '2', activation: 'sigmoid'}
+        ]
     })
+
+    // Utils for tracking slider value
+    const [numLayers, setNumLayers] = useState(2)
+    const handleSliderChange = (e) => {        
+        const temp = allVals
+        const next_numLayers = e.valueOf()
+        
+        // < delete, > default
+        if (next_numLayers < numLayers) {
+            for (let i = 0; i < numLayers - next_numLayers; i++) {
+                temp.layers[next_numLayers + i] = {
+                    conv: {filters: null, kernel_size: null, activation: null},
+                    pool: {pool_size: null, stride: null},
+                    drop: null
+                }
+            }
+        } else if (next_numLayers > numLayers) {
+            for (let i = 0; i < next_numLayers - numLayers; i++) {
+                temp.layers[numLayers + i] = {
+                    conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
+                    pool: {pool_size: '(2, 2)', stride: '2'},
+                    drop: 20
+                }
+            }
+        }
+        
+        setAllVals(temp)
+        setNumLayers(e.valueOf())
+    }
 
     const handleLayerChange = (e, id, layerName) => {
         const temp = allVals
         
-        if (layerName !== 'output' && layerName !== 'drop')
+        if (layerName !== 'output' && layerName !== 'drop' && layerName !== 'fully')
             temp.layers[id][layerName] = {...temp.layers[id][layerName], [e.target.name]: e.target.value}
         else if (layerName === 'output')
             temp.output = {...temp.output, [e.target.name]: e.target.value}
         else if (layerName === 'drop')
             temp.layers[id].drop = e.valueOf() * 10
+        else if (layerName === 'fully')
+            temp.fully[id] = {...temp.fully[id], [e.target.name]: e.target.value}
         
         setAllVals(temp)
     }
@@ -108,8 +125,24 @@ function App() {
             return allVals.output
         else if (layerName === 'input')
             return allVals.input
+        else if(layerName === 'fully')
+            return allVals.fully[id]
+        else if(layerName === 'Default')
+            return allVals.layers[id]
         
         else return allVals.layers[id][layerName]
+    }
+
+    const setDefautFully = (nodesCount) => {
+        if (nodesCount === 2) {
+            const temp = allVals
+            temp.fully[1] = {filters: null, activation: null}
+            setAllVals(temp)
+        } else {
+            const temp = allVals
+            temp.fully[1] = {filters: 64, activation: 'relu'}
+            setAllVals(temp)
+        }
     }
 
     return (
@@ -121,11 +154,14 @@ function App() {
                     
                     <epochsContext.Provider value={epochs[epoch]}>
                         <Workflow numLayers={numLayers} handleImageChange={handleImageChange}
-                                    handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc} />
+                                  handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
+                                  setDefautFully={setDefautFully}
+                                  />
                     </epochsContext.Provider>
 
                 </paramContext.Provider>
             </testContext.Provider>
+            <button onClick={() => console.log(allVals.layers)}>vals</button>
         </div>
     );
 }
