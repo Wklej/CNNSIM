@@ -127,7 +127,7 @@ function App() {
             return allVals.input
         else if(layerName === 'fully')
             return allVals.fully[id]
-        else if(layerName === 'convDefault' || layerName === 'poolDefault')
+        else if(layerName === 'Default')
             return allVals.layers[id]
         
         else return allVals.layers[id][layerName]
