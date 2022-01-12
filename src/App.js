@@ -127,6 +127,8 @@ function App() {
             return allVals.input
         else if(layerName === 'fully')
             return allVals.fully[id]
+        else if(layerName === 'convDefault' || layerName === 'poolDefault')
+            return allVals.layers[id]
         
         else return allVals.layers[id][layerName]
     }
@@ -142,6 +144,9 @@ function App() {
             setAllVals(temp)
         }
     }
+
+    const [convValues, setConvValues] = useState(getValues(0, 'convDefault'))
+    const x = {filters: null, kernel_size: null, activation: null}
 
     return (
         <div>
