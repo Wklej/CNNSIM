@@ -28,25 +28,20 @@ function App() {
         }
     }
 
-    // Utils for tracking slider value
-    const [numLayers, setNumLayers] = useState(2)
-    const handleSliderChange = (e) => {        
-        setNumLayers(e.valueOf())
-    }
-
+    
     const handleModelChange = (e) => {
         const temp = allVals
-
+        
         temp.input.model = document.getElementById(e.target.id).id
-
+        
         setAllVals(temp)
     }
-
+    
     const handleImageChange = (e) => {
         const temp = allVals
-
+        
         temp.input.image = document.getElementById(e.target.id).id
-
+        
         setAllVals(temp)
     }
 
@@ -80,6 +75,35 @@ function App() {
             {filters: '2', activation: 'sigmoid'}
         ]
     })
+
+    // Utils for tracking slider value
+    const [numLayers, setNumLayers] = useState(2)
+    const handleSliderChange = (e) => {        
+        const temp = allVals
+        const next_numLayers = e.valueOf()
+        
+        // < delete, > default
+        if (next_numLayers < numLayers) {
+            for (let i = 0; i < numLayers - next_numLayers; i++) {
+                temp.layers[next_numLayers + i] = {
+                    conv: {filters: null, kernel_size: null, activation: null},
+                    pool: {pool_size: null, stride: null},
+                    drop: null
+                }
+            }
+        } else if (next_numLayers > numLayers) {
+            for (let i = 0; i < next_numLayers - numLayers; i++) {
+                temp.layers[numLayers + i] = {
+                    conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
+                    pool: {pool_size: '(2, 2)', stride: '2'},
+                    drop: 10
+                }
+            }
+        }
+        
+        setAllVals(temp)
+        setNumLayers(e.valueOf())
+    }
 
     const handleLayerChange = (e, id, layerName) => {
         const temp = allVals
@@ -135,7 +159,7 @@ function App() {
 
                 </paramContext.Provider>
             </testContext.Provider>
-            <button onClick={() => console.log(allVals.fully[1])}>vals</button>
+            <button onClick={() => console.log(allVals.layers)}>vals</button>
         </div>
     );
 }
