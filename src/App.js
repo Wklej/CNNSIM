@@ -8,6 +8,9 @@ import { testContext } from './testContext';
 import { paramContext } from './paramContext'; 
 import { epochsContext } from './epochsContext';
 
+import models_json from './Data/models.json'
+import acc_loss from './Data/acc_loss.json'
+
 function App() {
 
     //Epochs status & handlers
@@ -52,11 +55,11 @@ function App() {
         layers: [
             {   conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
                 pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: 20
+                drop: 10
             },
             {   conv: {filters: '32', kernel_size: '(2, 2)', activation: 'relu'},
                 pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: 20
+                drop: 10
             },
             {   conv: {filters: null, kernel_size: null, activation: null},
                 pool: {pool_size: null, stride: null},
@@ -145,6 +148,19 @@ function App() {
         }
     }
 
+    const [accuracy, setAccuracy] = useState(0)
+    const [loss, setLoss] = useState(0)
+
+    const compare_json = () => {
+        const data = models_json
+
+        for (let i = 0; i < data.models.length; i++)
+            if (JSON.stringify(data.models[i]) === JSON.stringify(allVals)) {
+                setAccuracy(acc_loss.results[i].accuracy)
+                setLoss(acc_loss.results[i].loss)
+            }
+    }
+
     return (
         <div>
             <testContext.Provider value={handleLayerChange}>
@@ -155,13 +171,13 @@ function App() {
                     <epochsContext.Provider value={epochs[epoch]}>
                         <Workflow numLayers={numLayers} handleImageChange={handleImageChange}
                                   handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
-                                  setDefautFully={setDefautFully}
+                                  setDefautFully={setDefautFully} accuracy={accuracy} loss={loss}
                                   />
                     </epochsContext.Provider>
 
                 </paramContext.Provider>
             </testContext.Provider>
-            <button onClick={() => console.log(allVals.layers)}>vals</button>
+            <button className='btn btn-primary' onClick={() => compare_json()}>Simulation</button>
         </div>
     );
 }

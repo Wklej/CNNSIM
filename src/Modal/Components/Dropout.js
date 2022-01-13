@@ -24,24 +24,26 @@ const Dropout = ({id}) => {
         setValues(e.valueOf() * 10)
     }
 
+    const [button_disabled, setButton_disabled] = useState(true)
+
     const handleDisableDrop = (e) => {
         const btnHandler = document.getElementsByName(e.target.id)
         
-        if (btnHandler[1].disabled) {
-            setValues(20)    
-        } else setValues(0)
+        if (btnHandler[1].disabled)
+            setValues(10)    
+        else setValues(0)
         
-        btnHandler[0].disabled = !btnHandler[0].disabled
-        btnHandler[1].disabled = !btnHandler[1].disabled
         setOpen(false)
+
+        setButton_disabled(!button_disabled)
     }
     
     return ( 
         <div>
         <div className="btn-group" role="group">
-            <button className="btn btn-primary" name={'drop' + id} onClick={handleModalShow}>Dropout</button>
+            <button className="btn btn-primary" name={'drop' + id} disabled={button_disabled} onClick={handleModalShow}>Dropout</button>
             <ExplainModal show={showModal} handleClose={handleModalClose} type={'dropout'} />
-            <button className="btn btn-primary" aria-controls="collapseImages"
+            <button className="btn btn-primary" aria-controls="collapseImages" disabled={button_disabled}
                     aria-expanded={open} name={'drop' + id} id={'drop' + id} onClick={() => setOpen(!open)}>
                 x
             </button>

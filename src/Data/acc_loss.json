@@ -1,0 +1,8 @@
+{
+	"results": [
+		{"accuracy": 69, "loss": 17},
+		{"accuracy": 21, "loss": 37},
+		{"accuracy": 11, "loss": 11},
+		{"accuracy": 55, "loss": 55}
+	]
+}

@@ -6,7 +6,7 @@ import Features from './Modal/Components/Features'
 import LayerModal from "./Modal/LayerModal";
 import { useState } from "react";
 
-const Workflow = ({numLayers, handleImageChange, handleModelChange, lossFunc, setLossFunc, setDefautFully}) => {
+const Workflow = ({numLayers, handleImageChange, handleModelChange, lossFunc, setLossFunc, setDefautFully, accuracy, loss}) => {
 
   const [showFlat, setFlatShow] = useState(false);
 
@@ -42,7 +42,7 @@ const Workflow = ({numLayers, handleImageChange, handleModelChange, lossFunc, se
               <Fully setDefautFully={setDefautFully} />
             </div>
             <div className="col p-3 bg-warning">
-              <Output acc={67} loss={2} lossFunc={lossFunc} />
+              <Output acc={accuracy} loss={loss} lossFunc={lossFunc} />
             </div>
 
           </div>
