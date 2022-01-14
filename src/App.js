@@ -55,11 +55,11 @@ function App() {
         layers: [
             {   conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
                 pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: 10
+                drop: null
             },
             {   conv: {filters: '32', kernel_size: '(2, 2)', activation: 'relu'},
                 pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: 10
+                drop: null
             },
             {   conv: {filters: null, kernel_size: null, activation: null},
                 pool: {pool_size: null, stride: null},
@@ -111,12 +111,14 @@ function App() {
     const handleLayerChange = (e, id, layerName) => {
         const temp = allVals
         
-        if (layerName !== 'output' && layerName !== 'drop' && layerName !== 'fully')
+        if (layerName !== 'output' && layerName !== 'drop' && layerName !== 'fully' && layerName !== 'dropDefault')
             temp.layers[id][layerName] = {...temp.layers[id][layerName], [e.target.name]: e.target.value}
         else if (layerName === 'output')
             temp.output = {...temp.output, [e.target.name]: e.target.value}
         else if (layerName === 'drop')
-            temp.layers[id].drop = e.valueOf() * 10
+            temp.layers[id].drop = e.valueOf() * 20
+        else if (layerName === 'dropDefault')
+            temp.layers[id].drop = e
         else if (layerName === 'fully')
             temp.fully[id] = {...temp.fully[id], [e.target.name]: e.target.value}
         
@@ -178,6 +180,7 @@ function App() {
                 </paramContext.Provider>
             </testContext.Provider>
             <button className='btn btn-primary' onClick={() => compare_json()}>Simulation</button>
+            <button className='btn btn-primary' onClick={() => console.log(allVals.layers[0].drop)}>vals</button>
         </div>
     );
 }

@@ -20,22 +20,22 @@ const Dropout = ({id}) => {
     const [values, setValues] = useState(getValues(id, 'drop'))
     
     const update = (e, id) => {
+        setValues(e.valueOf() * 20)
         handleChange(e, id, 'drop')
-        setValues(e.valueOf() * 10)
     }
 
     const [button_disabled, setButton_disabled] = useState(true)
 
-    const handleDisableDrop = (e) => {
-        const btnHandler = document.getElementsByName(e.target.id)
-        
-        if (btnHandler[1].disabled)
-            setValues(10)    
-        else setValues(0)
-        
+    const handleDisableDrop = () => {
         setOpen(false)
-
         setButton_disabled(!button_disabled)
+
+        if (!button_disabled)
+            handleChange(null, id, 'dropDefault')
+        else {
+            handleChange(20, id, 'dropDefault')
+            setValues(20)
+        }
     }
     
     return ( 
@@ -51,13 +51,13 @@ const Dropout = ({id}) => {
             <Collapse in={open}>
                 <div id="collapseImages">
                     <Slider min={1} max={2} dots={true} marks={{1:20, 2:40}}
-                            value={values / 10} onChange={(e) => update(e, id)} />
+                            value={values / 20} onChange={(e) => update(e, id)} />
                     {/* Empty paragraph to avoid numbers to overlap switch */}
                     <p></p>
                 </div>
             </Collapse>
             <div className="form-check form-switch">
-                <input type="checkbox" className="form-check-input" id={'drop' + id} onChange={(e) => handleDisableDrop(e)} />
+                <input type="checkbox" className="form-check-input" id={'drop' + id} onChange={() => handleDisableDrop()} />
             </div>
         </div>
      );
