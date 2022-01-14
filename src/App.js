@@ -10,6 +10,7 @@ import { epochsContext } from './epochsContext';
 
 import models_json from './Data/models.json'
 import acc_loss from './Data/acc_loss.json'
+import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
 
 function App() {
 
@@ -36,6 +37,11 @@ function App() {
         const temp = allVals
         
         temp.input.model = document.getElementById(e.target.id).id
+        
+        if (temp.input.model === '1')
+            temp.output.loss = 'binary_crossentropy'
+        else 
+            temp.output.loss = 'categorical_crossentropy'
         
         setAllVals(temp)
     }
@@ -178,6 +184,7 @@ function App() {
                 </paramContext.Provider>
             </testContext.Provider>
             <button className='btn btn-primary' onClick={() => compare_json()}>Simulation</button>
+            <button className='btn btn-primary' onClick={() => console.log(allVals.output)}>vals</button>
         </div>
     );
 }
