@@ -164,8 +164,8 @@ function App() {
 
         for (let i = 0; i < data.models.length; i++)
             if (JSON.stringify(data.models[i]) === JSON.stringify(allVals)) {
-                setAccuracy(acc_loss.results[i].accuracy)
-                setLoss(acc_loss.results[i].loss)
+                setAccuracy(Math.round(acc_loss.outputs[i].accuracy * 100))
+                setLoss(Math.round(acc_loss.outputs[i].loss * 10) / 10)
             }
     }
 
