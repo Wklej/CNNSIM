@@ -10,18 +10,20 @@ import { epochsContext } from './epochsContext';
 
 import models_json from './Data/models.json'
 import acc_loss from './Data/acc_loss.json'
-import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider';
 
 function App() {
 
     //Epochs status & handlers
     const epochs = [1, 5, 15, 20, 30]
     const [epoch, setEpoch] = useState(0)
+    const [epochNum, setEpochNum] = useState(0)
+
 
     const handlePlus = () => {
         const x = epoch + 1
         if (x < epochs.length) {
             setEpoch(x)
+            setEpochNum(epochNum + 1)
         }
     }
 
@@ -29,6 +31,7 @@ function App() {
         const x = epoch - 1
         if (x >= 0) {
             setEpoch(x)
+            setEpochNum(epochNum - 1)
         }
     }
 
@@ -164,8 +167,8 @@ function App() {
 
         for (let i = 0; i < data.models.length; i++)
             if (JSON.stringify(data.models[i]) === JSON.stringify(allVals)) {
-                setAccuracy(Math.round(acc_loss.outputs[i].accuracy * 100))
-                setLoss(Math.round(acc_loss.outputs[i].loss * 10) / 10)
+                setAccuracy(Math.round(acc_loss.all[i].outputs[epochNum].accuracy * 100 * 10) / 10)
+                setLoss(Math.round(acc_loss.all[i].outputs[epochNum].loss * 10) / 10)
             }
     }
 
