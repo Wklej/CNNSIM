@@ -176,14 +176,15 @@ function App() {
         <div>
             <testContext.Provider value={handleLayerChange}>
                 <paramContext.Provider value={getValues}>
-                    <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange}
-                            handlePlus={handlePlus} handleMinus={handleMinus} status={epochs[epoch]} />
+                    {/* <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange}
+                            handlePlus={handlePlus} handleMinus={handleMinus} status={epochs[epoch]} /> */}
                     
                     <epochsContext.Provider value={epochs[epoch]}>
-                        <Workflow numLayers={numLayers} handleImageChange={handleImageChange}
+                        <Workflow numLayers={numLayers} handleSliderChange={handleSliderChange} handleImageChange={handleImageChange}
                                   handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
-                                  setDefautFully={setDefautFully} accuracy={accuracy} loss={loss}
-                                  />
+                                  setDefautFully={setDefautFully} accuracy={accuracy} loss={loss} handlePlus={handlePlus}
+                                    handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json}
+                        />
                     </epochsContext.Provider>
 
                 </paramContext.Provider>
