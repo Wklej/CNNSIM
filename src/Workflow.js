@@ -21,7 +21,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
   // const handleFeaturesClose = () => setShowFeatures(false);
 
     return ( 
-        <div className="container-fluid">
+        <div className="container-fluid min-vh-100">
           <div className="row flex-nowrap">
             <div className="col-2 d-flex justify-content-center">
               {/* LEFT PANEL */}

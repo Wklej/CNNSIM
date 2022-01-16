@@ -39,6 +39,8 @@ const Output = ({acc, loss, lossFunc}) => {
                         fill: '#E38627',
                         }}
                     labelPosition={0}
+                    viewBoxSize={[200, 150]}
+                    center={[100, 70]}
                 />
             </div>
         )
@@ -64,13 +66,15 @@ const Output = ({acc, loss, lossFunc}) => {
                         fill: '#E38627',
                         }}
                     labelPosition={0}
+                    viewBoxSize={[200, 150]}                
+                    center={[100, 70]}
                 />
             </div>
         )
     }
 
     return ( 
-        <div>   
+        <div className='text-center'>   
             <SelectBundle values={values} label='loss' update={update} id={id}
                         optionValues={[lossFunc, 'mean_squared_error']} />
             <SelectBundle values={values} label='optimizer' update={update} id={id}
