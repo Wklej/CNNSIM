@@ -173,7 +173,7 @@ function App() {
     }
 
     return (
-        <div>
+        <>
             <testContext.Provider value={handleLayerChange}>
                 <paramContext.Provider value={getValues}>
                     {/* <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange}
@@ -191,7 +191,7 @@ function App() {
             </testContext.Provider>
             <button className='btn btn-primary' onClick={() => compare_json()}>Simulation</button>
             <button className='btn btn-primary' onClick={() => console.log(allVals.layers[0].drop)}>vals</button>
-        </div>
+        </>
     );
 }
 
