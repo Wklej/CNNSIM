@@ -6,7 +6,8 @@ import Features from './Modal/Components/Features'
 import LayerModal from "./Modal/LayerModal";
 import { useState } from "react";
 
-const Workflow = ({numLayers, handleImageChange, handleModelChange, lossFunc, setLossFunc, setDefautFully, accuracy, loss}) => {
+const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc,
+                    setLossFunc, setDefautFully, accuracy, loss, handlePlus, handleMinus, status, compare}) => {
 
   const [showFlat, setFlatShow] = useState(false);
 
@@ -23,7 +24,10 @@ const Workflow = ({numLayers, handleImageChange, handleModelChange, lossFunc, se
         <div className="container my-2">
           <div className="row flex-nowrap">
             <div className="col-2 d-flex justify-content-center">
-              <Input handleModelChange={handleModelChange} handleImageChange={handleImageChange} setLossFunc={setLossFunc} />
+              {/* LEFT PANEL */}
+              <Input handleSliderChange={handleSliderChange} handleModelChange={handleModelChange} 
+                    handleImageChange={handleImageChange} setLossFunc={setLossFunc} numLayers={numLayers} 
+                    handlePlus={handlePlus} handleMinus={handleMinus} status={status} compare={compare} />
             </div>
             
             {/* mid layers */}
