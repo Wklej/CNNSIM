@@ -39,7 +39,7 @@ const Output = ({acc, loss, lossFunc}) => {
                         fill: '#E38627',
                         }}
                     labelPosition={0}
-                    viewBoxSize={[200, 150]}
+                    viewBoxSize={[200, 160]}
                     center={[100, 70]}
                 />
             </div>
@@ -66,7 +66,7 @@ const Output = ({acc, loss, lossFunc}) => {
                         fill: '#E38627',
                         }}
                     labelPosition={0}
-                    viewBoxSize={[200, 150]}                
+                    viewBoxSize={[200, 160]}                
                     center={[100, 70]}
                 />
             </div>

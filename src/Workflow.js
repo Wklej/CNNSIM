@@ -45,7 +45,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
             <div className="col-2 me-4">
               <Fully setDefautFully={setDefautFully} />
             </div>
-            <div className="col p-3 bg-warning">
+            <div className="col p-3">
               <Output acc={accuracy} loss={loss} lossFunc={lossFunc} />
             </div>
 

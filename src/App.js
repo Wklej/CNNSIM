@@ -189,8 +189,6 @@ function App() {
 
                 </paramContext.Provider>
             </testContext.Provider>
-            <button className='btn btn-primary' onClick={() => compare_json()}>Simulation</button>
-            <button className='btn btn-primary' onClick={() => console.log(allVals.layers[0].drop)}>vals</button>
         </>
     );
 }
