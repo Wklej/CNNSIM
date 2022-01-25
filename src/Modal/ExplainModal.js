@@ -6,7 +6,7 @@ const ExplainModal = ({show, handleClose, type}) => {
 
     return (
         <>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} size='lg'>
                 <Tabs>
                     <Tab eventKey="explaination" title="Explaination">
                         <Explaination layerType={type} />

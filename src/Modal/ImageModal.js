@@ -4,7 +4,7 @@ import ImageSelection from "./Components/ImageSelection";
 const ImageModal = ({show, handleClose, handleImageChange, images}) => {
     return ( 
         <>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} size='lg'>
                 <Modal.Header>Image selection</Modal.Header>
                 <Modal.Body>
                     <div className="d-flex justify-content-evenly">
