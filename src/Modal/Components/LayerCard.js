@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import Dropout from "./Dropout";
 import { paramContext } from "../../paramContext";
 
-const LayerCard = ({id}) => {
+const LayerCard = ({id, ifLast}) => {
 
     const [showConv, setConvShow] = useState(false);
     const [showPool, setPoolShow] = useState(false);
@@ -65,7 +65,7 @@ const LayerCard = ({id}) => {
                             <input type="checkbox" className="form-check-input" id={'pool' + id} onChange={(e) => handleDisablePool(e)} />
                         </div>
                         <LayerModal show={showPool} handleClose={handlePoolClose} body={'pool'} id={id} />
-                        <Dropout id={id} />
+                        { !ifLast && <Dropout id={id} /> }
                     </ul>
                 </div>
                 <div className="card-footer">
