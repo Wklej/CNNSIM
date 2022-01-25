@@ -3,7 +3,7 @@ import Output from './Layers/Output';
 import Input from './Layers/Input';
 import Fully from './Layers/Fully';
 import Features from './Modal/Components/Features'
-import LayerModal from "./Modal/LayerModal";
+import ExplainModal from './Modal/ExplainModal';
 import { useState } from "react";
 
 const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc,
@@ -40,7 +40,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
             </div>
             <div className="col-1 me-4">
               <button className="btn btn-outline-secondary flattenButton" onClick={handleFlatShow}>{"FLATTEN"}</button>
-              <LayerModal show={showFlat} handleClose={handleFlatClose} body={"flat"} />
+              <ExplainModal show={showFlat} handleClose={handleFlatClose} type={"flat"} />
             </div>
             <div className="col-2 me-4">
               <Fully setDefautFully={setDefautFully} />
