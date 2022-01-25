@@ -23,7 +23,8 @@ const Karuzela = ({content, idx}) => {
     }
 
     return (  
-        <Carousel variant="dark">
+        <Carousel variant="dark" controls={content.length === 1 ? false : true} 
+                                    indicators={content.length === 1 ? false : true}>
             { idx === undefined ? items() : item() }
         </Carousel>
     );
