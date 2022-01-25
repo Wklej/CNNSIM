@@ -19,55 +19,55 @@ const Output = ({acc, loss, lossFunc}) => {
         setValues(e.target.value)
     }
 
-    const AccuracyChart = () => {
+    const AccuracyChart = (type) => {
         return(
             <div>
                 <a style={{
                     fontSize: '25px',
                     fontFamily: 'sans-serif',
                     color: '#E38627',
-                    }}>Accuracy: </a>
+                    }}>{type === 'val' ? "Val Accuracy" : "Test Accuracy"}: </a>
                 <PieChart
                     data={[{ value: acc, key: 1, color: '#E38627' }]}
-                    reveal={acc}
+                    reveal={type === 'val' ? acc : 69}
                     lineWidth={15}
                     animate
-                    label={() => acc}
+                    label={() => type === 'val' ? acc : 69}
                     labelStyle={{
                         fontSize: '25px',
                         fontFamily: 'sans-serif',
                         fill: '#E38627',
                         }}
                     labelPosition={0}
-                    viewBoxSize={[200, 160]}
-                    center={[100, 70]}
+                    viewBoxSize={[120, 140]}
+                    center={[50, 70]}
                 />
             </div>
         )
     }
 
-    const LossChart = () => {
+    const LossChart = (type) => {
         return(
             <div>
                 <a style={{
                     fontSize: '25px',
                     fontFamily: 'sans-serif',
                     color: '#E38627',
-                    }}>Loss: </a>
+                    }}>{type === 'val' ? "Val Loss" : "Test Loss"}: </a>
                 <PieChart
                     data={[{ value: loss, key: 1, color: '#E38627' }]}
-                    reveal={loss}
+                    reveal={type === 'val' ? loss : 19}
                     lineWidth={15}
                     animate
-                    label={() => loss}
+                    label={() => type === 'val' ? loss : 19}
                     labelStyle={{
                         fontSize: '25px',
                         fontFamily: 'sans-serif',
                         fill: '#E38627',
                         }}
                     labelPosition={0}
-                    viewBoxSize={[200, 160]}                
-                    center={[100, 70]}
+                    viewBoxSize={[120, 130]}                
+                    center={[50, 70]}
                 />
             </div>
         )
@@ -82,8 +82,16 @@ const Output = ({acc, loss, lossFunc}) => {
                                   
             <hr />
 
-            {AccuracyChart()}
-            {LossChart()}
+            <div className="row">
+                <div className="col">
+                    {AccuracyChart('test')}
+                    {LossChart('test')}
+                </div>
+                <div className="col">
+                    {AccuracyChart('val')}
+                    {LossChart('val')}
+                </div>
+            </div>
         </div>
      );
 }
