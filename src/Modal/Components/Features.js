@@ -87,7 +87,7 @@ const Features = ({show, handleClose, idx}) => {
     }
 
    return ( 
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} size='lg'>
             <Tabs activeKey={type} onSelect={(e) => setType(e)}>
                 <Tab eventKey="activations" title="Activations">
                     { bodyType() }
