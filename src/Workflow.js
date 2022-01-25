@@ -42,10 +42,10 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
               <button className="btn btn-outline-secondary flattenButton" onClick={handleFlatShow}>{"FLATTEN"}</button>
               <ExplainModal show={showFlat} handleClose={handleFlatClose} type={"flat"} />
             </div>
-            <div className="col-2 me-4">
+            <div className="col me-4">
               <Fully setDefautFully={setDefautFully} />
             </div>
-            <div className="col p-3">
+            <div className="col-3">
               <Output acc={accuracy} loss={loss} lossFunc={lossFunc} />
             </div>
 
