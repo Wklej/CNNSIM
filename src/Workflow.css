@@ -14,6 +14,7 @@
     color: #fff;
     background-color: rgb(227, 134, 39);
     border-color: rgb(227, 134, 39);
+    box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0) !important; 
   }
   .btn-orange:hover {
     color: #fff;
@@ -43,6 +44,7 @@
 .btn-outline-orange {
     color: rgb(227, 134, 39);
     border-color: rgb(227, 134, 39);
+    box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0) !important; 
   }
   .btn-outline-orange:hover {
     color: #fff;
