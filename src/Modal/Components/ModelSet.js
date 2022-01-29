@@ -38,8 +38,8 @@ const ModelSet = ({modelID, handleModelChange, handleImageChange, setLossFunc, t
         <div className="btn-group" role="group">
             <input className="btn-check" type="radio" name="flexRadio" defaultChecked={modelID === 1}
                     id={modelID} onClick={(e) => update(e)} />
-            <label className="btn btn-outline-dark mb-2" htmlFor={modelID}>Set {modelID}</label>
-            <button className="btn btn-outline-dark mb-2" onClick={handleShow} disabled={toggle !== modelID}>img</button>
+            <label className="btn btn-outline-orange mb-2" htmlFor={modelID}>Set {modelID}</label>
+            <button className="btn btn-outline-orange mb-2" onClick={handleShow} disabled={toggle !== modelID}>img</button>
             <ImageModal show={show} handleClose={handleClose} 
                         handleImageChange={handleImageChange} images={imgs[modelID]} />
         </div>
