@@ -64,3 +64,7 @@
     color: rgb(227, 134, 39);
     background-color: transparent;
   }
+
+.modal-content {
+    background-color: #424242;
+}
