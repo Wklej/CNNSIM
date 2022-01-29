@@ -86,3 +86,14 @@
 .tabFont {
     color:rgb(197, 123, 48)
 }
+
+.form-check-input:checked {
+    background-color: rgb(197, 123, 48);
+    border: 1px solid #303030;
+}
+
+.form-check-input {
+    background-color: transparent;
+    border: 1px solid rgb(197, 123, 48);
+    box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0) !important;
+}
