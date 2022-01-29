@@ -68,3 +68,21 @@
 .modal-content {
     background-color: #424242;
 }
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: rgb(227, 134, 39) !important;
+    border-color: rgb(227, 134, 39) !important;
+    background-color: #424242;
+}
+
+.nav-tabs {
+    border-bottom: rgb(227, 134, 39);
+}
+
+.nav-tabs .nav-link:hover{
+    color: rgb(227, 134, 39) !important;
+}
+
+.tabFont {
+    color:rgb(197, 123, 48)
+}

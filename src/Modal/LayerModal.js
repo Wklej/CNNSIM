@@ -20,10 +20,10 @@ const LayerModal = ({show, handleClose, body, id}) => {
     return ( 
         <Modal show={show} onHide={handleClose} size='lg'>
             <Tabs activeKey={type} onSelect={(e) => setType(e)}>
-                <Tab eventKey="explaination" title="Explaination">
+                <Tab tabClassName='tabFont' eventKey="explaination" title="Explaination">
                     { bodyType() }
                 </Tab>
-                <Tab eventKey="details" title="Details">
+                <Tab tabClassName='tabFont' eventKey="details" title="Details">
                     { bodyType() }
                 </Tab>   
             </Tabs>
