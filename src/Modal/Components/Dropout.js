@@ -41,9 +41,9 @@ const Dropout = ({id}) => {
     return ( 
         <div>
         <div className="btn-group" role="group">
-            <button className="btn btn-primary" name={'drop' + id} disabled={button_disabled} onClick={handleModalShow}>Dropout</button>
+            <button className="btn btn-orange" name={'drop' + id} disabled={button_disabled} onClick={handleModalShow}>Dropout</button>
             <ExplainModal show={showModal} handleClose={handleModalClose} type={'dropout'} />
-            <button className="btn btn-primary" aria-controls="collapseImages" disabled={button_disabled}
+            <button className="btn btn-orange" aria-controls="collapseImages" disabled={button_disabled}
                     aria-expanded={open} name={'drop' + id} id={'drop' + id} onClick={() => setOpen(!open)}>
                 x
             </button>

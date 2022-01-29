@@ -52,15 +52,15 @@ const LayerCard = ({id, ifLast}) => {
 
     return ( 
         <div className="col">
-            <div className="card border-dark text-center" >
+            <div className="card border-dark text-center bgDarkCard" >
                 <div className="card-body">
                     <ul className="list-group">
-                        <button className="btn btn-primary" onClick={handleConvShow} id={'conv' + id}>conv {id}</button>
+                        <button className="btn btn-orange" onClick={handleConvShow} id={'conv' + id}>conv {id}</button>
                         <div className="form-check form-switch">
                             <input type="checkbox" className="form-check-input" id={'conv' + id} onChange={(e) => handleDisableConv(e)} />
                         </div>
                         <LayerModal show={showConv} handleClose={handleConvClose} body={"conv"} id={id} />
-                        <button className="btn btn-primary" onClick={handlePoolShow} id={'pool' + id}>pool</button>
+                        <button className="btn btn-orange" onClick={handlePoolShow} id={'pool' + id}>pool</button>
                         <div className="form-check form-switch">
                             <input type="checkbox" className="form-check-input" id={'pool' + id} onChange={(e) => handleDisablePool(e)} />
                         </div>
@@ -69,7 +69,7 @@ const LayerCard = ({id, ifLast}) => {
                     </ul>
                 </div>
                 <div className="card-footer">
-                    <button className="btn btn-primary" onClick={handleFeaturesShow} id={id}>Features</button>
+                    <button className="btn btn-orange" onClick={handleFeaturesShow} id={id}>Features</button>
                     <Features show={showFeatures} handleClose={handleFeaturesClose} idx={id} />
                 </div>
             </div>

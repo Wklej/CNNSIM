@@ -17,7 +17,7 @@ const ImageModal = ({show, handleClose, handleImageChange, images}) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className="btn btn-primary" onClick={handleClose}>
+                    <button className="btn btn-orange" onClick={handleClose}>
                         Close
                     </button>
                 </Modal.Footer>

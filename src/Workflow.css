@@ -1,0 +1,66 @@
+.bgDark {
+    background-color: #212121;
+}
+
+.bgDarkLayer {
+    background-color: #303030;
+}
+
+.bgDarkCard {
+    background-color: #424242;
+}
+
+.btn-orange {
+    color: #fff;
+    background-color: rgb(227, 134, 39);
+    border-color: rgb(227, 134, 39);
+  }
+  .btn-orange:hover {
+    color: #fff;
+    background-color: rgb(197, 123, 48);
+    border-color: rgb(197, 123, 48);
+  }
+  .btn-check:focus + .btn-orange, .btn-orange:focus {
+    color: #fff;
+    background-color: rgb(197, 123, 48);
+    border-color: rgb(197, 123, 48);
+    box-shadow: 0 0 0 0.25rem rgba(197, 123, 48, 0.5);
+  }
+  .btn-check:checked + .btn-orange, .btn-check:active + .btn-orange, .btn-orange:active, .btn-orange.active, .show > .btn-orange.dropdown-toggle {
+    color: #fff;
+    background-color: rgb(197, 123, 48);
+    border-color: rgb(197, 123, 48);
+  }
+  .btn-check:checked + .btn-orange:focus, .btn-check:active + .btn-orange:focus, .btn-orange:active:focus, .btn-orange.active:focus, .show > .btn-orange.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.25rem rgba(197, 123, 48, 0.5);
+  }
+  .btn-orange:disabled, .btn-orange.disabled {
+    color: #fff;
+    background-color: rgb(227, 134, 39);
+    border-color: rgb(227, 134, 39);
+  }
+
+.btn-outline-orange {
+    color: rgb(227, 134, 39);
+    border-color: rgb(227, 134, 39);
+  }
+  .btn-outline-orange:hover {
+    color: #fff;
+    background-color: rgb(227, 134, 39);
+    border-color: rgb(227, 134, 39);
+  }
+  .btn-check:focus + .btn-outline-orange, .btn-outline-orange:focus {
+    box-shadow: 0 0 0 0.25rem rgba(227, 134, 39, 0.5);
+  }
+  .btn-check:checked + .btn-outline-orange, .btn-check:active + .btn-outline-orange, .btn-outline-orange:active, .btn-outline-orange.active, .btn-outline-orange.dropdown-toggle.show {
+    color: #fff;
+    background-color: rgb(227, 134, 39);
+    border-color: rgb(227, 134, 39);
+  }
+  .btn-check:checked + .btn-outline-orange:focus, .btn-check:active + .btn-outline-orange:focus, .btn-outline-orange:active:focus, .btn-outline-orange.active:focus, .btn-outline-orange.dropdown-toggle.show:focus {
+    box-shadow: 0 0 0 0.25rem rgba(227, 134, 39, 0.5);
+  }
+  .btn-outline-orange:disabled, .btn-outline-orange.disabled {
+    color: rgb(227, 134, 39);
+    background-color: transparent;
+  }

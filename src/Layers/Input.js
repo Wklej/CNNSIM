@@ -9,7 +9,7 @@ const Input = ({handleSliderChange, handleModelChange, handleImageChange, setLos
     const [toggleImageButton, setToggleImageButton] = useState(1)
 
     return ( 
-        <div className="col text-center position-relative">
+        <div className="col text-center text-white position-relative bgDarkLayer">
             <div>
                 <ModelSet modelID={1} handleModelChange={handleModelChange} handleImageChange={handleImageChange}
                         check={true} setLossFunc={setLossFunc} toggle={toggleImageButton} setToggle={setToggleImageButton} />
@@ -28,7 +28,7 @@ const Input = ({handleSliderChange, handleModelChange, handleImageChange, setLos
                         <button className="btn btn-success mx-2" onClick={handleMinus}>-</button>
                 </div>
                 <div>
-                    <button className='btn btn-primary' onClick={compare}>Simulation</button>
+                    <button className='btn btn-orange' onClick={compare}>Simulation</button>
                 </div>
             </div>
         
