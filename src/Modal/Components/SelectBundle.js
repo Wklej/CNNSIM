@@ -21,7 +21,7 @@ const SelectBundle = ({values, label, update, id, optionValues}) => {
 
     return ( 
         <div className="input-group input-group-sm">
-            <button className="btn btn-outline-secondary btn-sm" onClick={handleModalShow}>{label}:</button>  
+            <button className="btn btn-outline-orange btn-sm" onClick={handleModalShow}>{label}:</button>  
             <ExplainModal show={showModal} handleClose={handleModalClose} type={label} />
             <select className="form-select" name={label} value={values[label]} onChange={(e) => update(e, id)}>
                 {options()}
