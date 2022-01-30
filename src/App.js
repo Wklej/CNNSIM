@@ -169,8 +169,10 @@ function App() {
         for (let i = 0; i < data.models.length; i++)
             if (JSON.stringify(data.models[i]) === JSON.stringify(allVals)) {
                 setOutputs({...outputs, 
-                    valAcc: Math.round(acc_loss.all[i].outputs[epochNum].accuracy * 100 * 10) / 10,
-                    valLoss: Math.round(acc_loss.all[i].outputs[epochNum].loss * 10) / 10
+                    valAcc: Math.round(acc_loss.all[i].outputs[epochNum].valAcc * 100 * 10) / 10,
+                    valLoss: Math.round(acc_loss.all[i].outputs[epochNum].valLoss * 10) / 10,
+                    testAcc: Math.round(acc_loss.all[i].outputs[epochNum].testAcc * 100 * 10) / 10,
+                    testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 10) / 10
                 })
             }
     }

@@ -20,6 +20,7 @@ const Output = ({outputs, lossFunc}) => {
     }
 
     const AccuracyChart = (type) => {
+        const data = type === 'val' ? outputs.valAcc : outputs.testAcc
         return(
             <div>
                 <a style={{
@@ -28,11 +29,11 @@ const Output = ({outputs, lossFunc}) => {
                     color: '#E38627',
                     }}>{type === 'val' ? "Val Accuracy" : "Test Accuracy"}: </a>
                 <PieChart
-                    data={[{ value: outputs.valAcc, key: 1, color: '#E38627' }]}
-                    reveal={type === 'val' ? outputs.valAcc : 69}
+                    data={[{ value: data, key: 1, color: '#E38627' }]}
+                    reveal={type === 'val' ? outputs.valAcc : outputs.testAcc}
                     lineWidth={15}
                     animate
-                    label={() => type === 'val' ? outputs.valAcc : 69}
+                    label={() => type === 'val' ? outputs.valAcc : outputs.testAcc}
                     labelStyle={{
                         fontSize: '25px',
                         fontFamily: 'sans-serif',
@@ -47,6 +48,7 @@ const Output = ({outputs, lossFunc}) => {
     }
 
     const LossChart = (type) => {
+        const data = type === 'val' ? outputs.valLoss : outputs.testLoss
         return(
             <div>
                 <a style={{
@@ -55,11 +57,11 @@ const Output = ({outputs, lossFunc}) => {
                     color: '#E38627',
                     }}>{type === 'val' ? "Val Loss" : "Test Loss"}: </a>
                 <PieChart
-                    data={[{ value: outputs.valLoss, key: 1, color: '#E38627' }]}
-                    reveal={type === 'val' ? outputs.valLoss : 19}
+                    data={[{ value: data, key: 1, color: '#E38627' }]}
+                    reveal={type === 'val' ? outputs.valLoss : outputs.testLoss}
                     lineWidth={15}
                     animate
-                    label={() => type === 'val' ? outputs.valLoss : 19}
+                    label={() => type === 'val' ? outputs.valLoss : outputs.testLoss}
                     labelStyle={{
                         fontSize: '25px',
                         fontFamily: 'sans-serif',
