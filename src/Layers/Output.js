@@ -4,7 +4,7 @@ import { paramContext } from "../paramContext";
 import { testContext } from "../testContext";
 import SelectBundle from '../Modal/Components/SelectBundle';
 
-const Output = ({acc, loss, lossFunc}) => {
+const Output = ({outputs, lossFunc}) => {
         
     const layerType = 'output'
     const id = null
@@ -28,11 +28,11 @@ const Output = ({acc, loss, lossFunc}) => {
                     color: '#E38627',
                     }}>{type === 'val' ? "Val Accuracy" : "Test Accuracy"}: </a>
                 <PieChart
-                    data={[{ value: acc, key: 1, color: '#E38627' }]}
-                    reveal={type === 'val' ? acc : 69}
+                    data={[{ value: outputs.valAcc, key: 1, color: '#E38627' }]}
+                    reveal={type === 'val' ? outputs.valAcc : 69}
                     lineWidth={15}
                     animate
-                    label={() => type === 'val' ? acc : 69}
+                    label={() => type === 'val' ? outputs.valAcc : 69}
                     labelStyle={{
                         fontSize: '25px',
                         fontFamily: 'sans-serif',
@@ -55,11 +55,11 @@ const Output = ({acc, loss, lossFunc}) => {
                     color: '#E38627',
                     }}>{type === 'val' ? "Val Loss" : "Test Loss"}: </a>
                 <PieChart
-                    data={[{ value: loss, key: 1, color: '#E38627' }]}
-                    reveal={type === 'val' ? loss : 19}
+                    data={[{ value: outputs.valLoss, key: 1, color: '#E38627' }]}
+                    reveal={type === 'val' ? outputs.valLoss : 19}
                     lineWidth={15}
                     animate
-                    label={() => type === 'val' ? loss : 19}
+                    label={() => type === 'val' ? outputs.valLoss : 19}
                     labelStyle={{
                         fontSize: '25px',
                         fontFamily: 'sans-serif',

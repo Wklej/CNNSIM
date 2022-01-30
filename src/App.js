@@ -159,16 +159,19 @@ function App() {
         }
     }
 
-    const [accuracy, setAccuracy] = useState(0)
-    const [loss, setLoss] = useState(0)
+    const [outputs, setOutputs] = useState({
+        valAcc: 0, testAcc: 0, valLoss: 0, testLoss: 0
+    })
 
     const compare_json = () => {
         const data = models_json
 
         for (let i = 0; i < data.models.length; i++)
             if (JSON.stringify(data.models[i]) === JSON.stringify(allVals)) {
-                setAccuracy(Math.round(acc_loss.all[i].outputs[epochNum].accuracy * 100 * 10) / 10)
-                setLoss(Math.round(acc_loss.all[i].outputs[epochNum].loss * 10) / 10)
+                setOutputs({...outputs, 
+                    valAcc: Math.round(acc_loss.all[i].outputs[epochNum].accuracy * 100 * 10) / 10,
+                    valLoss: Math.round(acc_loss.all[i].outputs[epochNum].loss * 10) / 10
+                })
             }
     }
 
@@ -182,7 +185,7 @@ function App() {
                     <epochsContext.Provider value={epochs[epoch]}>
                         <Workflow numLayers={numLayers} handleSliderChange={handleSliderChange} handleImageChange={handleImageChange}
                                   handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
-                                  setDefautFully={setDefautFully} accuracy={accuracy} loss={loss} handlePlus={handlePlus}
+                                  setDefautFully={setDefautFully} outputs={outputs} handlePlus={handlePlus}
                                     handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json}
                         />
                     </epochsContext.Provider>

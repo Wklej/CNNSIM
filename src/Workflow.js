@@ -7,7 +7,7 @@ import ExplainModal from './Modal/ExplainModal';
 import { useState } from "react";
 
 const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc,
-                    setLossFunc, setDefautFully, accuracy, loss, handlePlus, handleMinus, status, compare}) => {
+                    setLossFunc, setDefautFully, outputs, handlePlus, handleMinus, status, compare}) => {
 
   const [showFlat, setFlatShow] = useState(false);
 
@@ -46,7 +46,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
               <Fully setDefautFully={setDefautFully} />
             </div>
             <div className="col-3">
-              <Output acc={accuracy} loss={loss} lossFunc={lossFunc} />
+              <Output outputs={outputs} lossFunc={lossFunc} />
             </div>
 
           </div>
