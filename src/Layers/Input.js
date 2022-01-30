@@ -10,25 +10,43 @@ const Input = ({handleSliderChange, handleModelChange, handleImageChange, setLos
 
     return ( 
         <div className="col text-center text-white position-relative bgDarkLayer">
-            <div>
-                <ModelSet modelID={1} handleModelChange={handleModelChange} handleImageChange={handleImageChange}
-                        check={true} setLossFunc={setLossFunc} toggle={toggleImageButton} setToggle={setToggleImageButton} />
-                <ModelSet modelID={2} handleModelChange={handleModelChange} handleImageChange={handleImageChange}
-                        setLossFunc={setLossFunc} toggle={toggleImageButton} setToggle={setToggleImageButton} />
+            
+            <div className="card border-dark text-center bgDarkCard mx-2">
+                <div className="card-header">
+                    Input
+                </div>
+                <div className="card-body">
+                    <ul className="list-group">
+                            <ModelSet modelID={1} handleModelChange={handleModelChange} handleImageChange={handleImageChange}
+                                    check={true} setLossFunc={setLossFunc} toggle={toggleImageButton} setToggle={setToggleImageButton} />
+                            <ModelSet modelID={2} handleModelChange={handleModelChange} handleImageChange={handleImageChange}
+                                    setLossFunc={setLossFunc} toggle={toggleImageButton} setToggle={setToggleImageButton} />
+                    </ul>
+                </div>
             </div>
-            <div className="position-absolute bottom-0">
-                <div>
-                    Mid Layers count:
-                    <Slider min={2} max={4} dots={true} marks={{2:2, 3:3, 4:4}}
-                            value={numLayers} onChange={handleSliderChange} />
-                </div>
-                <div className="my-4">
-                    Current epoch: {status}
-                        <button className="btn btn-success mx-2" onClick={handlePlus}>+</button>
-                        <button className="btn btn-success mx-2" onClick={handleMinus}>-</button>
-                </div>
-                <div>
-                    <button className='btn btn-orange' onClick={compare}>Simulation</button>
+
+            <div className="position-absolute bottom-0 mb-2">
+                <div className="card border-dark text-center bgDarkCard mx-1">
+                    <div className="card-header">
+                        Settings
+                    </div>
+                    <div className="card-body">
+                        <div>
+                            Mid Layers count:
+                            <Slider min={2} max={4} dots={true} marks={{2:2, 3:3, 4:4}}
+                                    value={numLayers} onChange={handleSliderChange} />
+                        </div>
+                        <div className="my-4">
+                            Current epoch: {status}
+                                <button className="btn btn-orange mx-2" onClick={handleMinus}>-</button>
+                                <button className="btn btn-orange mx-2" onClick={handlePlus}>+</button>
+                        </div>
+                        <div className="card-footer">
+                            <div>
+                                <button className='btn btn-orange btn-lg' onClick={compare}>Simulation</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         
