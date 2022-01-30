@@ -13,9 +13,7 @@ const MidLayer = ({num}) => {
     }
 
     return (
-        // <div className="row min-vh-100 align-items-center">
-            divs()
-        // </div>
+        divs()
      );
 }
  

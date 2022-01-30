@@ -33,7 +33,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
             
             {/* mid layers */}
             <div className="col-4 bgDarkLayer">
-              <div className="row min-vh-100 align-items-center">
+              <div className="row min-vh-100 justify-content-center align-items-center">
                   <MidLayer num={numLayers} />
                   {/* <button className="btn btn-primary mt-2" onClick={handleFeaturesShow} >Features</button>
                   <Features show={showFeatures} handleClose={handleFeaturesClose} numLayers={numLayers} /> */}
