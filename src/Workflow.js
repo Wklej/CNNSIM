@@ -43,7 +43,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
               <button className="btn btn-outline-orange flattenButton bgDarkLayer" onClick={handleFlatShow}>{"FLATTEN"}</button>
               <ExplainModal show={showFlat} handleClose={handleFlatClose} type={"flat"} />
             </div>
-            <div className="col me-3 bgDarkLayer">
+            <div className="col me-3 bgDarkLayer ">
               <Fully setDefautFully={setDefautFully} />
             </div>
             <div className="col-3 bgDarkLayer">

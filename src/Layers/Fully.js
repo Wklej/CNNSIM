@@ -36,8 +36,8 @@ const Fully = ({setDefautFully}) => {
 
 
     return ( 
-        <div className="col">
-            <div className="card border-dark text-center bgDarkCard" >
+        <div className="d-flex min-vh-100 justify-content-center align-items-center">
+        <div className="card border-dark text-center bgDarkCard" >
                 <div className="card-body">
                     <ul className="list-group">
                         { nodes() }
@@ -48,7 +48,7 @@ const Fully = ({setDefautFully}) => {
                     <button className="btn btn-outline-orange" onClick={handleMinus}>-</button>
                 </div>
             </div>
-        </div>
+            </div>
      );
 }
  
