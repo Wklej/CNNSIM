@@ -51,7 +51,7 @@ const LayerCard = ({id, ifLast}) => {
     }
 
     return ( 
-        <div className="col">
+        <div className="col-6">
             <div className="card border-dark text-center bgDarkCard" >
                 <div className="card-body">
                     <ul className="list-group">

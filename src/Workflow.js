@@ -33,17 +33,17 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
             
             {/* mid layers */}
             <div className="col-4 bgDarkLayer">
-              <div className="row">
+              <div className="row min-vh-100 justify-content-center align-items-center">
                   <MidLayer num={numLayers} />
                   {/* <button className="btn btn-primary mt-2" onClick={handleFeaturesShow} >Features</button>
                   <Features show={showFeatures} handleClose={handleFeaturesClose} numLayers={numLayers} /> */}
               </div>
             </div>
             <div className="col-1">
-              <button className="btn btn-outline-orange flattenButton bgDarkLayer" onClick={handleFlatShow}>{"FLATTEN"}</button>
+              <button className="btn btn-outline-orange flattenButton bgDarkCard" onClick={handleFlatShow}>{"FLATTEN"}</button>
               <ExplainModal show={showFlat} handleClose={handleFlatClose} type={"flat"} />
             </div>
-            <div className="col me-3 bgDarkLayer">
+            <div className="col me-3 bgDarkLayer ">
               <Fully setDefautFully={setDefautFully} />
             </div>
             <div className="col-3 bgDarkLayer">

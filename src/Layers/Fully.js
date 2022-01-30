@@ -36,19 +36,21 @@ const Fully = ({setDefautFully}) => {
 
 
     return ( 
-        <div className="col">
-            <div className="card border-dark text-center bgDarkCard" >
-                <div className="card-body">
-                    <ul className="list-group">
-                        { nodes() }
-                    </ul>
-                </div>
-                <div className="card-footer">
-                    <button className="btn btn-outline-orange me-2" onClick={handlePlus}>+</button>
-                    <button className="btn btn-outline-orange" onClick={handleMinus}>-</button>
+        <div className="row min-vh-100 align-items-center">
+            <div className="col">
+                <div className="card border-dark text-center bgDarkCard" >
+                        <div className="card-body">
+                            <ul className="list-group">
+                                { nodes() }
+                            </ul>
+                        </div>
+                        <div className="card-footer">
+                            <button className="btn btn-outline-orange me-2" onClick={handlePlus}>+</button>
+                            <button className="btn btn-outline-orange" onClick={handleMinus}>-</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
      );
 }
  
