@@ -38,8 +38,8 @@ const Input = ({handleSliderChange, handleModelChange, handleImageChange, setLos
                         </div>
                         <div className="my-4">
                             Current epoch: {status}
-                                <button className="btn btn-orange mx-2" onClick={handleMinus}>-</button>
-                                <button className="btn btn-orange mx-2" onClick={handlePlus}>+</button>
+                                <button className="btn btn-outline-orange mx-2" onClick={handleMinus}>-</button>
+                                <button className="btn btn-outline-orange mx-2" onClick={handlePlus}>+</button>
                         </div>
                         <div className="card-footer">
                             <div>
