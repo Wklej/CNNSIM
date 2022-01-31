@@ -8,6 +8,10 @@ const Input = ({handleSliderChange, handleModelChange, handleImageChange, setLos
 
     const [toggleImageButton, setToggleImageButton] = useState(1)
 
+    const orangeBg = {backgroundColor: "#e38627"}
+    const dotStyle = {backgroundColor: "#212121", border: "solid 2px #212121"}
+    const handleStyle = {backgroundColor: "#e38627", border: "solid 2px #212121"}
+
     return ( 
         <div className="col text-center text-white position-relative bgDarkLayer">
             
@@ -33,7 +37,8 @@ const Input = ({handleSliderChange, handleModelChange, handleImageChange, setLos
                     <div className="card-body">
                         <div>
                             Mid Layers count:
-                            <Slider min={2} max={4} dots={true} marks={{2:2, 3:3, 4:4}}
+                            <Slider railStyle={orangeBg} trackStyle={orangeBg} dotStyle={dotStyle} handleStyle={handleStyle}
+                                    min={2} max={4} dots={true} marks={{2:2, 3:3, 4:4}}
                                     value={numLayers} onChange={handleSliderChange} />
                         </div>
                         <div className="my-4">
