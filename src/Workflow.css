@@ -18,19 +18,19 @@
   }
   .btn-orange:hover {
     color: #fff;
-    background-color: rgb(197, 123, 48);
-    border-color: rgb(197, 123, 48);
+    background-color: rgb(227, 134, 39);
+    border-color: rgb(227, 134, 39);
   }
   .btn-check:focus + .btn-orange, .btn-orange:focus {
     color: #fff;
-    background-color: rgb(197, 123, 48);
-    border-color: rgb(197, 123, 48);
+    background-color: rgb(227, 134, 39);
+    border-color: rgb(227, 134, 39);
     box-shadow: 0 0 0 0.25rem rgba(197, 123, 48, 0.5);
   }
   .btn-check:checked + .btn-orange, .btn-check:active + .btn-orange, .btn-orange:active, .btn-orange.active, .show > .btn-orange.dropdown-toggle {
     color: #fff;
-    background-color: rgb(197, 123, 48);
-    border-color: rgb(197, 123, 48);
+    background-color: rgb(227, 134, 39);
+    border-color: rgb(227, 134, 39);
   }
   .btn-check:checked + .btn-orange:focus, .btn-check:active + .btn-orange:focus, .btn-orange:active:focus, .btn-orange.active:focus, .show > .btn-orange.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.25rem rgba(197, 123, 48, 0.5);
@@ -78,7 +78,8 @@
 }
 
 .nav-tabs {
-    border-bottom: rgb(227, 134, 39);
+    border-bottom: rgb(227, 134, 39) !important
+    /* color: rgb(227, 134, 39) !important; */
 }
 
 .nav-tabs .nav-link:hover{
@@ -86,24 +87,24 @@
 }
 
 .tabFont {
-    color:rgb(197, 123, 48)
+    color:rgb(227, 134, 39) !important
 }
 
 .form-check-input:checked {
-    background-color: rgb(197, 123, 48);
+    background-color: rgb(227, 134, 39);
     border: 1px solid #303030;
 }
 
 .form-check-input {
     background-color: transparent;
-    border: 1px solid rgb(197, 123, 48);
+    border: 1px solid rgb(227, 134, 39);
     box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0) !important;
 }
 
 .form-select {
     background-color: transparent;
-    border-color: rgb(197, 123, 48);
-    color: rgb(197, 123, 48);
+    border-color: rgb(227, 134, 39);
+    color: rgb(227, 134, 39);
     box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0) !important; 
 }
 
@@ -112,9 +113,9 @@
 }
 
 .modal-header {
-  border-bottom: 2px solid rgb(227, 134, 39);
+  border-bottom: 1px solid rgb(227, 134, 39);
 }
 
 .modal-footer {
-  border-top: 2px solid rgb(227, 134, 39);
+  border-top: 1px solid rgb(227, 134, 39);
 }

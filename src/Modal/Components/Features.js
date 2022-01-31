@@ -89,13 +89,13 @@ const Features = ({show, handleClose, idx}) => {
    return ( 
         <Modal show={show} onHide={handleClose} size='lg'>
             <Tabs activeKey={type} onSelect={(e) => setType(e)}>
-                <Tab eventKey="activations" title="Activations">
+                <Tab tabClassName='tabFont' eventKey="activations" title="Activations">
                     { bodyType() }
                 </Tab>
-                <Tab eventKey="filters" title="Filters">
+                <Tab tabClassName='tabFont' eventKey="filters" title="Filters">
                     { bodyType() }
                 </Tab>   
-                <Tab eventKey="comparison" title="Comparison">
+                <Tab tabClassName='tabFont' eventKey="comparison" title="Comparison">
                     { epoch }
                 </Tab>   
             </Tabs>
