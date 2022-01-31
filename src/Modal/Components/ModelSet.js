@@ -8,6 +8,9 @@ import letter1 from '../../Images/modelImages/1.png'
 import letter2 from '../../Images/modelImages/2.png'
 import letter3 from '../../Images/modelImages/3.png'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDog, faFont, faImage } from "@fortawesome/free-solid-svg-icons";
+
 const ModelSet = ({modelID, handleModelChange, handleImageChange, setLossFunc, toggle, setToggle}) => {
 
     const [show, setShow] = useState(false);
@@ -38,8 +41,12 @@ const ModelSet = ({modelID, handleModelChange, handleImageChange, setLossFunc, t
         <div className="btn-group" role="group">
             <input className="btn-check" type="radio" name="flexRadio" defaultChecked={modelID === 1}
                     id={modelID} onClick={(e) => update(e)} />
-            <label className="btn btn-outline-orange mb-2" htmlFor={modelID}>Set {modelID}</label>
-            <button className="btn btn-outline-orange mb-2" onClick={handleShow} disabled={toggle !== modelID}>img</button>
+            <label className="btn btn-outline-orange mb-2" htmlFor={modelID}>
+                <FontAwesomeIcon icon={modelID === 1 ? faDog : faFont} />    
+            </label>
+            <button className="btn btn-outline-orange mb-2" onClick={handleShow} disabled={toggle !== modelID}>
+                <FontAwesomeIcon icon={faImage} />    
+            </button>
             <ImageModal show={show} handleClose={handleClose} 
                         handleImageChange={handleImageChange} images={imgs[modelID]} />
         </div>
