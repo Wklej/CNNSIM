@@ -33,7 +33,8 @@ const Input = ({handleSliderChange, handleModelChange, handleImageChange, setLos
                     <div className="card-body">
                         <div>
                             Mid Layers count:
-                            <Slider min={2} max={4} dots={true} marks={{2:2, 3:3, 4:4}}
+                            <Slider railStyle={{backgroundColor: "#e38627"}} trackStyle={{backgroundColor: "#e38627"}}
+                                    min={2} max={4} dots={true} marks={{2:2, 3:3, 4:4}}
                                     value={numLayers} onChange={handleSliderChange} />
                         </div>
                         <div className="my-4">
