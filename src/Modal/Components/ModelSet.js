@@ -42,10 +42,10 @@ const ModelSet = ({modelID, handleModelChange, handleImageChange, setLossFunc, t
             <input className="btn-check" type="radio" name="flexRadio" defaultChecked={modelID === 1}
                     id={modelID} onClick={(e) => update(e)} />
             <label className="btn btn-outline-orange mb-2" htmlFor={modelID}>
-                <FontAwesomeIcon icon={modelID === 1 ? faDog : faFont} />    
+                <FontAwesomeIcon icon={modelID === 1 ? faDog : faFont} size="3x" />    
             </label>
             <button className="btn btn-outline-orange mb-2" onClick={handleShow} disabled={toggle !== modelID}>
-                <FontAwesomeIcon icon={faImage} />    
+                <FontAwesomeIcon icon={faImage} size="3x" />    
             </button>
             <ImageModal show={show} handleClose={handleClose} 
                         handleImageChange={handleImageChange} images={imgs[modelID]} />
