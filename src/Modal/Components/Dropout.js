@@ -38,6 +38,10 @@ const Dropout = ({id}) => {
         }
     }
     
+    const orangeBg = {backgroundColor: "#e38627"}
+    const dotStyle = {backgroundColor: "#212121", border: "solid 2px #212121"}
+    const handleStyle = {backgroundColor: "#e38627", border: "solid 2px #212121"}
+
     return ( 
         <div>
         <div className="btn-group" role="group">
@@ -50,7 +54,8 @@ const Dropout = ({id}) => {
         </div>
             <Collapse in={open}>
                 <div id="collapseImages">
-                    <Slider min={1} max={2} dots={true} marks={{1:20, 2:40}}
+                    <Slider railStyle={orangeBg} trackStyle={orangeBg} dotStyle={dotStyle} handleStyle={handleStyle}
+                            min={1} max={2} dots={true} marks={{1:20, 2:40}}
                             value={values / 20} onChange={(e) => update(e, id)} />
                     {/* Empty paragraph to avoid numbers to overlap switch */}
                     <p></p>
