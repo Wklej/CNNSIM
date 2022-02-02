@@ -18,7 +18,7 @@
   }
   .btn-orange:hover {
     color: #fff;
-    background-color: rgb(227, 134, 39);
+    background-color: rgb(253, 166, 78);
     border-color: rgb(227, 134, 39);
   }
   .btn-check:focus + .btn-orange, .btn-orange:focus {
