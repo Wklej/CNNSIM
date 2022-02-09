@@ -50,11 +50,7 @@ function App() {
     }
     
     const handleImageChange = (e) => {
-        const temp = allVals
-        
-        temp.input.image = document.getElementById(e.target.id).id
-        
-        setAllVals(temp)
+        setImage(document.getElementById(e.target.id).id)
     }
 
     const [lossFunc, setLossFunc] = useState('binary_crossentropy')
@@ -80,13 +76,15 @@ function App() {
             },
         ],
         output: {loss: lossFunc, optimizer: 'Adam'},
-        input: {model: '1', image: '4'},
+        input: {model: '1'},
         fully: [
             {filters: '128', activation: 'relu'},
             {filters: null, activation: null},
             {filters: '2', activation: 'sigmoid'}
         ]
     })
+
+    const [image, setImage] = useState('4')
 
     // Utils for tracking slider value
     const [numLayers, setNumLayers] = useState(2)
@@ -143,6 +141,8 @@ function App() {
             return allVals.fully[id]
         else if(layerName === 'Default')
             return allVals.layers[id]
+        else if(layerName === 'image')
+            return image
         
         else return allVals.layers[id][layerName]
     }
