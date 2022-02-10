@@ -98,6 +98,7 @@ const Features = ({show, handleClose, idx}) => {
                 <Modal.Body>
                     {/* <Karuzela content={getImages(getDir(type))} idx={idx} /> */}
                     <Karuzela content={getImg(getValues(null, 'model'), epoch)} idx={idx} />
+                    {getValues(null, 'model')}
                 </Modal.Body>
             )    
         }
