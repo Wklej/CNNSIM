@@ -34,20 +34,6 @@ function App() {
             setEpochNum(epochNum - 1)
         }
     }
-
-    
-    const handleModelChange = (e) => {
-        const temp = allVals
-        
-        temp.input.model = document.getElementById(e.target.id).id
-        
-        if (temp.input.model === '1')
-            temp.output.loss = 'binary_crossentropy'
-        else 
-            temp.output.loss = 'categorical_crossentropy'
-        
-        setAllVals(temp)
-    }
     
     const handleImageChange = (e) => {
         const temp = allVals
@@ -104,9 +90,13 @@ function App() {
                 }
             }
         } else if (next_numLayers > numLayers) {
+            const convDefault = temp.input.model === '1' ?
+                {filters: '16', kernel_size: '(2, 2)', activation: 'relu'} :
+                {filters: '4', kernel_size: '(2, 2)', activation: 'relu'}
+
             for (let i = 0; i < next_numLayers - numLayers; i++) {
                 temp.layers[numLayers + i] = {
-                    conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
+                    conv: convDefault,
                     pool: {pool_size: '(2, 2)', stride: '2'},
                     drop: 20
                 }
@@ -115,6 +105,37 @@ function App() {
         
         setAllVals(temp)
         setNumLayers(e.valueOf())
+    }
+
+    const handleModelChange = (e) => {
+        const temp = allVals
+        
+        temp.input.model = document.getElementById(e.target.id).id
+        
+        if (temp.input.model === '1') {
+            temp.output.loss = 'binary_crossentropy'
+            
+            for (let i = 0; i < numLayers; ++i) {
+                temp.layers[i] = {
+                    conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
+                    pool: {pool_size: '(2, 2)', stride: '2'},
+                    drop: 20
+                }                
+            }
+        }
+        else {
+            temp.output.loss = 'categorical_crossentropy'
+            
+            for (let i = 0; i < numLayers; ++i) {
+                temp.layers[i] = {
+                    conv: {filters: '4', kernel_size: '(2, 2)', activation: 'relu'},
+                    pool: {pool_size: '(2, 2)', stride: '2'},
+                    drop: 20
+                }                
+            }
+        }
+
+        setAllVals(temp)
     }
 
     const handleLayerChange = (e, id, layerName) => {
