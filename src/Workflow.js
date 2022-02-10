@@ -5,6 +5,7 @@ import Fully from './Layers/Fully';
 import Features from './Modal/Components/Features'
 import ExplainModal from './Modal/ExplainModal';
 import { useState } from "react";
+import './Workflow.css'
 
 const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc,
                     setLossFunc, setDefautFully, outputs, handlePlus, handleMinus, status, compare}) => {
@@ -21,7 +22,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
   // const handleFeaturesClose = () => setShowFeatures(false);
 
     return ( 
-        <div className="container-fluid min-vh-100">
+        <div className="container-fluid min-vh-100 bgDark">
           <div className="row flex-nowrap">
             <div className="col-2 d-flex justify-content-center">
               {/* LEFT PANEL */}
@@ -31,21 +32,22 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
             </div>
             
             {/* mid layers */}
-            <div className="col-4">
-              <div className="row">
+            <div className="col-4 bgDarkLayer">
+              <div className="row min-vh-100 justify-content-center align-items-center">
                   <MidLayer num={numLayers} />
                   {/* <button className="btn btn-primary mt-2" onClick={handleFeaturesShow} >Features</button>
                   <Features show={showFeatures} handleClose={handleFeaturesClose} numLayers={numLayers} /> */}
               </div>
             </div>
-            <div className="col-1 me-4">
-              <button className="btn btn-outline-secondary flattenButton" onClick={handleFlatShow}>{"FLATTEN"}</button>
+            <div className="col-1">
+              <button className="btn btn-outline-orange flattenButton bgDarkCard" onClick={handleFlatShow}>{"FLATTEN"}</button>
               <ExplainModal show={showFlat} handleClose={handleFlatClose} type={"flat"} />
             </div>
-            <div className="col me-4">
+            <div className="col me-3 bgDarkLayer ">
               <Fully setDefautFully={setDefautFully} />
             </div>
-            <div className="col-3">
+
+            <div className="col-3 bgDarkLayer">
               <Output outputs={outputs} lossFunc={lossFunc} />
             </div>
 

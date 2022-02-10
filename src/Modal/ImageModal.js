@@ -5,7 +5,9 @@ const ImageModal = ({show, handleClose, handleImageChange, images}) => {
     return ( 
         <>
             <Modal show={show} onHide={handleClose} size='lg'>
-                <Modal.Header>Image selection</Modal.Header>
+                <Modal.Header>
+                    Select image to process
+                </Modal.Header>
                 <Modal.Body>
                     <div className="d-flex justify-content-evenly">
                         <ImageSelection handleChange={handleImageChange} handleClose={handleClose}
@@ -17,7 +19,7 @@ const ImageModal = ({show, handleClose, handleImageChange, images}) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    <button className="btn btn-primary" onClick={handleClose}>
+                    <button className="btn btn-orange" onClick={handleClose}>
                         Close
                     </button>
                 </Modal.Footer>

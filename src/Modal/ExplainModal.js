@@ -13,7 +13,7 @@ const ExplainModal = ({show, handleClose, type}) => {
                     </Tab>
                 </Tabs>
                 <Modal.Footer>
-                    <button className="btn btn-primary" onClick={handleClose}>
+                    <button className="btn btn-orange" onClick={handleClose}>
                         Close
                     </button>
                 </Modal.Footer>

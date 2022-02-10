@@ -38,19 +38,24 @@ const Dropout = ({id}) => {
         }
     }
     
+    const orangeBg = {backgroundColor: "#e38627"}
+    const dotStyle = {backgroundColor: "#212121", border: "solid 2px #212121"}
+    const handleStyle = {backgroundColor: "#e38627", border: "solid 2px #212121"}
+
     return ( 
         <div>
         <div className="btn-group" role="group">
-            <button className="btn btn-primary" name={'drop' + id} disabled={button_disabled} onClick={handleModalShow}>Dropout</button>
+            <button className="btn btn-orange" name={'drop' + id} disabled={button_disabled} onClick={handleModalShow}>Dropout</button>
             <ExplainModal show={showModal} handleClose={handleModalClose} type={'dropout'} />
-            <button className="btn btn-primary" aria-controls="collapseImages" disabled={button_disabled}
+            <button className="btn btn-orange" aria-controls="collapseImages" disabled={button_disabled}
                     aria-expanded={open} name={'drop' + id} id={'drop' + id} onClick={() => setOpen(!open)}>
                 x
             </button>
         </div>
             <Collapse in={open}>
                 <div id="collapseImages">
-                    <Slider min={1} max={2} dots={true} marks={{1:20, 2:40}}
+                    <Slider railStyle={orangeBg} trackStyle={orangeBg} dotStyle={dotStyle} handleStyle={handleStyle}
+                            min={1} max={2} dots={true} marks={{1:20, 2:40}}
                             value={values / 20} onChange={(e) => update(e, id)} />
                     {/* Empty paragraph to avoid numbers to overlap switch */}
                     <p></p>

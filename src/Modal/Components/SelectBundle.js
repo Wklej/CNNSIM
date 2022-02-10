@@ -12,16 +12,23 @@ const SelectBundle = ({values, label, update, id, optionValues}) => {
 
         optionValues.map(v => {
             arr.push(
-                <option>{v}</option>
+                <option className='optionStyle'>{v}</option>
             )
         })
 
         return arr
     }
 
+    const buttonStyle = {
+        fontSize: "x-large",
+        fontWeight: "bold"
+    }
+
     return ( 
-        <div className="input-group input-group-sm">
-            <button className="btn btn-outline-secondary btn-sm" onClick={handleModalShow}>{label}:</button>  
+        <div className="input-group input-group-lg mb-2">
+            <button className="btn btn-outline-orange" onClick={handleModalShow}>
+                <span style={buttonStyle}>{label}:</span>
+            </button>  
             <ExplainModal show={showModal} handleClose={handleModalClose} type={label} />
             <select className="form-select" name={label} value={values[label]} onChange={(e) => update(e, id)}>
                 {options()}

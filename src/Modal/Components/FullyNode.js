@@ -9,7 +9,7 @@ const FullyNode = ({id}) => {
 
     return ( 
         <div>
-            <button className="btn btn-primary mb-2" onClick={handleNodeShow} id={id}>{"Node " + id}</button>
+            <button className="btn btn-orange btn-lg nodeStyle mb-2" onClick={handleNodeShow} id={id}>{"Node " + id}</button>
             <LayerModal show={showNode} handleClose={handleNodeClose} body={"fully"} id={id} />
         </div>
      );
