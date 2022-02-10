@@ -18,6 +18,7 @@ function App() {
     const [epoch, setEpoch] = useState(0)
     const [epochNum, setEpochNum] = useState(0)
 
+    const [modelNumber, setModelNumber] = useState(0)
 
     const handlePlus = () => {
         const x = epoch + 1
@@ -34,27 +35,9 @@ function App() {
             setEpochNum(epochNum - 1)
         }
     }
-
-    
-    const handleModelChange = (e) => {
-        const temp = allVals
-        
-        temp.input.model = document.getElementById(e.target.id).id
-        
-        if (temp.input.model === '1')
-            temp.output.loss = 'binary_crossentropy'
-        else 
-            temp.output.loss = 'categorical_crossentropy'
-        
-        setAllVals(temp)
-    }
     
     const handleImageChange = (e) => {
-        const temp = allVals
-        
-        temp.input.image = document.getElementById(e.target.id).id
-        
-        setAllVals(temp)
+        setImage(document.getElementById(e.target.id).id)
     }
 
     const [lossFunc, setLossFunc] = useState('binary_crossentropy')
@@ -80,13 +63,15 @@ function App() {
             },
         ],
         output: {loss: lossFunc, optimizer: 'Adam'},
-        input: {model: '1', image: '4'},
+        input: {model: '1'},
         fully: [
             {filters: '128', activation: 'relu'},
             {filters: null, activation: null},
             {filters: '2', activation: 'sigmoid'}
         ]
     })
+
+    const [image, setImage] = useState('4')
 
     // Utils for tracking slider value
     const [numLayers, setNumLayers] = useState(2)
@@ -104,9 +89,13 @@ function App() {
                 }
             }
         } else if (next_numLayers > numLayers) {
+            const convDefault = temp.input.model === '1' ?
+                {filters: '16', kernel_size: '(2, 2)', activation: 'relu'} :
+                {filters: '4', kernel_size: '(2, 2)', activation: 'relu'}
+
             for (let i = 0; i < next_numLayers - numLayers; i++) {
                 temp.layers[numLayers + i] = {
-                    conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
+                    conv: convDefault,
                     pool: {pool_size: '(2, 2)', stride: '2'},
                     drop: 20
                 }
@@ -115,6 +104,37 @@ function App() {
         
         setAllVals(temp)
         setNumLayers(e.valueOf())
+    }
+
+    const handleModelChange = (e) => {
+        const temp = allVals
+        
+        temp.input.model = document.getElementById(e.target.id).id
+        
+        if (temp.input.model === '1') {
+            temp.output.loss = 'binary_crossentropy'
+            
+            for (let i = 0; i < numLayers; ++i) {
+                temp.layers[i] = {
+                    conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
+                    pool: {pool_size: '(2, 2)', stride: '2'},
+                    drop: 20
+                }                
+            }
+        }
+        else {
+            temp.output.loss = 'categorical_crossentropy'
+            
+            for (let i = 0; i < numLayers; ++i) {
+                temp.layers[i] = {
+                    conv: {filters: '4', kernel_size: '(2, 2)', activation: 'relu'},
+                    pool: {pool_size: '(2, 2)', stride: '2'},
+                    drop: 20
+                }                
+            }
+        }
+
+        setAllVals(temp)
     }
 
     const handleLayerChange = (e, id, layerName) => {
@@ -143,6 +163,10 @@ function App() {
             return allVals.fully[id]
         else if(layerName === 'Default')
             return allVals.layers[id]
+        else if(layerName === 'image')
+            return image
+        else if(layerName === 'model')
+            return modelNumber
         
         else return allVals.layers[id][layerName]
     }
@@ -159,18 +183,24 @@ function App() {
         }
     }
 
-    const [accuracy, setAccuracy] = useState(0)
-    const [loss, setLoss] = useState(0)
+    const [outputs, setOutputs] = useState({
+        valAcc: 0, testAcc: 0, valLoss: 0, testLoss: 0
+    })
 
     const compare_json = () => {
         const data = models_json
 
         for (let i = 0; i < data.models.length; i++)
             if (JSON.stringify(data.models[i]) === JSON.stringify(allVals)) {
-                setAccuracy(Math.round(acc_loss.all[i].outputs[epochNum].accuracy * 100 * 10) / 10)
-                setLoss(Math.round(acc_loss.all[i].outputs[epochNum].loss * 10) / 10)
+                setOutputs({...outputs, 
+                    valAcc: Math.round(acc_loss.all[i].outputs[epochNum].valAcc * 100 * 10) / 10,
+                    valLoss: Math.round(acc_loss.all[i].outputs[epochNum].valLoss * 10) / 10,
+                    testAcc: Math.round(acc_loss.all[i].outputs[epochNum].testAcc * 100 * 10) / 10,
+                    testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 10) / 10
+                })
+                setModelNumber(i)
             }
-    }
+        }
 
     return (
         <>
@@ -182,7 +212,7 @@ function App() {
                     <epochsContext.Provider value={epochs[epoch]}>
                         <Workflow numLayers={numLayers} handleSliderChange={handleSliderChange} handleImageChange={handleImageChange}
                                   handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
-                                  setDefautFully={setDefautFully} accuracy={accuracy} loss={loss} handlePlus={handlePlus}
+                                  setDefautFully={setDefautFully} outputs={outputs} handlePlus={handlePlus}
                                     handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json}
                         />
                     </epochsContext.Provider>

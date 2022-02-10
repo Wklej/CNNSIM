@@ -8,7 +8,7 @@ import { useState } from "react";
 import './Workflow.css'
 
 const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc,
-                    setLossFunc, setDefautFully, accuracy, loss, handlePlus, handleMinus, status, compare}) => {
+                    setLossFunc, setDefautFully, outputs, handlePlus, handleMinus, status, compare}) => {
 
   const [showFlat, setFlatShow] = useState(false);
 
@@ -46,8 +46,9 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
             <div className="col me-3 bgDarkLayer ">
               <Fully setDefautFully={setDefautFully} />
             </div>
+
             <div className="col-3 bgDarkLayer">
-              <Output acc={accuracy} loss={loss} lossFunc={lossFunc} />
+              <Output outputs={outputs} lossFunc={lossFunc} />
             </div>
 
           </div>
