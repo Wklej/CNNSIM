@@ -20,7 +20,7 @@
 				}
 			],
 			"output": {"loss": "binary_crossentropy", "optimizer": "Adam"},
-			"input": {"model": "1", "image": "4"},
+			"input": {"model": "1"},
 			"fully": [
 				{"filters": "128", "activation": "relu"},
 				{"filters": null, "activation": null},
@@ -47,7 +47,7 @@
 				}
 			],
 			"output": {"loss": "categorical_crossentropy", "optimizer": "Adam"},
-			"input": {"model": "2", "image": "4"},
+			"input": {"model": "2"},
 			"fully": [
 				{"filters": "128", "activation": "relu"},
 				{"filters": null, "activation": null},

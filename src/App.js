@@ -18,6 +18,7 @@ function App() {
     const [epoch, setEpoch] = useState(0)
     const [epochNum, setEpochNum] = useState(0)
 
+    const [modelNumber, setModelNumber] = useState(0)
 
     const handlePlus = () => {
         const x = epoch + 1
@@ -36,11 +37,7 @@ function App() {
     }
     
     const handleImageChange = (e) => {
-        const temp = allVals
-        
-        temp.input.image = document.getElementById(e.target.id).id
-        
-        setAllVals(temp)
+        setImage(document.getElementById(e.target.id).id)
     }
 
     const [lossFunc, setLossFunc] = useState('binary_crossentropy')
@@ -66,13 +63,15 @@ function App() {
             },
         ],
         output: {loss: lossFunc, optimizer: 'Adam'},
-        input: {model: '1', image: '4'},
+        input: {model: '1'},
         fully: [
             {filters: '128', activation: 'relu'},
             {filters: null, activation: null},
             {filters: '2', activation: 'sigmoid'}
         ]
     })
+
+    const [image, setImage] = useState('4')
 
     // Utils for tracking slider value
     const [numLayers, setNumLayers] = useState(2)
@@ -164,6 +163,10 @@ function App() {
             return allVals.fully[id]
         else if(layerName === 'Default')
             return allVals.layers[id]
+        else if(layerName === 'image')
+            return image
+        else if(layerName === 'model')
+            return modelNumber
         
         else return allVals.layers[id][layerName]
     }
@@ -195,8 +198,9 @@ function App() {
                     testAcc: Math.round(acc_loss.all[i].outputs[epochNum].testAcc * 100 * 10) / 10,
                     testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 10) / 10
                 })
+                setModelNumber(i)
             }
-    }
+        }
 
     return (
         <>
