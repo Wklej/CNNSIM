@@ -14,6 +14,9 @@ const Features = ({show, handleClose, idx}) => {
     //Current model set
     const getValues = useContext(paramContext)
 
+    const modelSet = getValues(null, 'modelSet')
+    const imageNumber = getValues(null, 'image')
+
     // Function to map whole dir content to @images object
     // const getImages = (dirVariable) => {
     //     const cache = {};
@@ -33,8 +36,8 @@ const Features = ({show, handleClose, idx}) => {
         for (let i = 0; i < 4; ++i) {
             arr.push(
                 type === 'activations' ?
-                    'Activations/' + index + '/' + epoch + '/outputs/output_' + i + '.png' :
-                    'Activations/' + index + '/' + epoch + '/filters/filter_' + i + '.png'
+                    'Activations/' + index + '/' + epoch + '/outputs/output_' + i + '_' + imageNumber + '.png' :
+                    'Activations/' + index + '/' + epoch + '/filters/filter_' + i + '_' + imageNumber + '.png'
             )   
         }
 
@@ -97,8 +100,7 @@ const Features = ({show, handleClose, idx}) => {
             return(
                 <Modal.Body>
                     {/* <Karuzela content={getImages(getDir(type))} idx={idx} /> */}
-                    <Karuzela content={getImg(getValues(null, 'model'), epoch)} idx={idx} />
-                    {getValues(null, 'model')}
+                    <Karuzela content={getImg(modelSet, epoch)} idx={idx} />
                 </Modal.Body>
             )    
         }

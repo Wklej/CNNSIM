@@ -15,7 +15,7 @@ const ImageSelection = ({imageID, handleChange, handleClose, imgPath}) => {
     return (
         <>
             <input className="btn-check" type="radio" name="flexImageRadio" 
-                    defaultChecked={values === imageID.toString()} id={imageID}
+                    defaultChecked={values.toString() === imageID.toString()} id={imageID}
                     onClick={(e) => ChangeAndClose(e)} />
             <label className="btn btn-outline-orange mb-2" htmlFor={imageID}>
                 <img src={imgPath} className="img-fluid" alt="img" />

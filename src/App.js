@@ -18,7 +18,8 @@ function App() {
     const [epoch, setEpoch] = useState(0)
     const [epochNum, setEpochNum] = useState(0)
 
-    const [imageNumber, setImageNumber] = useState(0)
+    const [imageNumber, setImageNumber] = useState(4)
+    const [modelSet, setModelSet] = useState(0)
 
     const handlePlus = () => {
         const x = epoch + 1
@@ -39,7 +40,6 @@ function App() {
     const handleImageChange = (e) => {
         const id = document.getElementById(e.target.id).id
         setImageNumber(id)
-        setImage(id)
     }
 
     const [lossFunc, setLossFunc] = useState('binary_crossentropy')
@@ -72,8 +72,6 @@ function App() {
             {filters: '2', activation: 'sigmoid'}
         ]
     })
-
-    const [image, setImage] = useState('4')
 
     // Utils for tracking slider value
     const [numLayers, setNumLayers] = useState(2)
@@ -135,9 +133,9 @@ function App() {
         else if(layerName === 'Default')
             return allVals.layers[id]
         else if(layerName === 'image')
-            return image
-        else if(layerName === 'model')
             return imageNumber
+        else if(layerName === 'modelSet')
+            return modelSet
         
         else return allVals.layers[id][layerName]
     }
@@ -182,7 +180,7 @@ function App() {
                     testAcc: Math.round(acc_loss.all[i].outputs[epochNum].testAcc * 100 * 10) / 10,
                     testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 10) / 10
                 })
-                // setImageNumber(i)
+                setModelSet(i)
             }
         }
 
