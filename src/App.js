@@ -18,7 +18,8 @@ function App() {
     const [epoch, setEpoch] = useState(0)
     const [epochNum, setEpochNum] = useState(0)
 
-    const [modelNumber, setModelNumber] = useState(0)
+    const [imageNumber, setImageNumber] = useState(4)
+    const [modelSet, setModelSet] = useState(0)
 
     const handlePlus = () => {
         const x = epoch + 1
@@ -37,7 +38,8 @@ function App() {
     }
     
     const handleImageChange = (e) => {
-        setImage(document.getElementById(e.target.id).id)
+        const id = document.getElementById(e.target.id).id
+        setImageNumber(id)
     }
 
     const [lossFunc, setLossFunc] = useState('binary_crossentropy')
@@ -70,8 +72,6 @@ function App() {
             {filters: '2', activation: 'sigmoid'}
         ]
     })
-
-    const [image, setImage] = useState('4')
 
     // Utils for tracking slider value
     const [numLayers, setNumLayers] = useState(2)
@@ -133,9 +133,9 @@ function App() {
         else if(layerName === 'Default')
             return allVals.layers[id]
         else if(layerName === 'image')
-            return image
-        else if(layerName === 'model')
-            return modelNumber
+            return imageNumber
+        else if(layerName === 'modelSet')
+            return modelSet
         
         else return allVals.layers[id][layerName]
     }
@@ -180,7 +180,7 @@ function App() {
                     testAcc: Math.round(acc_loss.all[i].outputs[epochNum].testAcc * 100 * 10) / 10,
                     testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 10) / 10
                 })
-                setModelNumber(i)
+                setModelSet(i)
             }
         }
 
@@ -198,7 +198,7 @@ function App() {
                                     handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json}
                         />
                     </epochsContext.Provider>
-                                <button onClick={() => console.log(modelNumber)}>asd</button>
+
                 </paramContext.Provider>
             </testContext.Provider>
         </>
