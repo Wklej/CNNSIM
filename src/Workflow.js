@@ -9,7 +9,7 @@ import './Workflow.css'
 import Generator from './Modal/Components/Generator';
 
 const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc,
-                    setLossFunc, outputs, handlePlus, handleMinus, status, compare}) => {
+                    setLossFunc, outputs, handlePlus, handleMinus, status, compare, setGenVals, allValsUpdate}) => {
 
   const [showFlat, setFlatShow] = useState(false);
 
@@ -23,6 +23,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
   // const handleFeaturesClose = () => setShowFeatures(false);
 
   const [showMid, setShowMid] = useState(false)
+  const handleSetShowMid = () => setShowMid(true)
 
     return ( 
         <div className="container-fluid min-vh-100 bgDark">
@@ -39,7 +40,8 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
             <div className="col-4 bgDarkLayer">
               <div className="row min-vh-100 justify-content-center align-items-center">
                   
-                  {!showMid && <Generator setShowMid={setShowMid} handleSliderChange={handleSliderChange} numLayers={numLayers} />}
+                  {!showMid && <Generator setShowMid={handleSetShowMid} handleSliderChange={handleSliderChange} 
+                                  setGenVals={setGenVals} numLayers={numLayers} allValsUpdate={allValsUpdate} />}
                   {showMid && <MidLayer num={numLayers} />}
 
                   {/* <button className="btn btn-primary mt-2" onClick={handleFeaturesShow} >Features</button>

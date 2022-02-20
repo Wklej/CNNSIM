@@ -5,18 +5,27 @@ import SelectBundle from "./SelectBundle";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-const Generator = ({setShowMid, handleSliderChange, numLayers}) => {
+const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allValsUpdate}) => {
 
     // const handleChange = useContext(testContext)
     const getValues = useContext(paramContext)
+    const genVals = getValues(null, 'generator')
 
     // const [values, setValues] = useState(getValues(null, 'conv'))
     const [modelSet] = useState(getValues(null, 'input').model)
 
+    const update2 = (e, id) => {
+        // handleChange(e, id, layerType)
+        // setValues(e.target.value)
+        setGenVals({...genVals, [e.target.name]: e.target.value})
+    }
+    
     const update = (e, id) => {
         // handleChange(e, id, layerType)
         // setValues(e.target.value)
-        console.log('TODO: updating data')
+        
+        allValsUpdate()
+        setShowMid()
     }
 
     const orangeBg = {backgroundColor: "#e38627"}
@@ -38,10 +47,10 @@ const Generator = ({setShowMid, handleSliderChange, numLayers}) => {
                         <div className="card-header">Convolutional layer</div>
                         <div className="card-body">
                             <div className="d-inline-block w-auto">
-                                <SelectBundle label='filters' update={update} bundle_size={'md'}
+                                <SelectBundle label='filters' update={update2} bundle_size={'md'}
                                         optionValues={['small', 'ascending', 'big']} />
-                                <SelectBundle label='kernel_size' update={update} bundle_size={'md'} optionValues={['3', '5']} />
-                                <SelectBundle label='activation' update={update} bundle_size={'md'} optionValues={['relu', 'sigmoid']} />
+                                <SelectBundle label='kernel_size' update={update2} bundle_size={'md'} optionValues={['3', '5']} />
+                                <SelectBundle label='activation' update={update2} bundle_size={'md'} optionValues={['relu', 'sigmoid']} />
                             </div>
                         </div>
                     </div>
@@ -49,19 +58,19 @@ const Generator = ({setShowMid, handleSliderChange, numLayers}) => {
                         <div className="card-header">Pooling layer</div>
                         <div className="card-body">
                             <div className="d-inline-block w-auto">
-                                <SelectBundle label='pool_size' update={update} bundle_size={'md'}
+                                <SelectBundle label='pool_size' update={update2} bundle_size={'md'}
                                     ifPool={true} optionValues={['(2, 2)']} />
-                                <SelectBundle label='stride' update={update} bundle_size={'md'}
-                                    ifPool={true} optionValues={['2','4']} />
+                                <SelectBundle label='stride' update={update2} bundle_size={'md'}
+                                    ifPool={true} optionValues={['in','out']} />
                             </div>
                         </div>
                     </div>
                     <div className="col d-inline-block w-auto mt-2">
-                        <SelectBundle label='dropout' update={update} bundle_size={'md'} optionValues={['yes','no']} />
+                        <SelectBundle label='dropout' update={update2} bundle_size={'md'} optionValues={['yes','no']} />
                     </div>
                 </div>
                 <div className="card-footer">
-                    <button className="btn btn-orange" onClick={() => setShowMid(true)}>Generate</button>
+                    <button className="btn btn-orange" onClick={(e) => update(e)}>Generate</button>
                 </div>
             </div>
         </div>

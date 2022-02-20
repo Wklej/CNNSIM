@@ -68,6 +68,44 @@ function App() {
         ]
     })
 
+    //Generator values
+    const [genVals, setGenVals] = useState({
+        filters: null, kernel_size: null, activation: null, stride: null, dropout: null
+    })
+
+    const allValsUpdate = () => {
+        let temp = allVals
+
+        for (let i = 0; i < numLayers; ++i) {
+            if (genVals.filters === 'small')
+                temp.layers[i].conv.filters = 32
+            else if (genVals.filters === 'big')
+                temp.layers[i].conv.filters = 128
+            else if (genVals.filters === 'ascending')
+                temp.layers[i].conv.filters = Math.pow(2, 5 + i)
+            
+            temp.layers[i].conv.kernel_size = genVals.kernel_size
+            temp.layers[i].conv.activation = genVals.activation
+            
+            temp.layers[i].pool.pool_size = genVals.kernel_size - 1
+
+            if (genVals.stride === 'in')
+                temp.layers[i].pool.stride = genVals.kernel_size - 2
+            else temp.layers[i].pool.stride = genVals.kernel_size - 1
+
+            if (genVals.dropout === 'yes')
+                if (i === 0 || i === numLayers - 2)
+                    temp.layers[i].drop = 30
+                else temp.layers[i].drop = 0
+            else temp.layers[i].drop = 0
+        }
+
+        temp.fully.activation = genVals.activation
+
+        setAllVals(temp)
+        console.log('all vals have been set')
+    }
+
     // Utils for tracking slider value
     const [numLayers, setNumLayers] = useState(2)
     const handleSliderChange = (e) => {        
@@ -131,6 +169,8 @@ function App() {
             return imageNumber
         else if(layerName === 'modelSet')
             return modelSet
+        else if(layerName === 'generator')
+            return genVals
         
         else return allVals.layers[id][layerName]
     }
@@ -177,13 +217,17 @@ function App() {
                     <epochsContext.Provider value={epochs[epoch]}>
                         <Workflow numLayers={numLayers} handleSliderChange={handleSliderChange} handleImageChange={handleImageChange}
                                   handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
-                                  outputs={outputs} handlePlus={handlePlus}
+                                  outputs={outputs} handlePlus={handlePlus} setGenVals={setGenVals} allValsUpdate={allValsUpdate}
                                   handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json}
                         />
                     </epochsContext.Provider>
 
                 </paramContext.Provider>
             </testContext.Provider>
+
+            <button onClick={() => {allVals.layers.forEach(c => {console.log(c.drop)})}}>all values</button>
+            <button onClick={() => console.log(genVals)}>values</button>
+            <button onClick={allValsUpdate}>SET</button>
 
         </>
     );
