@@ -35,14 +35,6 @@ const SelectBundle = ({label, update, id, optionValues, bundle_size, ifPool}) =>
         else
             return "input-group input-group-lg mb-2"
     }
-
-    const xx = () => {
-        return(
-            <select className="form-select" name={label} onChange={(e) => update(e, id)}>
-                {options()}
-            </select>
-        )
-    }
     
     return ( 
         <div className={getBundleClass()}>
@@ -50,7 +42,9 @@ const SelectBundle = ({label, update, id, optionValues, bundle_size, ifPool}) =>
                 <span style={bundle_size === 'md' ? buttonStyle2 : buttonStyle}>{label}:</span>
             </button>  
             <ExplainModal show={showModal} handleClose={handleModalClose} type={label} />
-            {xx()}
+            <select className="form-select" name={label} onChange={(e) => update(e, id)}>
+                {options()}
+            </select>
         </div>
 
      );
