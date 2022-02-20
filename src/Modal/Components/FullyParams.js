@@ -42,7 +42,7 @@ const FullyParams = ({id, layerType}) => {
         else {
             return(
                 <div>
-                    <SelectBundle values={values} label='filters' update={update} id={id} optionValues={['64', '128', '256']} />
+                    <SelectBundle values={values} label='filters' update={update} id={id} optionValues={['512']} />
                     <SelectBundle values={values} label='activation' update={update} id={id} optionValues={['relu', 'sigmoid']} />
                 </div>
             )
