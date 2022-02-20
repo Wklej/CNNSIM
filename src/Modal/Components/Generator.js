@@ -34,7 +34,7 @@ const Generator = ({setShowMid, handleSliderChange, numLayers}) => {
                                 min={2} max={3} dots={true} marks={{2:2, 3:3}}
                                 value={numLayers} onChange={handleSliderChange} />
                     </div>
-                    <div className="card border-dark text-center bgDarkSubCard" >
+                    <div className="card border-dark text-center bgDarkSubCard mx-2 my-1" >
                         <div className="card-header">Convolutional layer</div>
                         <div className="card-body">
                             <div className="d-inline-block w-auto">
@@ -45,7 +45,7 @@ const Generator = ({setShowMid, handleSliderChange, numLayers}) => {
                             </div>
                         </div>
                     </div>
-                    <div className="card border-dark text-center bgDarkSubCard" >
+                    <div className="card border-dark text-center bgDarkSubCard mx-2 my-1" >
                         <div className="card-header">Pooling layer</div>
                         <div className="card-body">
                             <div className="d-inline-block w-auto">
