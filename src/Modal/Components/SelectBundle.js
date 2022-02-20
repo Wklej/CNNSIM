@@ -1,7 +1,7 @@
 import ExplainModal from '../ExplainModal';
 import { useState } from 'react';
 
-const SelectBundle = ({label, update, id, optionValues, bundle_size, ifPool}) => {
+const SelectBundle = ({label, update, id, optionValues, bundle_size}) => {
 
     const [showModal, setModalShow] = useState(false);
     const handleModalShow = () => setModalShow(true);
@@ -42,7 +42,7 @@ const SelectBundle = ({label, update, id, optionValues, bundle_size, ifPool}) =>
                 <span style={bundle_size === 'md' ? buttonStyle2 : buttonStyle}>{label}:</span>
             </button>  
             <ExplainModal show={showModal} handleClose={handleModalClose} type={label} />
-            <select className="form-select" name={label} onChange={(e) => update(e, id)}>
+            <select className="form-select" name={label} onChange={(e) => update(e, id)} >
                 {options()}
             </select>
         </div>

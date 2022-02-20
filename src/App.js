@@ -100,7 +100,7 @@ function App() {
             else temp.layers[i].drop = 0
         }
 
-        temp.fully.activation = genVals.activation
+        temp.fully[0].activation = genVals.activation
 
         setAllVals(temp)
         console.log('all vals have been set')

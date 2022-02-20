@@ -15,15 +15,10 @@ const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allVa
     const [modelSet] = useState(getValues(null, 'input').model)
 
     const update2 = (e, id) => {
-        // handleChange(e, id, layerType)
-        // setValues(e.target.value)
         setGenVals({...genVals, [e.target.name]: e.target.value})
     }
     
-    const update = (e, id) => {
-        // handleChange(e, id, layerType)
-        // setValues(e.target.value)
-        
+    const update = () => {        
         allValsUpdate()
         setShowMid()
     }
@@ -59,9 +54,9 @@ const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allVa
                         <div className="card-body">
                             <div className="d-inline-block w-auto">
                                 <SelectBundle label='pool_size' update={update2} bundle_size={'md'}
-                                    ifPool={true} optionValues={['(2, 2)']} />
+                                    optionValues={['(2, 2)']} />
                                 <SelectBundle label='stride' update={update2} bundle_size={'md'}
-                                    ifPool={true} optionValues={['out', 'in']} />
+                                    optionValues={['out', 'in']} />
                             </div>
                         </div>
                     </div>
@@ -70,7 +65,7 @@ const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allVa
                     </div>
                 </div>
                 <div className="card-footer">
-                    <button className="btn btn-orange" onClick={(e) => update(e)}>Generate</button>
+                    <button className="btn btn-orange" onClick={() => update()}>Generate</button>
                 </div>
             </div>
         </div>
