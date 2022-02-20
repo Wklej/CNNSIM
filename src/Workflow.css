@@ -10,6 +10,10 @@
     background-color: #424242;
 }
 
+.bgDarkSubCard {
+    background-color: #484848;
+}
+
 .btn-orange {
     color: #fff;
     background-color: rgb(227, 134, 39);
