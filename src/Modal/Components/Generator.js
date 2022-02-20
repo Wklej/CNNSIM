@@ -61,7 +61,7 @@ const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allVa
                                 <SelectBundle label='pool_size' update={update2} bundle_size={'md'}
                                     ifPool={true} optionValues={['(2, 2)']} />
                                 <SelectBundle label='stride' update={update2} bundle_size={'md'}
-                                    ifPool={true} optionValues={['in','out']} />
+                                    ifPool={true} optionValues={['out', 'in']} />
                             </div>
                         </div>
                     </div>

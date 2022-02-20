@@ -21,9 +21,9 @@ const ConvParams = ({id, layerType}) => {
         <Modal.Body>
             {console.log(values)}
             <SelectBundle values={values} label='filters' update={update} id={id}
-                        optionValues={modelSet === '1' ? ['16', '32', '64'] : ['4', '8', '16']} />
-            <SelectBundle values={values} label='kernel_size' update={update} id={id} optionValues={['(2, 2)', '(4, 4)']} />
-            <SelectBundle values={values} label='activation' update={update} id={id} optionValues={['relu', 'sigmoid']} />
+                        optionValues={modelSet === '1' ? ['32'] : ['4']} />
+            <SelectBundle values={values} label='kernel_size' update={update} id={id} optionValues={['3']} />
+            <SelectBundle values={values} label='activation' update={update} id={id} optionValues={['relu']} />
         </Modal.Body>
      );
 }

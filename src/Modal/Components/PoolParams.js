@@ -18,8 +18,8 @@ const PoolParams = ({id, layerType}) => {
 
     return ( 
         <Modal.Body>
-            <SelectBundle values={values} label='pool_size' update={update} id={id} optionValues={['(2, 2)']} />
-            <SelectBundle values={values} label='stride' update={update} id={id} optionValues={['2','4']} />
+            <SelectBundle values={values} label='pool_size' update={update} id={id} optionValues={['2']} />
+            <SelectBundle values={values} label='stride' update={update} id={id} optionValues={['2']} />
         </Modal.Body>
      );
 }

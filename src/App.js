@@ -47,13 +47,13 @@ function App() {
     //global values to pass to context and use in grandchild components
     const [allVals, setAllVals] = useState({
         layers: [
-            {   conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
-                pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: null
+            {   conv: {filters: 32, kernel_size: 3, activation: 'relu'},
+                pool: {pool_size: 2, stride: 2},
+                drop: 0
             },
-            {   conv: {filters: '32', kernel_size: '(2, 2)', activation: 'relu'},
-                pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: null
+            {   conv: {filters: 32, kernel_size: 3, activation: 'relu'},
+                pool: {pool_size: 2, stride: 2},
+                drop: 0
             },
             {   conv: {filters: null, kernel_size: null, activation: null},
                 pool: {pool_size: null, stride: null},
@@ -70,7 +70,7 @@ function App() {
 
     //Generator values
     const [genVals, setGenVals] = useState({
-        filters: null, kernel_size: null, activation: null, stride: null, dropout: null
+        filters: 'small', kernel_size: 3, activation: 'relu', stride: 'out', dropout: 'yes'
     })
 
     const allValsUpdate = () => {
