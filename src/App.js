@@ -59,16 +59,11 @@ function App() {
                 pool: {pool_size: null, stride: null},
                 drop: null
             },
-            {   conv: {filters: null, kernel_size: null, activation: null},
-                pool: {pool_size: null, stride: null},
-                drop: null
-            },
         ],
         output: {loss: lossFunc, optimizer: 'Adam'},
         input: {model: '1'},
         fully: [
-            {filters: '128', activation: 'relu'},
-            {filters: null, activation: null},
+            {filters: '512', activation: 'relu'},
             {filters: '2', activation: 'sigmoid'}
         ]
     })
@@ -140,18 +135,6 @@ function App() {
         else return allVals.layers[id][layerName]
     }
 
-    const setDefautFully = (nodesCount) => {
-        if (nodesCount === 2) {
-            const temp = allVals
-            temp.fully[1] = {filters: null, activation: null}
-            setAllVals(temp)
-        } else {
-            const temp = allVals
-            temp.fully[1] = {filters: 64, activation: 'relu'}
-            setAllVals(temp)
-        }
-    }
-
     const handleModelChange = (e) => {
         const temp = allVals
         
@@ -194,8 +177,8 @@ function App() {
                     <epochsContext.Provider value={epochs[epoch]}>
                         <Workflow numLayers={numLayers} handleSliderChange={handleSliderChange} handleImageChange={handleImageChange}
                                   handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
-                                  setDefautFully={setDefautFully} outputs={outputs} handlePlus={handlePlus}
-                                    handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json}
+                                  outputs={outputs} handlePlus={handlePlus}
+                                  handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json}
                         />
                     </epochsContext.Provider>
 

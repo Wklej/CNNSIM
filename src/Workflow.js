@@ -9,7 +9,7 @@ import './Workflow.css'
 import Generator from './Modal/Components/Generator';
 
 const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc,
-                    setLossFunc, setDefautFully, outputs, handlePlus, handleMinus, status, compare}) => {
+                    setLossFunc, outputs, handlePlus, handleMinus, status, compare}) => {
 
   const [showFlat, setFlatShow] = useState(false);
 
@@ -51,7 +51,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
               <ExplainModal show={showFlat} handleClose={handleFlatClose} type={"flat"} />
             </div>
             <div className="col me-3 bgDarkLayer ">
-              <Fully setDefautFully={setDefautFully} />
+              <Fully />
             </div>
 
             <div className="col-3 bgDarkLayer">
