@@ -12,10 +12,10 @@ const ConvParams = ({id, layerType}) => {
 
     return ( 
         <Modal.Body>
-            <SelectBundle label='filters' id={id}
+            <SelectBundle label='filters' id={id} disabled={true}
                         optionValues={modelSet === '1' ? [values.filters] : ['4']} />
-            <SelectBundle label='kernel_size' id={id} optionValues={[values.kernel_size]} />
-            <SelectBundle label='activation' id={id} optionValues={[values.activation]} />
+            <SelectBundle label='kernel_size' id={id} optionValues={[values.kernel_size]} disabled={true} />
+            <SelectBundle label='activation' id={id} optionValues={[values.activation]} disabled={true} />
         </Modal.Body>
      );
 }

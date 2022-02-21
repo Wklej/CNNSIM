@@ -27,8 +27,8 @@ const FullyParams = ({id, layerType}) => {
         if (layerNum === (id + 1)) {
             return(
                 <div>
-                    <SelectBundle label='filters' id={id} optionValues={optionValuesFilters()} />
-                    <SelectBundle label='activation' id={id} optionValues={optionValuesActiv()} />
+                    <SelectBundle label='filters' id={id} optionValues={optionValuesFilters()} disabled={true} />
+                    <SelectBundle label='activation' id={id} optionValues={optionValuesActiv()} disabled={true} />
                 </div>
             )
         }
@@ -36,8 +36,8 @@ const FullyParams = ({id, layerType}) => {
             return(
                 <div>
                     {console.log(values)}
-                    <SelectBundle label='filters' id={id} optionValues={[values.filters]} />
-                    <SelectBundle label='activation' id={id} optionValues={[values.activation]} />
+                    <SelectBundle label='filters' id={id} optionValues={[values.filters]} disabled={true} />
+                    <SelectBundle label='activation' id={id} optionValues={[values.activation]} disabled={true} />
                 </div>
             )
         }   
