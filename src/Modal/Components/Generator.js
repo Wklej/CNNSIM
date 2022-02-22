@@ -45,7 +45,7 @@ const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allVa
                                 <SelectBundle label='filters' update={update2} bundle_size={'md'}
                                         optionValues={['small', 'ascending', 'big']} />
                                 <SelectBundle label='kernel_size' update={update2} bundle_size={'md'} optionValues={['3', '5']} />
-                                <SelectBundle label='activation' update={update2} bundle_size={'md'} optionValues={['relu', 'sigmoid']} />
+                                <SelectBundle label='activation' update={update2} bundle_size={'md'} optionValues={['relu', 'tanh']} />
                             </div>
                         </div>
                     </div>
