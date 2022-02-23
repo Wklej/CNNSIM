@@ -11,7 +11,6 @@ const Features = ({show, handleClose, idx}) => {
     //Current epoch status
     const epoch = useContext(epochsContext)
     
-    //Current model set
     const getValues = useContext(paramContext)
 
     const modelSet = getValues(null, 'modelSet')
@@ -33,11 +32,11 @@ const Features = ({show, handleClose, idx}) => {
     const getImg = (index, epoch) => {
         let arr = []
 
-        for (let i = 0; i < 4; ++i) {
+        for (let i = 0; i < getValues(null, 'layers'); ++i) {
             arr.push(
                 type === 'activations' ?
                     'Activations/' + index + '/' + epoch + '/outputs/output_' + i + '_' + imageNumber + '.png' :
-                    'Activations/' + index + '/' + epoch + '/filters/filter_' + i + '_' + imageNumber + '.png'
+                    'Activations/' + index + '/' + epoch + '/filters/filter_' + i + '.png'
             )   
         }
 

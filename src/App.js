@@ -14,7 +14,7 @@ import acc_loss from './Data/acc_loss.json'
 function App() {
 
     //Epochs status & handlers
-    const epochs = [1, 5, 15, 20, 30]
+    const epochs = [1, 5, 10, 15, 20, 25, 30]
     const [epoch, setEpoch] = useState(0)
     const [epochNum, setEpochNum] = useState(0)
 
@@ -171,6 +171,8 @@ function App() {
             return modelSet
         else if(layerName === 'generator')
             return genVals
+        else if(layerName === 'layers')
+            return numLayers
         
         else return allVals.layers[id][layerName]
     }
@@ -199,9 +201,9 @@ function App() {
             if (JSON.stringify(data.models[i]) === JSON.stringify(allVals)) {
                 setOutputs({...outputs, 
                     valAcc: Math.round(acc_loss.all[i].outputs[epochNum].valAcc * 100 * 10) / 10,
-                    valLoss: Math.round(acc_loss.all[i].outputs[epochNum].valLoss * 10) / 10,
+                    valLoss: Math.round(acc_loss.all[i].outputs[epochNum].valLoss * 100 * 10) / 10,
                     testAcc: Math.round(acc_loss.all[i].outputs[epochNum].testAcc * 100 * 10) / 10,
-                    testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 10) / 10
+                    testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 100 * 10) / 10
                 })
                 setModelSet(i)
             }
