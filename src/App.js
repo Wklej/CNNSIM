@@ -64,7 +64,7 @@ function App() {
         input: {model: '1'},
         fully: [
             {filters: '512', activation: 'relu'},
-            {filters: '2', activation: 'sigmoid'}
+            {filters: '1', activation: 'sigmoid'}
         ]
     })
 

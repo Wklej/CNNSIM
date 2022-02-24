@@ -22,7 +22,7 @@
 				{"filters": "2", "activation": "sigmoid"}
 			]
 		},
-		{
+		 {
 			"layers": [
 				{   "conv": {"filters": 32, "kernel_size": 3, "activation": "relu"},
 					"pool": {"pool_size": 2, "stride": 2},
@@ -41,7 +41,7 @@
 			"input": {"model": "1"},
 			"fully": [
 				{"filters": "512", "activation": "relu"},
-				{"filters": "2", "activation": "sigmoid"}
+				{"filters": "1", "activation": "sigmoid"}
 			]
 		},
 		{

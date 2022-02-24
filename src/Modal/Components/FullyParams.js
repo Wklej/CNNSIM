@@ -14,7 +14,7 @@ const FullyParams = ({id, layerType}) => {
     const optionValuesFilters = () => {
         const inputValue = getValues(null, 'input').model
 
-        return inputValue === '1' ? ['2'] : ['25']
+        return inputValue === '1' ? ['1'] : ['25']
     }
     
     const optionValuesActiv = () => {
