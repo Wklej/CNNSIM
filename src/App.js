@@ -55,9 +55,9 @@ function App() {
                 pool: {pool_size: 2, stride: 2},
                 drop: 0
             },
-            {   conv: {filters: null, kernel_size: null, activation: null},
-                pool: {pool_size: null, stride: null},
-                drop: null
+            {   conv: {filters: "null", kernel_size: "null", activation: "null"},
+                pool: {pool_size: "null", stride: "null"},
+                drop: "null"
             },
         ],
         output: {loss: lossFunc, optimizer: 'Adam'},
@@ -116,9 +116,9 @@ function App() {
         if (next_numLayers < numLayers) {
             for (let i = 0; i < numLayers - next_numLayers; i++) {
                 temp.layers[next_numLayers + i] = {
-                    conv: {filters: null, kernel_size: null, activation: null},
-                    pool: {pool_size: null, stride: null},
-                    drop: null
+                    conv: {filters: "null", kernel_size: "null", activation: "null"},
+                    pool: {pool_size: "null", stride: "null"},
+                    drop: "null"
                 }
             }
         } else if (next_numLayers > numLayers) {

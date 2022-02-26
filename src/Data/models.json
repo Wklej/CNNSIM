@@ -1,6 +1,6 @@
 {
 	"models": [
-		{
+		    {
 			"layers": [
 				{   "conv": {"filters": 32, "kernel_size": 3, "activation": "relu"},
 					"pool": {"pool_size": 2, "stride": 2},
@@ -10,19 +10,19 @@
 					"pool": {"pool_size": 2, "stride": 2},
 					"drop": 0
 				},
-				{   "conv": {"filters": null, "kernel_size": null, "activation": null},
-					"pool": {"pool_size": null, "stride": null},
-					"drop": null
+				{   "conv": {"filters": "null", "kernel_size": "null", "activation": "null"},
+					"pool": {"pool_size": "null", "stride": "null"},
+					"drop": "null"
 				}
 			],
 			"output": {"loss": "binary_crossentropy", "optimizer": "Adam"},
 			"input": {"model": "1"},
 			"fully": [
 				{"filters": "512", "activation": "relu"},
-				{"filters": "2", "activation": "sigmoid"}
+				{"filters": "1", "activation": "sigmoid"}
 			]
 		},
-		 {
+ {
 			"layers": [
 				{   "conv": {"filters": 32, "kernel_size": 3, "activation": "relu"},
 					"pool": {"pool_size": 2, "stride": 2},
@@ -44,7 +44,7 @@
 				{"filters": "1", "activation": "sigmoid"}
 			]
 		},
-		{
+		    {
 			"layers": [
 				{   "conv": {"filters": 32, "kernel_size": 3, "activation": "tanh"},
 					"pool": {"pool_size": 2, "stride": 2},
@@ -63,8 +63,8 @@
 			"input": {"model": "1"},
 			"fully": [
 				{"filters": "512", "activation": "tanh"},
-				{"filters": "2", "activation": "sigmoid"}
+				{"filters": "1", "activation": "sigmoid"}
 			]
-		}			
+		}
 	]
 }
