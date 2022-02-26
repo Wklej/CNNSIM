@@ -1,10 +1,23 @@
 import ModelSet from "../Modal/Components/ModelSet";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { paramContext } from "../paramContext";
 
-const Input = ({handleModelChange, handleImageChange, setLossFunc,
-                handlePlus, handleMinus, status, compare, setShowMid}) => {
+const Input = ({handleModelChange, handleImageChange, setLossFunc, resetSliderValue,
+                handlePlus, handleMinus, status, compare, setShowMid, setGenVals}) => {
 
     const [toggleImageButton, setToggleImageButton] = useState(1)
+    
+    const getValues = useContext(paramContext)
+    const genVals = getValues(null, 'generator')
+    
+    const resetGenValues = () => {
+        let temp = genVals
+
+        temp = {filters: 'small', kernel_size: 3, activation: 'relu', stride: 'out', dropout: 'yes'}
+
+        resetSliderValue()
+        setGenVals(temp)
+    }
 
     return ( 
         <div className="col text-center text-white position-relative bgDarkLayer">
@@ -27,7 +40,7 @@ const Input = ({handleModelChange, handleImageChange, setLossFunc,
                 <div className="card border-dark text-center bgDarkCard mx-1">
                     <div className="card-header">Settings</div>
                     <div className="card-body">
-                        <div className="btn btn-orange btn-md" onClick={() => setShowMid(false)}>Back to Generator</div>
+                        <div className="btn btn-orange btn-md" onClick={() => {setShowMid(false); resetGenValues()}}>Back to Generator</div>
                         <div className="my-2">
                             Current epoch: {status}
                                 <button className="btn btn-outline-orange mx-2" onClick={handleMinus}>-</button>

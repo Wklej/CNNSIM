@@ -8,7 +8,7 @@ import { useState } from "react";
 import './Workflow.css'
 import Generator from './Modal/Components/Generator';
 
-const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc,
+const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc, resetSliderValue,
                     setLossFunc, outputs, handlePlus, handleMinus, status, compare, setGenVals, allValsUpdate}) => {
 
   const [showFlat, setFlatShow] = useState(false);
@@ -33,7 +33,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
               <Input handleSliderChange={handleSliderChange} handleModelChange={handleModelChange} 
                     handleImageChange={handleImageChange} setLossFunc={setLossFunc} numLayers={numLayers} 
                     handlePlus={handlePlus} handleMinus={handleMinus} status={status} compare={compare}
-                    setShowMid={setShowMid} />
+                    setShowMid={setShowMid} setGenVals={setGenVals} resetSliderValue={resetSliderValue} />
             </div>
             
             {/* mid layers */}

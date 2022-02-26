@@ -130,13 +130,27 @@ function App() {
                 temp.layers[numLayers + i] = {
                     conv: convDefault,
                     pool: {pool_size: '(2, 2)', stride: '2'},
-                    drop: 20
+                    drop: 0
                 }
             }
         }
         
         setAllVals(temp)
         setNumLayers(e.valueOf())
+    }
+
+    // Function that resets slider val & set 3rd layer to default
+    const resetSliderValue = () => {
+        let temp = allVals
+
+        temp.layers[2] = {
+            conv: {filters: "null", kernel_size: "null", activation: "null"},
+            pool: {pool_size: "null", stride: "null"},
+            drop: "null"
+        }
+
+        setAllVals(temp)
+        setNumLayers(2)
     }
 
     const handleLayerChange = (e, id, layerName) => {
@@ -220,7 +234,7 @@ function App() {
                         <Workflow numLayers={numLayers} handleSliderChange={handleSliderChange} handleImageChange={handleImageChange}
                                   handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
                                   outputs={outputs} handlePlus={handlePlus} setGenVals={setGenVals} allValsUpdate={allValsUpdate}
-                                  handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json}
+                                  handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json} resetSliderValue={resetSliderValue}
                         />
                     </epochsContext.Provider>
 
@@ -228,8 +242,8 @@ function App() {
             </testContext.Provider>
 
             <button onClick={() => {allVals.layers.forEach(c => {console.log(c.drop)})}}>all values</button>
-            <button onClick={() => console.log(genVals)}>values</button>
-            <button onClick={allValsUpdate}>SET</button>
+            <button onClick={() => console.log(allVals)}>values</button>
+            <button onClick={() => console.log(numLayers)}>num layers</button>
 
         </>
     );
