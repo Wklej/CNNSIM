@@ -241,9 +241,9 @@ function App() {
                 </paramContext.Provider>
             </testContext.Provider>
 
-            <button onClick={() => {allVals.layers.forEach(c => {console.log(c.drop)})}}>all values</button>
+            {/* <button onClick={() => {allVals.layers.forEach(c => {console.log(c.drop)})}}>all values</button>
             <button onClick={() => console.log(allVals)}>values</button>
-            <button onClick={() => console.log(numLayers)}>num layers</button>
+            <button onClick={() => console.log(numLayers)}>num layers</button> */}
 
         </>
     );

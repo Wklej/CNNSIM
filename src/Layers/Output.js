@@ -2,7 +2,9 @@ import { PieChart } from 'react-minimal-pie-chart';
 import { useState, useContext } from 'react';
 import { paramContext } from "../paramContext";
 import { testContext } from "../testContext";
+import { epochsContext } from '../epochsContext';
 import SelectBundle from '../Modal/Components/SelectBundle';
+import GraphModal from '../Modal/GraphModal'
 
 const Output = ({outputs, lossFunc}) => {
         
@@ -11,6 +13,9 @@ const Output = ({outputs, lossFunc}) => {
 
     const handleChange = useContext(testContext)
     const getValues = useContext(paramContext)
+
+    //Current epoch status
+    const epoch = useContext(epochsContext)
 
     const [values, setValues] = useState(getValues(id, layerType))
 
@@ -40,8 +45,8 @@ const Output = ({outputs, lossFunc}) => {
                         fill: '#E38627',
                         }}
                     labelPosition={0}
-                    viewBoxSize={[120, 140]}
-                    center={[50, 70]}
+                    viewBoxSize={[125, 135]}
+                    center={[60, 70]}
                 />
             </div>
         )
@@ -68,12 +73,14 @@ const Output = ({outputs, lossFunc}) => {
                         fill: '#E38627',
                         }}
                     labelPosition={0}
-                    viewBoxSize={[120, 130]}                
-                    center={[50, 70]}
+                    viewBoxSize={[125, 135]}                
+                    center={[60, 70]}
                 />
             </div>
         )
     }
+
+    const [showGraph, setShowGraph] = useState(false)
 
     return ( 
         <div className='text-center'>   
@@ -93,6 +100,8 @@ const Output = ({outputs, lossFunc}) => {
                     {AccuracyChart('val')}
                     {LossChart('val')}
                 </div>
+                {epoch === 30 && <button className="btn btn-orange" onClick={() => setShowGraph(true)}>Show graph</button> }
+                <GraphModal show={showGraph} handleClose={() => setShowGraph(false)} />
             </div>
         </div>
      );
