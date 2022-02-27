@@ -14,7 +14,7 @@ import acc_loss from './Data/acc_loss.json'
 function App() {
 
     //Epochs status & handlers
-    const epochs = [1, 5, 15, 20, 30]
+    const epochs = [1, 5, 10, 15, 20, 25, 30]
     const [epoch, setEpoch] = useState(0)
     const [epochNum, setEpochNum] = useState(0)
 
@@ -47,31 +47,64 @@ function App() {
     //global values to pass to context and use in grandchild components
     const [allVals, setAllVals] = useState({
         layers: [
-            {   conv: {filters: '16', kernel_size: '(2, 2)', activation: 'relu'},
-                pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: null
+            {   conv: {filters: 32, kernel_size: 3, activation: 'relu'},
+                pool: {pool_size: 2, stride: 2},
+                drop: 0
             },
-            {   conv: {filters: '32', kernel_size: '(2, 2)', activation: 'relu'},
-                pool: {pool_size: '(2, 2)', stride: '2'},
-                drop: null
+            {   conv: {filters: 32, kernel_size: 3, activation: 'relu'},
+                pool: {pool_size: 2, stride: 2},
+                drop: 0
             },
-            {   conv: {filters: null, kernel_size: null, activation: null},
-                pool: {pool_size: null, stride: null},
-                drop: null
-            },
-            {   conv: {filters: null, kernel_size: null, activation: null},
-                pool: {pool_size: null, stride: null},
-                drop: null
+            {   conv: {filters: "null", kernel_size: "null", activation: "null"},
+                pool: {pool_size: "null", stride: "null"},
+                drop: "null"
             },
         ],
         output: {loss: lossFunc, optimizer: 'Adam'},
         input: {model: '1'},
         fully: [
-            {filters: '128', activation: 'relu'},
-            {filters: null, activation: null},
-            {filters: '2', activation: 'sigmoid'}
+            {filters: '512', activation: 'relu'},
+            {filters: '1', activation: 'sigmoid'}
         ]
     })
+
+    //Generator values
+    const [genVals, setGenVals] = useState({
+        filters: 'small', kernel_size: 3, activation: 'relu', stride: 'out', dropout: 'yes'
+    })
+
+    const allValsUpdate = () => {
+        let temp = allVals
+
+        for (let i = 0; i < numLayers; ++i) {
+            if (genVals.filters === 'small')
+                temp.layers[i].conv.filters = 32
+            else if (genVals.filters === 'big')
+                temp.layers[i].conv.filters = 128
+            else if (genVals.filters === 'ascending')
+                temp.layers[i].conv.filters = Math.pow(2, 5 + i)
+            
+            temp.layers[i].conv.kernel_size = genVals.kernel_size
+            temp.layers[i].conv.activation = genVals.activation
+            
+            temp.layers[i].pool.pool_size = genVals.kernel_size - 1
+
+            if (genVals.stride === 'in')
+                temp.layers[i].pool.stride = genVals.kernel_size - 2
+            else temp.layers[i].pool.stride = genVals.kernel_size - 1
+
+            if (genVals.dropout === 'yes')
+                if (i === 0 || i === numLayers - 2)
+                    temp.layers[i].drop = 30
+                else temp.layers[i].drop = 0
+            else temp.layers[i].drop = 0
+        }
+
+        temp.fully[0].activation = genVals.activation
+
+        setAllVals(temp)
+        console.log('all vals have been set')
+    }
 
     // Utils for tracking slider value
     const [numLayers, setNumLayers] = useState(2)
@@ -83,9 +116,9 @@ function App() {
         if (next_numLayers < numLayers) {
             for (let i = 0; i < numLayers - next_numLayers; i++) {
                 temp.layers[next_numLayers + i] = {
-                    conv: {filters: null, kernel_size: null, activation: null},
-                    pool: {pool_size: null, stride: null},
-                    drop: null
+                    conv: {filters: "null", kernel_size: "null", activation: "null"},
+                    pool: {pool_size: "null", stride: "null"},
+                    drop: "null"
                 }
             }
         } else if (next_numLayers > numLayers) {
@@ -97,13 +130,27 @@ function App() {
                 temp.layers[numLayers + i] = {
                     conv: convDefault,
                     pool: {pool_size: '(2, 2)', stride: '2'},
-                    drop: 20
+                    drop: 0
                 }
             }
         }
         
         setAllVals(temp)
         setNumLayers(e.valueOf())
+    }
+
+    // Function that resets slider val & set 3rd layer to default
+    const resetSliderValue = () => {
+        let temp = allVals
+
+        temp.layers[2] = {
+            conv: {filters: "null", kernel_size: "null", activation: "null"},
+            pool: {pool_size: "null", stride: "null"},
+            drop: "null"
+        }
+
+        setAllVals(temp)
+        setNumLayers(2)
     }
 
     const handleLayerChange = (e, id, layerName) => {
@@ -136,20 +183,12 @@ function App() {
             return imageNumber
         else if(layerName === 'modelSet')
             return modelSet
+        else if(layerName === 'generator')
+            return genVals
+        else if(layerName === 'layers')
+            return numLayers
         
         else return allVals.layers[id][layerName]
-    }
-
-    const setDefautFully = (nodesCount) => {
-        if (nodesCount === 2) {
-            const temp = allVals
-            temp.fully[1] = {filters: null, activation: null}
-            setAllVals(temp)
-        } else {
-            const temp = allVals
-            temp.fully[1] = {filters: 64, activation: 'relu'}
-            setAllVals(temp)
-        }
     }
 
     const handleModelChange = (e) => {
@@ -176,9 +215,9 @@ function App() {
             if (JSON.stringify(data.models[i]) === JSON.stringify(allVals)) {
                 setOutputs({...outputs, 
                     valAcc: Math.round(acc_loss.all[i].outputs[epochNum].valAcc * 100 * 10) / 10,
-                    valLoss: Math.round(acc_loss.all[i].outputs[epochNum].valLoss * 10) / 10,
+                    valLoss: Math.round(acc_loss.all[i].outputs[epochNum].valLoss * 100 * 10) / 10,
                     testAcc: Math.round(acc_loss.all[i].outputs[epochNum].testAcc * 100 * 10) / 10,
-                    testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 10) / 10
+                    testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 100 * 10) / 10
                 })
                 setModelSet(i)
             }
@@ -194,13 +233,18 @@ function App() {
                     <epochsContext.Provider value={epochs[epoch]}>
                         <Workflow numLayers={numLayers} handleSliderChange={handleSliderChange} handleImageChange={handleImageChange}
                                   handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
-                                  setDefautFully={setDefautFully} outputs={outputs} handlePlus={handlePlus}
-                                    handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json}
+                                  outputs={outputs} handlePlus={handlePlus} setGenVals={setGenVals} allValsUpdate={allValsUpdate}
+                                  handleMinus={handleMinus} status={epochs[epoch]} compare={compare_json} resetSliderValue={resetSliderValue}
                         />
                     </epochsContext.Provider>
 
                 </paramContext.Provider>
             </testContext.Provider>
+
+            <button onClick={() => {allVals.layers.forEach(c => {console.log(c.drop)})}}>all values</button>
+            <button onClick={() => console.log(allVals)}>values</button>
+            <button onClick={() => console.log(numLayers)}>num layers</button>
+
         </>
     );
 }

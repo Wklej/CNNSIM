@@ -6,9 +6,10 @@ import Features from './Modal/Components/Features'
 import ExplainModal from './Modal/ExplainModal';
 import { useState } from "react";
 import './Workflow.css'
+import Generator from './Modal/Components/Generator';
 
-const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc,
-                    setLossFunc, setDefautFully, outputs, handlePlus, handleMinus, status, compare}) => {
+const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc, resetSliderValue,
+                    setLossFunc, outputs, handlePlus, handleMinus, status, compare, setGenVals, allValsUpdate}) => {
 
   const [showFlat, setFlatShow] = useState(false);
 
@@ -21,6 +22,9 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
   // const handleFeaturesShow = () => setShowFeatures(true);
   // const handleFeaturesClose = () => setShowFeatures(false);
 
+  const [showMid, setShowMid] = useState(false)
+  const handleSetShowMid = () => setShowMid(true)
+
     return ( 
         <div className="container-fluid min-vh-100 bgDark">
           <div className="row flex-nowrap">
@@ -28,13 +32,18 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
               {/* LEFT PANEL */}
               <Input handleSliderChange={handleSliderChange} handleModelChange={handleModelChange} 
                     handleImageChange={handleImageChange} setLossFunc={setLossFunc} numLayers={numLayers} 
-                    handlePlus={handlePlus} handleMinus={handleMinus} status={status} compare={compare} />
+                    handlePlus={handlePlus} handleMinus={handleMinus} status={status} compare={compare}
+                    setShowMid={setShowMid} setGenVals={setGenVals} resetSliderValue={resetSliderValue} />
             </div>
             
             {/* mid layers */}
             <div className="col-4 bgDarkLayer">
               <div className="row min-vh-100 justify-content-center align-items-center">
-                  <MidLayer num={numLayers} />
+                  
+                  {!showMid && <Generator setShowMid={handleSetShowMid} handleSliderChange={handleSliderChange} 
+                                  setGenVals={setGenVals} numLayers={numLayers} allValsUpdate={allValsUpdate} />}
+                  {showMid && <MidLayer num={numLayers} />}
+
                   {/* <button className="btn btn-primary mt-2" onClick={handleFeaturesShow} >Features</button>
                   <Features show={showFeatures} handleClose={handleFeaturesClose} numLayers={numLayers} /> */}
               </div>
@@ -44,7 +53,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
               <ExplainModal show={showFlat} handleClose={handleFlatClose} type={"flat"} />
             </div>
             <div className="col me-3 bgDarkLayer ">
-              <Fully setDefautFully={setDefautFully} />
+              <Fully />
             </div>
 
             <div className="col-3 bgDarkLayer">
