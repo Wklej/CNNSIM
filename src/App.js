@@ -95,7 +95,7 @@ function App() {
 
             if (genVals.dropout === 'yes')
                 if (i === 0 || i === numLayers - 2)
-                    temp.layers[i].drop = 30
+                    temp.layers[i].drop = 40
                 else temp.layers[i].drop = 0
             else temp.layers[i].drop = 0
         }
@@ -241,9 +241,9 @@ function App() {
                 </paramContext.Provider>
             </testContext.Provider>
 
-            {/* <button onClick={() => {allVals.layers.forEach(c => {console.log(c.drop)})}}>all values</button>
-            <button onClick={() => console.log(allVals)}>values</button>
-            <button onClick={() => console.log(numLayers)}>num layers</button> */}
+            {/* <button onClick={() => {allVals.layers.forEach(c => {console.log(c.drop)})}}>all values</button> */}
+            {/* <button onClick={() => console.log(allVals)}>values</button> */}
+            {/* <button onClick={() => console.log(numLayers)}>num layers</button> */}
 
         </>
     );
