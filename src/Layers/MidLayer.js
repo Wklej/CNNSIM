@@ -6,7 +6,7 @@ const MidLayer = ({num}) => {
         let array = [];
         for (let index = 0; index < num; index++) {
             array.push(
-                <LayerCard id={index} ifLast={index === num-1 ? true : false} />
+                <LayerCard id={index} />
             )
         }
         return array

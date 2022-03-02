@@ -1,6 +1,6 @@
 import { Carousel } from "react-bootstrap";
 
-const Karuzela = ({content, idx}) => {
+const Karuzela = ({content, idx, ftr}) => {
 
     const items = () => {
         let arr = []
@@ -23,8 +23,8 @@ const Karuzela = ({content, idx}) => {
     }
 
     return (  
-        <Carousel variant="dark" controls={content.length === 1 || idx ? false : true} 
-                                    indicators={content.length === 1 || idx ? false : true}>
+        <Carousel variant="dark" controls={content.length === 1 || idx || ftr ? false : true} 
+                                    indicators={content.length === 1 || idx || ftr ? false : true}>
             { idx === undefined ? items() : item() }
         </Carousel>
     );

@@ -1,5 +1,4 @@
-
-    {
+{
 			"layers": [
 				{   "conv": {"filters": 32, "kernel_size": 3, "activation": "relu"},
 					"pool": {"pool_size": 2, "stride": 2},

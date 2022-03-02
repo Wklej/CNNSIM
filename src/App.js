@@ -187,6 +187,8 @@ function App() {
             return genVals
         else if(layerName === 'layers')
             return numLayers
+        else if(layerName === 'epoch')
+            return epoch
         
         else return allVals.layers[id][layerName]
     }

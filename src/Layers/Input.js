@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { paramContext } from "../paramContext";
 
 const Input = ({handleModelChange, handleImageChange, setLossFunc, resetSliderValue,
-                handlePlus, handleMinus, status, compare, setShowMid, setGenVals}) => {
+                handlePlus, handleMinus, status, compare, setShowMid, setGenVals, showMid}) => {
 
     const [toggleImageButton, setToggleImageButton] = useState(1)
     
@@ -48,7 +48,7 @@ const Input = ({handleModelChange, handleImageChange, setLossFunc, resetSliderVa
                         </div>
                         <div className="card-footer">
                             <div>
-                                <button className='btn btn-orange btn-lg' onClick={compare}>Simulation</button>
+                                <button className='btn btn-orange btn-lg' disabled={!showMid} onClick={compare}>Simulation</button>
                             </div>
                         </div>
                     </div>

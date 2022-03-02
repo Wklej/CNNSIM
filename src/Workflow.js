@@ -33,7 +33,7 @@ const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModel
               <Input handleSliderChange={handleSliderChange} handleModelChange={handleModelChange} 
                     handleImageChange={handleImageChange} setLossFunc={setLossFunc} numLayers={numLayers} 
                     handlePlus={handlePlus} handleMinus={handleMinus} status={status} compare={compare}
-                    setShowMid={setShowMid} setGenVals={setGenVals} resetSliderValue={resetSliderValue} />
+                    setShowMid={setShowMid} setGenVals={setGenVals} resetSliderValue={resetSliderValue} showMid={showMid} />
             </div>
             
             {/* mid layers */}
