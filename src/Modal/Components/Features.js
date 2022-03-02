@@ -13,21 +13,10 @@ const Features = ({show, handleClose, idx}) => {
     
     const getValues = useContext(paramContext)
 
+    // const epoch = getValues(null, 'epoch')
+
     const modelSet = getValues(null, 'modelSet')
     const imageNumber = getValues(null, 'image')
-
-    // Function to map whole dir content to @images object
-    // const getImages = (dirVariable) => {
-    //     const cache = {};
-
-    //     const r = dirVariable
-
-    //     r.keys().forEach((key) => (cache[key] = r(key)))
-    
-    //     const images = Object.entries(cache).map(module => module[1].default);
-        
-    //     return images
-    // }
 
     const getImg = (index, epoch) => {
         let arr = []
@@ -39,58 +28,9 @@ const Features = ({show, handleClose, idx}) => {
                     'Activations/' + index + '/' + epoch + '/filters/filter_' + i + '.png'
             )   
         }
-
+        console.log(arr)
         return arr
     }
-
-    // Function to choose path based on @layerType
-    // const getDir = (layerType) => {
-    //     switch (layerType) {
-    //         case "activations":
-    //             switch (epoch) {
-    //                 //return set of img tags with outputs
-    //                 case 1:
-    //                     return require.context("../../Images/Activations/test/1/outputs", false, /\.(png|gif|jpg)$/)        
-    //                     break;
-    //                 case 5:
-    //                     return require.context("../../Images/Activations/test/5/outputs", false, /\.(png|gif|jpg)$/)        
-    //                     break;
-    //                 case 15:
-    //                     return require.context("../../Images/Activations/test/15/outputs", false, /\.(png|gif|jpg)$/)        
-    //                     break;
-    //                 case 20:
-    //                     return require.context("../../Images/Activations/test/20/outputs", false, /\.(png|gif|jpg)$/)        
-    //                     break;
-    //                 case 30:
-    //                     return require.context("../../Images/Activations/test/30/outputs", false, /\.(png|gif|jpg)$/)
-    //                     break;
-    //                 default:
-    //                     break;
-    //             }
-    //         case "filters":
-    //             switch (epoch) {
-    //                 case 1:
-    //                     return require.context("../../Images/Activations/test/1/filters", false, /\.(png|gif|jpg)$/)        
-    //                     break;
-    //                 case 5:
-    //                     return require.context("../../Images/Activations/test/5/filters", false, /\.(png|gif|jpg)$/)        
-    //                     break;
-    //                 case 15:
-    //                     return require.context("../../Images/Activations/test/15/filters", false, /\.(png|gif|jpg)$/)        
-    //                     break;
-    //                 case 20:
-    //                     return require.context("../../Images/Activations/test/20/filters", false, /\.(png|gif|jpg)$/)        
-    //                     break;
-    //                 case 30:
-    //                     return require.context("../../Images/Activations/test/30/filters", false, /\.(png|gif|jpg)$/)
-    //                     break;
-    //                 default:
-    //                     break;
-    //             }
-    //         default:
-    //             break;
-    //     }
-    // }
 
     const [type, setType] = useState('activations')
 
@@ -98,8 +38,7 @@ const Features = ({show, handleClose, idx}) => {
         if (type === "activations" || type === "filters") {
             return(
                 <Modal.Body>
-                    {/* <Karuzela content={getImages(getDir(type))} idx={idx} /> */}
-                    <Karuzela content={getImg(modelSet, epoch)} idx={idx} />
+                    <Karuzela content={getImg(modelSet, epoch)} idx={idx} ftr={true} />
                 </Modal.Body>
             )    
         }
