@@ -27,7 +27,7 @@ const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allVa
     const handleStyle = {backgroundColor: "#e38627", border: "solid 2px #212121"}
 
     return ( 
-        <div className="col">
+        <div className="col cardFont">
             <div className="card border-dark text-center bgDarkCard" >
                 <div className="card-header">mid layers generator</div>
                 <div className="card-body">
