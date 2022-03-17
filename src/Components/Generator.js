@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { paramContext } from "../../Contexts/paramContext";
+import { paramContext } from "../Contexts/paramContext";
 import SelectBundle from "./SelectBundle";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';

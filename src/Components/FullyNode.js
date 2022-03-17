@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LayerModal from "../LayerModal"
+import LayerModal from "../Modal/LayerModal"
 
 const FullyNode = ({id}) => {
 

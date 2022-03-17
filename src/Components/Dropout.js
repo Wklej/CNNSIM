@@ -2,8 +2,8 @@ import { useState, useContext } from "react";
 import Collapse from 'react-bootstrap/Collapse'
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import ExplainModal from "../ExplainModal";
-import { paramContext } from "../../Contexts/paramContext";
+import ExplainModal from "../Modal/ExplainModal";
+import { paramContext } from "../Contexts/paramContext";
 
 const Dropout = ({id}) => {
 

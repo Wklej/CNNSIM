@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Modal } from "react-bootstrap";
-import { paramContext } from "../../Contexts/paramContext";
+import { paramContext } from "../Contexts/paramContext";
 import SelectBundle from "./SelectBundle";
 
 const ConvParams = ({id, layerType}) => {

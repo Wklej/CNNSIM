@@ -1,4 +1,4 @@
-import ModelSet from "../Modal/Components/ModelSet";
+import ModelSet from "../Components/ModelSet";
 import { useState, useContext } from "react";
 import { paramContext } from "../Contexts/paramContext";
 

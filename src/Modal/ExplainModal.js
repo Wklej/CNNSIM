@@ -1,6 +1,6 @@
 import Tabs from 'react-bootstrap/Tabs'
 import { Modal, Tab } from "react-bootstrap";
-import Explaination from './Components/Explaination'
+import Explaination from '../Components/Explaination'
 
 const ExplainModal = ({show, handleClose, type}) => {
 

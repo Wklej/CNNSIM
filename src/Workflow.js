@@ -2,11 +2,11 @@ import MidLayer from './Layers/MidLayer';
 import Output from './Layers/Output';
 import Input from './Layers/Input';
 import Fully from './Layers/Fully';
-import Features from './Modal/Components/Features'
+import Features from './Components/Features'
 import ExplainModal from './Modal/ExplainModal';
 import { useState } from "react";
 import './Workflow.css'
-import Generator from './Modal/Components/Generator';
+import Generator from './Components/Generator';
 
 const Workflow = ({numLayers, handleSliderChange, handleImageChange, handleModelChange, lossFunc, resetSliderValue,
                     setLossFunc, outputs, handlePlus, handleMinus, status, compare, setGenVals, allValsUpdate}) => {

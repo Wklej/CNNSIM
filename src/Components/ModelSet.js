@@ -1,12 +1,12 @@
 import { useState } from "react";
-import ImageModal from "../ImageModal";
+import ImageModal from "../Modal/ImageModal";
 
-import dog1 from '../../Images/modelImages/dog1.jpg'
-import dog2 from '../../Images/modelImages/dogo2.jpg'
-import dog3 from '../../Images/modelImages/dogo4.jpg'
-import letter1 from '../../Images/modelImages/1.png'
-import letter2 from '../../Images/modelImages/2.png'
-import letter3 from '../../Images/modelImages/3.png'
+import dog1 from '../Images/modelImages/dog1.jpg'
+import dog2 from '../Images/modelImages/dogo2.jpg'
+import dog3 from '../Images/modelImages/dogo4.jpg'
+import letter1 from '../Images/modelImages/1.png'
+import letter2 from '../Images/modelImages/2.png'
+import letter3 from '../Images/modelImages/3.png'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDog, faFont, faImage } from "@fortawesome/free-solid-svg-icons";

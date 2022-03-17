@@ -1,5 +1,5 @@
 import { Modal } from "react-bootstrap";
-import ImageSelection from "./Components/ImageSelection";
+import ImageSelection from "../Components/ImageSelection";
 
 const ImageModal = ({show, handleClose, handleImageChange, images}) => {
     return ( 
