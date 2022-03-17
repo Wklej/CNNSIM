@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import Dropout from "./Dropout";
 import { paramContext } from "../../paramContext";
 
-const LayerCard = ({id, ifLast}) => {
+const LayerCard = ({id}) => {
 
     const [showConv, setConvShow] = useState(false);
     const [showPool, setPoolShow] = useState(false);
@@ -19,37 +19,6 @@ const LayerCard = ({id, ifLast}) => {
 
     const getValues = useContext(paramContext)
 
-    const [defaultValues, setDefaultValues] = useState(getValues(id, 'Default'))
-    
-    const handleDisableConv = (e) => {
-        
-        const btnHandler = document.getElementById(e.target.id)
-        btnHandler.disabled = !btnHandler.disabled
-
-        var temp = defaultValues
-        
-        if (!btnHandler.disabled)
-            temp.conv = {filters: '32', kernel_size: '(2, 2)', activation: 'relu'}
-        else
-            temp.conv = {filters: null, kernel_size: null, activation: null}
-
-        setDefaultValues(temp)
-    }
-    
-    const handleDisablePool = (e) => {
-        const btnHandler = document.getElementById(e.target.id)
-        btnHandler.disabled = !btnHandler.disabled
-
-        var temp = defaultValues
-        
-        if (!btnHandler.disabled)
-            temp.pool = {pool_size: '(2, 2)', stride: '2'}
-        else
-            temp.pool = {pool_size: null, stride: null}
-
-        setDefaultValues(temp)
-    }
-
     return ( 
         <div className="col-6">
             <div className="card border-dark text-center bgDarkCard" >
@@ -59,7 +28,7 @@ const LayerCard = ({id, ifLast}) => {
                         <LayerModal show={showConv} handleClose={handleConvClose} body={"conv"} id={id} />
                         <button className="btn btn-orange mb-4" onClick={handlePoolShow} id={'pool' + id}>pool</button>
                         <LayerModal show={showPool} handleClose={handlePoolClose} body={'pool'} id={id} />
-                        { !ifLast && <Dropout id={id} /> }
+                        <Dropout id={id} />
                     </ul>
                 </div>
                 <div className="card-footer">
