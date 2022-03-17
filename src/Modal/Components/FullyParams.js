@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Modal } from "react-bootstrap";
-import { layersContext } from "../../layersContext";
-import { paramContext } from "../../paramContext";
+import { layersContext } from "../../Contexts/layersContext";
+import { paramContext } from "../../Contexts/paramContext";
 import SelectBundle from "./SelectBundle";
 
 const FullyParams = ({id, layerType}) => {

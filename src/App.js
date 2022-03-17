@@ -4,9 +4,9 @@ import { useState } from "react";
 import TopBar from './TopBar';
 import Workflow from './Workflow';
 
-import { testContext } from './testContext';
-import { paramContext } from './paramContext'; 
-import { epochsContext } from './epochsContext';
+import { testContext } from './Contexts/testContext';
+import { paramContext } from './Contexts/paramContext'; 
+import { epochsContext } from './Contexts/epochsContext';
 
 import models_json from './Data/models.json'
 import acc_loss from './Data/acc_loss.json'

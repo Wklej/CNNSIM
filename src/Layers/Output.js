@@ -1,8 +1,8 @@
 import { PieChart } from 'react-minimal-pie-chart';
 import { useState, useContext } from 'react';
-import { paramContext } from "../paramContext";
-import { testContext } from "../testContext";
-import { epochsContext } from '../epochsContext';
+import { paramContext } from "../Contexts/paramContext";
+import { testContext } from "../Contexts/testContext";
+import { epochsContext } from '../Contexts/epochsContext';
 import SelectBundle from '../Modal/Components/SelectBundle';
 import GraphModal from '../Modal/GraphModal'
 

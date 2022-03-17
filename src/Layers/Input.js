@@ -1,6 +1,6 @@
 import ModelSet from "../Modal/Components/ModelSet";
 import { useState, useContext } from "react";
-import { paramContext } from "../paramContext";
+import { paramContext } from "../Contexts/paramContext";
 
 const Input = ({handleModelChange, handleImageChange, setLossFunc, resetSliderValue,
                 handlePlus, handleMinus, status, compare, setShowMid, setGenVals, showMid}) => {

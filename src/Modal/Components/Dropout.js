@@ -3,7 +3,7 @@ import Collapse from 'react-bootstrap/Collapse'
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import ExplainModal from "../ExplainModal";
-import { paramContext } from "../../paramContext";
+import { paramContext } from "../../Contexts/paramContext";
 
 const Dropout = ({id}) => {
 

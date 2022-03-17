@@ -2,7 +2,7 @@ import LayerModal from "../LayerModal";
 import Features from "../Components/Features";
 import { useState, useContext } from "react";
 import Dropout from "./Dropout";
-import { paramContext } from "../../paramContext";
+import { paramContext } from "../../Contexts/paramContext";
 
 const LayerCard = ({id}) => {
 
