@@ -1,9 +1,8 @@
 import { useState } from "react";
 import ImageModal from "../Modal/ImageModal";
 
-import dog1 from '../Images/modelImages/dog1.jpg'
-import dog2 from '../Images/modelImages/dogo2.jpg'
-import dog3 from '../Images/modelImages/dogo4.jpg'
+import dog1 from '../Images/modelImages/1227.jpg'
+import dog2 from '../Images/modelImages/11282.jpg'
 import letter1 from '../Images/modelImages/1.png'
 import letter2 from '../Images/modelImages/2.png'
 import letter3 from '../Images/modelImages/3.png'
@@ -20,7 +19,7 @@ const ModelSet = ({modelID, handleModelChange, handleImageChange, setLossFunc, t
 
     const [imgs] = useState(
         {
-            1 : [dog1, dog2, dog3],
+            1 : [dog1, dog2],
             2 : [letter1, letter2, letter3]
         }
     )
