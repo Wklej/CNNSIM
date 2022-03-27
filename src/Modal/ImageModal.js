@@ -4,7 +4,7 @@ import ImageSelection from "../Components/ImageSelection";
 const ImageModal = ({show, handleClose, handleImageChange, images}) => {
     return ( 
         <>
-            <Modal show={show} onHide={handleClose} size='lg'>
+            <Modal show={show} onHide={handleClose} size='md'>
                 <Modal.Header>
                     <div className="cardFont">Select image to process</div>
                 </Modal.Header>
