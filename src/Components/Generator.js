@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { paramContext } from "../../paramContext";
+import { paramContext } from "../Contexts/paramContext";
 import SelectBundle from "./SelectBundle";
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -27,7 +27,7 @@ const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allVa
     const handleStyle = {backgroundColor: "#e38627", border: "solid 2px #212121"}
 
     return ( 
-        <div className="col">
+        <div className="col cardFont">
             <div className="card border-dark text-center bgDarkCard" >
                 <div className="card-header">mid layers generator</div>
                 <div className="card-body">

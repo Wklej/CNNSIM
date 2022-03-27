@@ -1,12 +1,12 @@
 import { Modal } from "react-bootstrap";
-import ImageSelection from "./Components/ImageSelection";
+import ImageSelection from "../Components/ImageSelection";
 
 const ImageModal = ({show, handleClose, handleImageChange, images}) => {
     return ( 
         <>
-            <Modal show={show} onHide={handleClose} size='lg'>
+            <Modal show={show} onHide={handleClose} size='md'>
                 <Modal.Header>
-                    Select image to process
+                    <div className="cardFont">Select image to process</div>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="d-flex justify-content-evenly">
@@ -14,8 +14,6 @@ const ImageModal = ({show, handleClose, handleImageChange, images}) => {
                                         imageID={4} imgPath={images[0]} />
                         <ImageSelection handleChange={handleImageChange} handleClose={handleClose}
                                         imageID={5} imgPath={images[1]} />
-                        <ImageSelection handleChange={handleImageChange} handleClose={handleClose}
-                                        imageID={6} imgPath={images[2]} />
                     </div>
                 </Modal.Body>
                 <Modal.Footer>

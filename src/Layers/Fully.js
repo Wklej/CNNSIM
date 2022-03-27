@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { layersContext } from "../layersContext";
-import FullyNode from "../Modal/Components/FullyNode";
+import { layersContext } from "../Contexts/layersContext";
+import FullyNode from "../Components/FullyNode";
 
 const Fully = () => {
 
@@ -23,7 +23,7 @@ const Fully = () => {
         <div className="row min-vh-100 align-items-center">
             <div className="col">
                 <div className="card border-dark text-center bgDarkCard" >
-                        <div className="card-header">Fully connected layer</div>
+                        <div className="card-header cardFont">Fully connected layer</div>
                         <div className="card-body">
                             <ul className="list-group">
                                 { nodes() }

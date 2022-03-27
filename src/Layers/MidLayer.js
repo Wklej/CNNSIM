@@ -1,4 +1,4 @@
-import LayerCard from "../Modal/Components/LayerCard";
+import LayerCard from "../Components/LayerCard";
 
 const MidLayer = ({num}) => {
 

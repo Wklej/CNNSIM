@@ -2,8 +2,8 @@ import Tabs from 'react-bootstrap/Tabs'
 import { Modal, Tab } from "react-bootstrap";
 import { useState } from 'react';
 import Karuzela from './Karuzela';
-import { epochsContext } from '../../epochsContext';
-import { paramContext } from '../../paramContext';
+import { epochsContext } from '../Contexts/epochsContext';
+import { paramContext } from '../Contexts/paramContext';
 import { useContext } from 'react';
 
 const Features = ({show, handleClose, idx}) => {

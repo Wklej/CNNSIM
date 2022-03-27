@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { paramContext } from "../../paramContext";
+import { paramContext } from "../Contexts/paramContext";
 
 const ImageSelection = ({imageID, handleChange, handleClose, imgPath}) => {
 

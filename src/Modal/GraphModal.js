@@ -1,6 +1,6 @@
 import { Modal } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
-import { paramContext } from '../paramContext';
+import { paramContext } from '../Contexts/paramContext';
 import { useContext } from 'react';
 
 const GraphModal = ({show, handleClose}) => {

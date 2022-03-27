@@ -1,7 +1,7 @@
 import Tabs from 'react-bootstrap/Tabs'
 import { Modal, Tab } from "react-bootstrap";
-import Explaination from './Components/Explaination'
-import Details from './Components/Details';
+import Explaination from '../Components/Explaination'
+import Details from '../Components/Details';
 import { useState } from 'react';
 
 const LayerModal = ({show, handleClose, body, id}) => {

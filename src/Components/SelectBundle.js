@@ -1,4 +1,4 @@
-import ExplainModal from '../ExplainModal';
+import ExplainModal from '../Modal/ExplainModal';
 import { useState } from 'react';
 
 const SelectBundle = ({label, update, id, optionValues, bundle_size, disabled}) => {

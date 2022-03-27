@@ -1,12 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import { useState } from "react";
 
-import TopBar from './TopBar';
 import Workflow from './Workflow';
 
-import { testContext } from './testContext';
-import { paramContext } from './paramContext'; 
-import { epochsContext } from './epochsContext';
+import { testContext } from './Contexts/testContext';
+import { paramContext } from './Contexts/paramContext'; 
+import { epochsContext } from './Contexts/epochsContext';
 
 import models_json from './Data/models.json'
 import acc_loss from './Data/acc_loss.json'
@@ -229,9 +228,7 @@ function App() {
         <>
             <testContext.Provider value={handleLayerChange}>
                 <paramContext.Provider value={getValues}>
-                    {/* <TopBar numLayers={numLayers} handleSliderChange={handleSliderChange}
-                            handlePlus={handlePlus} handleMinus={handleMinus} status={epochs[epoch]} /> */}
-                    
+
                     <epochsContext.Provider value={epochs[epoch]}>
                         <Workflow numLayers={numLayers} handleSliderChange={handleSliderChange} handleImageChange={handleImageChange}
                                   handleModelChange={handleModelChange} lossFunc={lossFunc} setLossFunc={setLossFunc}
@@ -242,10 +239,6 @@ function App() {
 
                 </paramContext.Provider>
             </testContext.Provider>
-
-            {/* <button onClick={() => {allVals.layers.forEach(c => {console.log(c.drop)})}}>all values</button> */}
-            {/* <button onClick={() => console.log(allVals)}>values</button> */}
-            {/* <button onClick={() => console.log(numLayers)}>num layers</button> */}
 
         </>
     );
