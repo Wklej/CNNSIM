@@ -22,6 +22,11 @@ const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allVa
         setShowMid()
     }
 
+    const getPoolSize = () => {
+        const pool_size = genVals.kernel_size - 1
+        return pool_size.toString()
+    }
+
     const orangeBg = {backgroundColor: "#e38627"}
     const dotStyle = {backgroundColor: "#212121", border: "solid 2px #212121"}
     const handleStyle = {backgroundColor: "#e38627", border: "solid 2px #212121"}
@@ -53,7 +58,7 @@ const Generator = ({setShowMid, handleSliderChange, numLayers, setGenVals, allVa
                         <div className="card-body">
                             <div className="d-inline-block w-auto">
                                 <SelectBundle label='pool_size' update={update2} bundle_size={'md'}
-                                    optionValues={['(2, 2)']} />
+                                    optionValues={[getPoolSize()]} />
                                 <SelectBundle label='stride' update={update2} bundle_size={'md'}
                                     optionValues={['out', 'in']} />
                             </div>
