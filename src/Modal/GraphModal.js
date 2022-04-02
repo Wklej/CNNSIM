@@ -12,9 +12,9 @@ const GraphModal = ({show, handleClose}) => {
    return ( 
         <Modal show={show} onHide={handleClose} size='lg'>
             <Modal.Body>
-                <Carousel variant="dark">
+                <Carousel variant="dark" indicators={false} controls={false}>
                     <Carousel.Item>
-                        <img className="d-block w-100" src={'Activations/' + modelSet + '/graph.png'} alt="First slide" />
+                        <img className="d-block w-100" src={'Activations/' + modelSet + '/graph.png'} alt="Image missing" />
                     </Carousel.Item>
                 </Carousel>
             </Modal.Body>
