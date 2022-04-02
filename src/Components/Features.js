@@ -35,16 +35,11 @@ const Features = ({show, handleClose, idx}) => {
     const [type, setType] = useState('activations')
 
     const bodyType = () => {
-        if (type === "activations" || type === "filters") {
-            return(
-                <Modal.Body>
-                    <Karuzela content={getImg(modelSet, epoch)} idx={idx} ftr={true} />
-                </Modal.Body>
-            )    
-        }
-        else if(type === "comparison") {
-            return(<Modal.Body>Feature 3</Modal.Body>)
-        }
+        return(
+            <Modal.Body>
+                <Karuzela content={getImg(modelSet, epoch)} idx={idx} ftr={true} />
+            </Modal.Body>
+        )    
     }
 
    return ( 
@@ -55,9 +50,6 @@ const Features = ({show, handleClose, idx}) => {
                 </Tab>
                 <Tab tabClassName='tabFont' eventKey="filters" title="Filters">
                     { bodyType() }
-                </Tab>   
-                <Tab tabClassName='tabFont' eventKey="comparison" title="Comparison">
-                    { epoch }
                 </Tab>   
             </Tabs>
             <Modal.Footer>

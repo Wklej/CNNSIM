@@ -24,9 +24,9 @@ const LayerCard = ({id}) => {
             <div className="card border-dark text-center bgDarkCard" >
                 <div className="card-body">
                     <ul className="list-group">
-                        <button className="btn btn-orange mb-4" onClick={handleConvShow} id={'conv' + id}>conv {id}</button>
+                        <button className="btn btn-orange mb-4" onClick={handleConvShow} id={'conv' + id}>Convolutional {id + 1}</button>
                         <LayerModal show={showConv} handleClose={handleConvClose} body={"conv"} id={id} />
-                        <button className="btn btn-orange mb-4" onClick={handlePoolShow} id={'pool' + id}>pool</button>
+                        <button className="btn btn-orange mb-4" onClick={handlePoolShow} id={'pool' + id}>Pooling {id + 1}</button>
                         <LayerModal show={showPool} handleClose={handlePoolClose} body={'pool'} id={id} />
                         <Dropout id={id} />
                     </ul>

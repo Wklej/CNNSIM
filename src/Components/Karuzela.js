@@ -7,7 +7,7 @@ const Karuzela = ({content, idx, ftr}) => {
         for (let i = content.length - 1; i >= 0; i--) {
             arr.push(
                 <Carousel.Item>
-                    <img className="d-block w-100" src={content[i]} alt="First slide" />
+                    <img className="d-block w-100" src={content[i]} alt="Image missing" />
                 </Carousel.Item>
             )
         }
@@ -17,7 +17,7 @@ const Karuzela = ({content, idx, ftr}) => {
     const item = () => {
         return(
             <Carousel.Item>
-                <img className="d-block w-100" src={content[idx]} alt="First slide" />
+                <img className="d-block w-100" src={content[idx]} alt="Image missing" />
             </Carousel.Item>
         )
     }
