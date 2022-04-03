@@ -19,7 +19,6 @@ const ImageSelection = ({imageID, handleChange, handleClose, imgPath}) => {
                     onClick={(e) => ChangeAndClose(e)} />
             <label className="btn btn-outline-orange mb-2" htmlFor={imageID}>
                 <img src={imgPath} className="img-fluid" alt="img" />
-                Image {imageID}
             </label>
         </> 
      );
