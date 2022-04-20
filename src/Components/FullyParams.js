@@ -35,7 +35,6 @@ const FullyParams = ({id, layerType}) => {
         else {
             return(
                 <div>
-                    {console.log(values)}
                     <SelectBundle label='filters' id={id} optionValues={[values.filters]} disabled={true} />
                     <SelectBundle label='activation' id={id} optionValues={[values.activation]} disabled={true} />
                 </div>
