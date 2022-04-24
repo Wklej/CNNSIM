@@ -102,7 +102,6 @@ function App() {
         temp.fully[0].activation = genVals.activation
 
         setAllVals(temp)
-        console.log('all vals have been set')
     }
 
     // Utils for tracking slider value
@@ -211,7 +210,6 @@ function App() {
 
     const compare_json = () => {
         const data = models_json
-
         for (let i = 0; i < data.models.length; i++)
             if (JSON.stringify(data.models[i]) === JSON.stringify(allVals)) {
                 setOutputs({...outputs, 
@@ -220,8 +218,12 @@ function App() {
                     testAcc: Math.round(acc_loss.all[i].outputs[epochNum].testAcc * 100 * 10) / 10,
                     testLoss: Math.round(acc_loss.all[i].outputs[epochNum].testLoss * 100 * 10) / 10
                 })
-                setModelSet(i)
+                setModelSet(i)     
+                console.log(i)
             }
+            // else console.log(JSON.stringify(allVals))
+            // console.log(JSON.stringify(data.models[0]))
+            
         }
 
     return (
