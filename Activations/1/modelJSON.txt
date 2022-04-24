@@ -1,0 +1,22 @@
+{
+			"layers": [
+				{   "conv": {"filters": 32, "kernel_size": 3, "activation": "relu"},
+					"pool": {"pool_size": 2, "stride": 1},
+					"drop": 40
+				},
+				{   "conv": {"filters": 32, "kernel_size": 3, "activation": "relu"},
+					"pool": {"pool_size": 2, "stride": 1},
+					"drop": 0
+				},
+				{   "conv": {"filters": "null", "kernel_size": "null", "activation": "null"},
+					"pool": {"pool_size": "null", "stride": "null"},
+					"drop": "null"
+				}
+			],
+			"output": {"loss": "binary_crossentropy", "optimizer": "SGD"},
+			"input": {"model": "1"},
+			"fully": [
+				{"filters": "512", "activation": "relu"},
+				{"filters": "1", "activation": "sigmoid"}
+			]
+		},
